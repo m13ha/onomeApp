@@ -1,0 +1,90 @@
+.fit-screen {
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.form-field {
+    display: flex;
+    width: 60%;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    text-align: left;
+    align-items: center;
+}
+
+.field {
+    width: 50%;
+    min-width: 300px;
+}
+
+.field-quart {
+    width: 25%;
+    min-width: 300px;
+
+}
+
+label {
+    display: block;
+}
+
+input {
+    width: 90%;
+    height: 30px;
+    min-width: 280px;
+    border-radius: 5px;
+    margin: 10px;
+    padding-left: 8px;
+    outline: 1px solid #F3F4F6;
+}
+
+input:focus {
+    outline: 3px solid rgb(89, 160, 240);
+}
+
+select {
+    width: 90%;
+    height: 30px;
+    min-width: 280px;
+    margin: 10px;
+    min-width: 280px;
+    border-radius: 5px;
+    outline: 1px solid #F3F4F6;
+}
+
+.btn {
+    width: 100%;
+    margin: 30px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+button {
+    width: 80px;
+    height: 30px;
+    background-color: rgb(29, 70, 202);
+    color: #fff;
+}
