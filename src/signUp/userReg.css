@@ -34,6 +34,7 @@
   -webkit-box-shadow: -5px 9px 20px 9px rgba(0, 0, 0, 0.46);
   -moz-box-shadow: -5px 9px 20px 9px rgba(0, 0, 0, 0.46);
   padding: 3rem;
+  position: relative;
 }
 
 .form-title {
@@ -59,6 +60,25 @@
   padding: 3rem;
 }
 
+.userType {
+  display: grid;
+}
+
+.userType button {
+  width: 200px;
+  height: 70px;
+  background-color: rgb(162, 69, 238);
+  color: #fff;
+  margin: 20px auto;
+  border: 0px;
+  font-size: 14px;
+}
+
+.userType button:hover{
+  background-color: rgb(198, 177, 216);
+
+}
+
 .field-mobile {
   min-width: 300px;
   width: 50%;
@@ -66,6 +86,23 @@
 
 .field-quart {
   width: 25%;
+}
+
+.closeForm {
+  background-color: #fff;
+  color: #000;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 17px;
+  margin: 20px;
+  width: 30px;
+  height: 30px;
+  border: 0px;
+}
+
+.closeForm:hover {
+    background-color: rgb(199, 199, 199);
 }
 
 label {
@@ -124,7 +161,7 @@ select {
     float: none;
 }
 
-button {
+.form button {
   width: 100px;
   height: 40px;
   background-color: rgb(162, 69, 238);
@@ -139,8 +176,7 @@ button {
     .field {
         width: 100%;
         min-width: 320px;
-        padding: 0px;
-    }
+    } 
 
     .avatar-loca {
         display: none;
@@ -150,4 +186,10 @@ button {
         margin-left: 0px;
         float: none;
       }
+}
+
+@media screen and (max-width: 400px) {
+   .field{
+     padding: 0px;
+   }
 }
