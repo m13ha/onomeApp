@@ -30,9 +30,9 @@
   align-items: center;
   flex-wrap: wrap;
   justify-content: flex-start;
-  box-shadow: -5px 9px 20px 9px rgba(0, 0, 0, 0.46);
-  -webkit-box-shadow: -5px 9px 20px 9px rgba(0, 0, 0, 0.46);
-  -moz-box-shadow: -5px 9px 20px 9px rgba(0, 0, 0, 0.46);
+  box-shadow: -1px 6px 9px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: -1px 6px 9px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: -1px 6px 9px 0px rgba(0,0,0,0.75);
   padding: 3rem;
   position: relative;
 }
@@ -95,7 +95,7 @@
   right: 0;
   top: 0;
   font-size: 17px;
-  margin: 20px;
+  margin: 10px;
   width: 30px;
   height: 30px;
   border: 0px;
