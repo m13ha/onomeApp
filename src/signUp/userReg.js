@@ -1,53 +1,77 @@
+import avatar from "../assets/images/UserReg/Beautiful-Black-Woman-2.svg"
+
 const UserReg = () => {
     return (
         <div className="container fit-screen">
-            <div className="form-field">
-                <form className="form" action="" method="post">
-                    <div className="row">
-                        <div className="field">
-                            <label htmlFor="firstName">First name</label>
-                            <input id="firstName" type="text" />
-                        </div>
-                        <div className="field">
-                            <label htmlFor="lastName">Last name</label>
-                            <input id="lastName" type="text" />
+            <div className="field avatar-loca">
+                <img src={avatar} alt="" width="100%" height="100%" />
+            </div>
+            <div className="field">
+                <div className="form-field">
+                    <div className="row form-title">
+                        <div className="field-mobile">
+                            <h1>Hi, Am here to help.</h1>
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="field">
-                            <label htmlFor="userName">Username</label>
-                            <input id="userName" type="text" />
+                    <form className="form" action="" method="post">
+                        <div className="row">
+                            <div className="field-mobile">
+                                <label htmlFor="firstName">First name</label>
+                                <br />
+                                <input id="firstName" type="text" />
+                            </div>
+                            <div className="field-mobile">
+                                <label htmlFor="lastName">Last name</label>
+                                <br />
+                                <input id="lastName" type="text" />
+                            </div>
                         </div>
-                        <div className="field">
-                            <label htmlFor="password">Password</label>
-                            <input id="password" type="password" />
+                        <div className="row">
+                            <div className="field-mobile">
+                                <label htmlFor="userName">Username</label>
+                                <br />
+                                <input id="userName" type="text" />
+                            </div>
+                            <div className="field-mobile">
+                                <label htmlFor="password">Password</label>
+                                <br />
+                                <input id="password" type="password" />
+                            </div>
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="field">
-                            <label htmlFor="faculty">Faculty</label>
-                            <select name="Faculty" id="faculty"></select>
+                        <div className="row">
+                            <div className="field-mobile">
+                                <label htmlFor="faculty">Faculty</label>
+                                <br />
+                                <select name="Faculty" id="faculty"></select>
+                            </div>
+                            <div className="field-mobile">
+                                <label htmlFor="department">Department</label>
+                                <br />
+                                <select name="Department" id="department"></select>
+                            </div>
                         </div>
-                        <div className="field">
-                            <label htmlFor="department">Department</label>
-                            <select name="Department" id="department"></select>
+                        <div className="row">
+                            <div className="field-mobile">
+                                <label htmlFor="level">Level</label>
+                                <br />
+                                <select name="Level" id="level"></select>
+                            </div>
+                            <div className="field-mobile">
+                                <label htmlFor="Age">Age</label>
+                                <br />
+                                <input id="age" type="date" />
+                            </div>
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="field">
-                            <label htmlFor="level">Level</label>
-                            <select name="Level" id="level"></select>
+                        <div className="row check">
+                            <div className="field-mobile">
+                                <input type="checkbox" id="terms" />
+                                <label htmlFor="terms">By checking this box you Agree to our terms of service</label>
+                            </div>
                         </div>
-                        <div className="field">
-                            <label htmlFor="Age">Age</label>
-                            <input id="age" type="date" />
+                        <div className="field-mobile btn">
+                            <button>Submit</button>
                         </div>
-                    </div>
-                </form>
-                <div className="row">
-                    <div className="field btn">
-                        <button>Submit</button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

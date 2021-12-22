@@ -19,72 +19,135 @@
   flex-wrap: wrap;
 }
 
+.avatar-loca {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+}
+
 .form-field {
-    display: flex;
-    width: 60%;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  box-shadow: -5px 9px 20px 9px rgba(0, 0, 0, 0.46);
+  -webkit-box-shadow: -5px 9px 20px 9px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: -5px 9px 20px 9px rgba(0, 0, 0, 0.46);
+  padding: 3rem;
+}
+
+.form-title {
+  width: 100%;
+  margin-bottom: 60px;
+  text-align: center;
+  display: flex;
+  word-wrap: break-word;
+  flex-wrap: wrap;
 }
 
 .form {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    text-align: left;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  text-align: center;
+  align-items: center;
 }
 
 .field {
-    width: 50%;
-    min-width: 300px;
+  width: 50%;
+  padding: 3rem;
+}
+
+.field-mobile {
+  min-width: 300px;
+  width: 50%;
 }
 
 .field-quart {
-    width: 25%;
-    min-width: 300px;
-
+  width: 25%;
 }
 
 label {
-    display: block;
+  margin-left: 35px;
+  float: left;
 }
 
 input {
-    width: 90%;
-    height: 30px;
-    min-width: 280px;
-    border-radius: 5px;
-    margin: 10px;
-    padding-left: 8px;
-    outline: 1px solid #F3F4F6;
+  width: 80%;
+  height: 30px;
+  min-width: 230px;
+  border-radius: 5px;
+  margin: 10px;
+  padding-left: 8px;
+  outline: 1px solid #f3f4f6;
 }
 
 input:focus {
-    outline: 3px solid rgb(89, 160, 240);
+  outline: 3px solid rgb(89, 160, 240);
 }
 
 select {
-    width: 90%;
-    height: 30px;
-    min-width: 280px;
-    margin: 10px;
-    min-width: 280px;
-    border-radius: 5px;
-    outline: 1px solid #F3F4F6;
+  width: 80%;
+  height: 30px;
+  min-width: 230px;
+  margin: 10px;
+  padding-left: 8px;
+  border-radius: 5px;
+  outline: 1px solid #f3f4f6;
 }
 
 .btn {
-    width: 100%;
-    margin: 30px;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
+  width: 50%;
+  margin: 30px;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.check {
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.check input {
+  width: 15px;
+  height: 13px;
+  margin: 10px;
+  padding: 0px;
+  min-width: 10px;
+}
+
+.check label {
+    float: none;
 }
 
 button {
-    width: 80px;
-    height: 30px;
-    background-color: rgb(29, 70, 202);
-    color: #fff;
+  width: 100px;
+  height: 40px;
+  background-color: rgb(162, 69, 238);
+  color: #fff;
+  border: 0px;
+  border-radius: 10px;
+}
+
+
+
+@media screen and (max-width: 1024px) {
+    .field {
+        width: 100%;
+        min-width: 320px;
+        padding: 0px;
+    }
+
+    .avatar-loca {
+        display: none;
+    }
+
+    label {
+        margin-left: 0px;
+        float: none;
+      }
 }
