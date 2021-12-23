@@ -1,4 +1,3 @@
-import './App.css';
 import Home from './main/home';
 //import UserReg from './signUp/userReg';
 

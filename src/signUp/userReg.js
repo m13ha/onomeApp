@@ -71,7 +71,7 @@ const UserReg = () => {
                     <div className="row check">
                         <div className="field-mobile">
                             <input type="checkbox" id="terms" required />
-                            <label htmlFor="terms">By checking this box you Agree to our terms of service</label>
+                            <label htmlFor="terms">you accept our Terms of use and our Privacy policy</label>
                         </div>
                     </div>
                     <div className="field-mobile btn">
@@ -139,7 +139,7 @@ const UserReg = () => {
                     <div className="row check">
                         <div className="field-mobile">
                             <input type="checkbox" id="terms" required />
-                            <label htmlFor="terms">By checking this box you Agree to our terms of service</label>
+                            <label htmlFor="terms">you accept our Terms of use and our Privacy policy</label>
                         </div>
                     </div>
                     <div className="field-mobile btn">
@@ -213,7 +213,7 @@ const UserReg = () => {
                     <div className="row check">
                         <div className="field-mobile">
                             <input type="checkbox" id="terms" required />
-                            <label htmlFor="terms">By checking this box you Agree to our terms of service</label>
+                            <label htmlFor="terms">you accept our Terms of use and our Privacy policy</label>
                         </div>
                     </div>
                     <div className="field-mobile btn">
