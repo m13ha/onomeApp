@@ -1,0 +1,100 @@
+.feedContainer {
+  width: 100%;
+  height: 100%;
+  padding-top: 3.8rem;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+
+.feed {
+  width: 50%;
+}
+
+.feedNav {
+  width: 100%;
+  height: 50px;
+  background-color: var(--main-bg);
+  color: #fff;
+  position: sticky;
+  top: 3.8rem;
+}
+
+.feedNavbar {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.feedLink {
+  width: 33%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.feedLink:hover {
+  background-color: var(--main-hov);
+}
+
+.feedContent {
+  width: 100%;
+  display: grid;
+  padding: 12px;
+}
+
+.card {
+  width: 100%;
+  display: flex;
+  margin-top: 12px;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid rgb(179, 179, 179);
+  padding: 15px 10px;
+}
+
+.image {
+  background-color: #000;
+  border-radius: 15px;
+  margin-right: 10px;
+}
+
+.image img {
+    width: 150px;
+    height: 150px;
+}
+
+.info h1 {
+  margin-bottom: 15px;
+}
+
+.card:hover {
+  border-radius: 20px;
+  box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.75);
+}
+
+@media screen and (max-width: 850px) {
+  .feed {
+    width: 100%;
+    min-width: 320px;
+  }
+
+  .feedContent {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .feedContent h1 {
+    font-size: 18px;
+  }
+
+  .image img {
+    width: 100px;
+    height: 100px;
+}
+}

@@ -2,7 +2,6 @@ import userAvatar from '../../assets/images/home/navbar/user.png';
 import menu from "../../assets/images/home/navbar/menu.png";
 import bookIcon from "../../assets/images/home/navbar/book.png";
 import emailIcon from "../../assets/images/home/navbar/email.png";
-import funIcon from "../../assets/images/home/navbar/fun.png";
 import pinIcon from "../../assets/images/home/navbar/pin.png";
 import relaIcon from "../../assets/images/home/navbar/relationship.png";
 import shopIcon from "../../assets/images/home/navbar/shop.png";
@@ -46,7 +45,6 @@ const Navbar = () => {
                 <div className="sideBar">
                     <ul className='sideList'>
                         <li><img src={newsPaper} alt="drop menu" width="30px" height="30px" /></li>
-                        <li><img src={funIcon} alt="drop menu" width="30px" height="30px" /></li>
                         <li><img src={emailIcon} alt="drop menu" width="30px" height="30px" /></li>
                         <li><img src={bookIcon} alt="drop menu" width="30px" height="30px" /></li>
                         <li><img src={pinIcon} alt="drop menu" width="30px" height="30px" /></li>

@@ -3,16 +3,18 @@
   height: 100%;
   display: flex;
   flex-wrap: wrap;
-  position: relative;
+  position: absolute;
 }
 
 .nav {
   width: 100%;
   height: 60px;
-  background-color: rgb(162, 69, 238);
-  min-width: 300px;
+  background-color: var(--main-bg);
+  min-width: 320px;
   color: #fff;
   padding: 0px 30px;
+  position: fixed;
+  z-index: 2;
 }
 
 .navList {
@@ -28,15 +30,16 @@
   position: fixed;
   left: 0;
   top: 25%;
+  z-index: 2;
 }
 
 .sideList {
   display: flex;
   width: 60px;
-  height: 450px;
+  height: 420px;
   flex-direction: column;
   list-style: none;
-  background-color: rgb(162, 69, 238);
+  background-color: var(--main-bg);
   justify-content: space-evenly;
   margin-left: 5px;
 }
@@ -52,7 +55,7 @@
 }
 
 .sideList li:hover {
-  background-color: rgb(205, 150, 250);
+  background-color: var(--main-hov);
 }
 
 .navList li {

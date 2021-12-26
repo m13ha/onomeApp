@@ -1,0 +1,120 @@
+.chatContainer {
+    width: 100%;
+    height: 100%;
+    padding-top: 3.8rem;
+    display: flex;
+    justify-content: space-around;
+    z-index: 1;
+}
+
+.chats {
+    width: 100%;
+    height: 100%;
+    padding: 2rem 2rem;
+    border-right: 2px solid #000;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.chatList {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    overflow-y: scroll;
+}
+
+.chatList li {
+    width: 100%;
+    height: 45px;
+    border: 1px solid #000;
+    margin-bottom: 10px ;
+    font-size: 17px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.unread {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(230, 33, 33);
+    color: #fff;
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    font-size: 13px;
+    border: 0px;
+}
+
+.chatList li:hover {
+    background-color: var(--main-hov);
+    color: #fff;
+    border: 1px #fff;
+}
+
+.chatroom {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.msgs {
+    width: 100%;
+    height: 93%;
+    display: grid;
+    overflow-y: scroll ;
+    padding: 2rem;
+}
+
+.scroll::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.chatroom form {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.chatroom input {
+    width: 85%;
+    min-width: 280px;
+    height: 38px;
+    border: 1px solid #333;
+    margin: 0px;
+}
+
+.sendMsg {
+    width: 10%;
+    min-width: 70px;
+    height: 40px;
+    background-color: var(--main-bg);
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 10px;
+}
+
+
+.closeLeft {
+    background-color: var(--main-bg);
+    color: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 17px;
+    margin: 10px;
+    width: 30px;
+    height: 30px;
+    border: 0px;
+  }
+  
+  .closeLeft:hover {
+    background-color: var(--main-hov);
+  }
