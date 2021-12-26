@@ -63,9 +63,8 @@
 .msgs {
     width: 100%;
     height: 93%;
-    display: grid;
     overflow-y: scroll ;
-    padding: 2rem;
+    padding: 3rem  1rem;
 }
 
 .scroll::-webkit-scrollbar {
@@ -84,16 +83,52 @@
 }
 
 .chatroom input {
-    width: 85%;
-    min-width: 280px;
+    width: 90%;
+    min-width: 250px;
     height: 38px;
     border: 1px solid #333;
     margin: 0px;
 }
 
+.msgRow {
+    width: 100%;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.msg {
+    width: 60%;
+    padding: 1rem;
+    background-color: rgb(170, 83, 231);
+    min-width: 300px;
+    color: #fff;
+    font-size: 14px;
+    border-top-right-radius: 13px;
+    border-bottom-right-radius: 13px;
+    border-bottom-left-radius: 13px;
+    margin-bottom: 15px;
+}
+
+.msgs P {
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.userMsg {
+    width: 60%;
+    min-width: 300px;
+    color: #fff;
+    padding: 1rem;
+    background-color: rgb(102, 100, 241);
+    border-top-left-radius: 13px;
+    border-bottom-left-radius: 13px;
+    border-bottom-right-radius: 13px;
+    margin-bottom: 15px;
+}
+
 .sendMsg {
-    width: 10%;
-    min-width: 70px;
+    width: 5%;
+    min-width: 50px;
     height: 40px;
     background-color: var(--main-bg);
     color: #fff;
@@ -101,6 +136,9 @@
     border-radius: 10px;
 }
 
+.userMsg P {
+    text-align: right;
+}
 
 .closeLeft {
     background-color: var(--main-bg);

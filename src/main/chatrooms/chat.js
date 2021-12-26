@@ -31,6 +31,36 @@ const Chats = () => {
                 <div className="chatroom">
                     <button onClick={handleChatClose} className="closeLeft">X</button>
                     <div className="msgs scroll">
+                        <div className="msgRow">
+                            <div className="msg">
+                                <p>Angelmikeal</p>
+                                <p>Hey Guys whats up?</p>
+                            </div>
+                        </div>
+                        <div className="msgRow">
+                            <div className="userMsg">
+                                <p>Angelmikeal</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius nobis illo, ad explicabo sed ex aperiam eveniet perferendis ut officiis similique vitae? In ipsam consequuntur asperiores omnis aliquam at doloribus.</p>
+                            </div>
+                        </div>
+                        <div className="msgRow">
+                            <div className="msg">
+                                <p>Angelmikeal</p>
+                                <p>Hey Guys whats up?</p>
+                            </div>
+                        </div>
+                        <div className="msgRow">
+                            <div className="msg">
+                                <p>Angelmikeal</p>
+                                <p>Hey Guys whats up?</p>
+                            </div>
+                        </div>
+                        <div className="msgRow">
+                            <div className="msg">
+                                <p>Angelmikeal</p>
+                                <p>Hey Guys whats up?</p>
+                            </div>
+                        </div>
                     </div>
                     <form action="">
                         <input type="text" />
