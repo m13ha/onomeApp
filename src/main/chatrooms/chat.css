@@ -93,7 +93,14 @@
 .msgRow {
     width: 100%;
     margin-bottom: 15px;
-    flex-wrap: wrap;
+    display: flex;
+}
+
+.msgRow-u {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .msg {

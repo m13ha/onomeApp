@@ -1,54 +1,149 @@
+import { useState } from "react/cjs/react.development";
 import newsPaper from "../../assets/images/home/navbar/newspaper-folded.png";
 
 const Feed = () => {
+
+    const [news, setNews] = useState(true);
+    const [forum, setForum] = useState(false);
+    const [memes, setMemes] = useState(false);
+
+    const loadNews = () => {
+        setMemes(false);
+        setForum(false);
+        setNews(true);
+    }
+
+    const loadForum = () => {
+        setMemes(false);
+        setNews(false);
+        setForum(true);
+
+    }
+
+    const loadMemes = () => {
+        setForum(false);
+        setNews(false);
+        setMemes(true);
+
+    }
     return (
         <div className="feedContainer">
             <div className="feed">
                 <div className="feedNav">
                     <ul className="feedNavbar">
-                        <li className="feedLink">News</li>
-                        <li className="feedLink">General Discussion</li>
-                        <li className="feedLink">Memes</li>
+                        <li onClick={loadNews} className="feedLink">News</li>
+                        <li onClick={loadForum} className="feedLink">Forum</li>
+                        <li onClick={loadMemes} className="feedLink">Memes</li>
                     </ul>
                 </div>
-                <div className="feedContent">
-                <div className="card">
-                        <div className="image">
-                            <img src={newsPaper} alt=""  />
+                {news &&
+                    <div className="feedContent">
+                        <div className="card">
+                            <div className="image">
+                                <img src={newsPaper} alt="" />
+                            </div>
+                            <div className="info">
+                                <h1>CULTISM IN BENIN</h1>
+                                <p>A look into tht ave sufgj ffhgy bfbfkmfjf bfhfufjkfkf fgfgfgfj 0ososos hdhdudjd djdjdji</p>
+                            </div>
+                            <div className="postData">
+                                <p>like: 100</p>
+                                <p>Comments: 30</p>
+                            </div>
                         </div>
-                        <div className="info">
-                            <h1>CULTISM IN BENIN</h1>
-                            <p>A look into tht ave sufgj ffhgy bfbfkmfjf bfhfufjkfkf fgfgfgfj 0ososos hdhdudjd djdjdji</p>
+                        <div className="card">
+                            <div className="image">
+                                <img src={newsPaper} alt="" />
+                            </div>
+                            <div className="info">
+                                <h1>CULTISM IN BENIN</h1>
+                                <p>A look into tht ave sufgj ffhgy bfbfkmfjf bfhfufjkfkf fgfgfgfj 0ososos hdhdudjd djdjdji</p>
+                            </div>
+                            <div className="postData">
+                                <p>like: 100</p>
+                                <p>Comments: 30</p>
+                            </div>
+                        </div>
+                        <div className="card">
+                            <div className="image">
+                                <img src={newsPaper} alt="" />
+                            </div>
+                            <div className="info">
+                                <h1>CULTISM IN BENIN</h1>
+                                <p>A look into tht ave sufgj ffhgy bfbfkmfjf bfhfufjkfkf fgfgfgfj 0ososos hdhdudjd djdjdji</p>
+                            </div>
+                            <div className="postData">
+                                <p>like: 100</p>
+                                <p>Comments: 30</p>
+                            </div>
+                        </div>
+                        <div className="card">
+                            <div className="image">
+                                <img src={newsPaper} alt="" />
+                            </div>
+                            <div className="info">
+                                <h1>CULTISM IN BENIN</h1>
+                                <p>A look into tht ave sufgj ffhgy bfbfkmfjf bfhfufjkfkf fgfgfgfj 0ososos hdhdudjd djdjdji</p>
+                            </div>
+                            <div className="postData">
+                                <p>like: 100</p>
+                                <p>Comments: 30</p>
+                            </div>
                         </div>
                     </div>
-                    <div className="card">
-                        <div className="image">
-                            <img src={newsPaper} alt=""  />
+                }
+                {
+                    forum &&
+                    <div className="feedContent">
+                        <div className="forumCard">
+                            <div className="op-info">
+                                <h4>Angelmikeal</h4>
+                                <p>6 hours ago</p>
+                            </div>
+                            <div className="post">
+                                <h3>Why is pure water so expensive now in uniben?</h3>
+                            </div>
+                            <div className="postData">
+                                <p>like: 100</p>
+                                <p>Comments: 30</p>
+                            </div>
                         </div>
-                        <div className="info">
-                            <h1>CULTISM IN BENIN</h1>
-                            <p>A look into tht ave sufgj ffhgy bfbfkmfjf bfhfufjkfkf fgfgfgfj 0ososos hdhdudjd djdjdji</p>
+                        <div className="forumCard">
+                            <div className="op-info">
+                                <h4>Angelmikeal</h4>
+                                <p>6 hours ago</p>
+                            </div>
+                            <div className="post">
+                                <h3>Why is pure water so expensive now in uniben?</h3>
+                            </div>
+                            <div className="postData">
+                                <p>like: 100</p>
+                                <p>Comments: 30</p>
+                            </div>
+                        </div>
+                        <div className="forumCard">
+                            <div className="op-info">
+                                <h4>Angelmikeal</h4>
+                                <p>6 hours ago</p>
+                            </div>
+                            <div className="post">
+                                <h3>Why is pure water so expensive now in uniben?</h3>
+                            </div>
+                            <div className="postData">
+                                <p>like: 100</p>
+                                <p>Comments: 30</p>
+                            </div>
                         </div>
                     </div>
-                    <div className="card">
-                        <div className="image">
-                            <img src={newsPaper} alt=""  />
-                        </div>
-                        <div className="info">
-                            <h1>CULTISM IN BENIN</h1>
-                            <p>A look into tht ave sufgj ffhgy bfbfkmfjf bfhfufjkfkf fgfgfgfj 0ososos hdhdudjd djdjdji</p>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="image">
-                            <img src={newsPaper} alt=""  />
-                        </div>
-                        <div className="info">
-                            <h1>CULTISM IN BENIN</h1>
-                            <p>A look into tht ave sufgj ffhgy bfbfkmfjf bfhfufjkfkf fgfgfgfj 0ososos hdhdudjd djdjdji</p>
+                }
+                {
+                    memes &&
+                    <div className="feedContent">
+                        <div className="meme">
+                            <img src="https://preview.redd.it/pnlr8biw50881.png?width=640&crop=smart&auto=webp&s=11ec453b6053ed3bc4bd85406a386e5c5dad1c2b" alt="meme" width="300px"/>
                         </div>
                     </div>
-                </div>
+                }
             </div>
         </div>
     );

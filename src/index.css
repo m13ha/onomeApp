@@ -54,6 +54,19 @@ code {
   flex-wrap: wrap;
 }
 
+.mapContainer {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  position: relative;
+}
+
+.overLay {
+  width: 2500px;
+  height: 2500px;
+  position: absolute;
+}
+
 @import "./signUp/userReg.css";
 @import "./main/navbar/navbar.css";
 @import "./main/feed/feed.css";
