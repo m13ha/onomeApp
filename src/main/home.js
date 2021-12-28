@@ -3,7 +3,8 @@ import Navbar from "./navbar/navbar";
 //import Chats from "./chatrooms/chat";
 //import Profile from "./profile/profile";
 //import Update from "./profile/upateProfile";
-import Map from "./map/map";
+//import Map from "./map/map";
+import Market from "./market/market";
 
 const Home = () => {
     return ( 
@@ -13,7 +14,8 @@ const Home = () => {
            {/* <Chats></Chats> */}
             {/* <Profile></Profile> */}
             {/* <Update></Update> */}
-            <Map></Map>
+            {/* <Map></Map> */}
+            <Market></Market>
        </div> 
     );
 }

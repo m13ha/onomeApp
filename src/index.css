@@ -62,7 +62,7 @@ code {
 }
 
 .overLay {
-  width: 2500px;
+  width: 3000px;
   height: 2500px;
   position: absolute;
 }
@@ -72,3 +72,4 @@ code {
 @import "./main/feed/feed.css";
 @import "./main/chatrooms/chat.css";
 @import "./main/profile/profile.css";
+@import "./main/market/market.css"

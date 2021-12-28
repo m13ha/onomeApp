@@ -1,0 +1,122 @@
+.marketContainer {
+  width: 100%;
+  height: 100%;
+  min-width: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.categories {
+  width: 50%;
+  min-width: 320px;
+  display: flex;
+}
+
+.searchTab {
+  width: 100%;
+  padding: 35px 0px;
+  z-index: 1;
+  margin-top: 3rem;
+}
+
+.searchTab form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#searchText {
+  width: 30%;
+  min-width: 250px;
+  height: 30px;
+}
+
+.searchBut {
+  background-color: var(--main-bg);
+  color: #fff;
+  width: 80px;
+  height: 30px;
+  border: 0px;
+}
+
+.searchBut:hover {
+  background-color: #999999;
+}
+.categoriesList {
+  min-width: 320px;
+  width: 100%;
+  list-style: none;
+  font-size: 17px;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.categoriesList li {
+  width: 100%;
+  height: 35px;
+  min-width: 320px;
+  border-bottom: 1px solid #333;
+  display: flex;
+  margin: 8px auto;
+  font-size: 17px;
+  font-weight: bolder;
+  padding: 8px;
+  justify-content: space-between;
+}
+
+.categoriesList li:hover {
+  background-color: var(--main-hov);
+  color: #fff;
+  border: 1px #fff;
+}
+
+.productsTab {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  position: relative;
+  border-top: 2px solid #999999;
+  overflow: scroll;
+}
+
+.productCard {
+  width: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(194, 193, 193);
+  margin: 15px;
+  text-align: center;
+}
+
+.productCard img {
+  width: 100%;
+  min-width: 100px;
+}
+
+.productCard p {
+  width: 100%;
+  text-align: center;
+  margin: 4px;
+}
+
+@media screen and (min-width: 1024px) {
+    .productsTab{
+      width: 60%;
+      justify-content: space-around;
+    }
+
+    .productCard {
+      margin: 12px 5%;
+    }
+
+    .productCard img {
+      width: 200px;
+    }
+}

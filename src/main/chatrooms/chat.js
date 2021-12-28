@@ -1,17 +1,17 @@
 import { useState } from "react/cjs/react.development";
 
 const Chats = () => {
-    const [chatList, SetChatList] = useState(true);
+    const [chatList, setChatList] = useState(true);
     const [chatRooms, setChatRooms] = useState(false);
 
     const handleChatPick = () => {
-        SetChatList(false);
+        setChatList(false);
         setChatRooms(true);
     };
 
     const handleChatClose = () => {
         setChatRooms(false);
-        SetChatList(true);
+        setChatList(true);
     };
 
 
