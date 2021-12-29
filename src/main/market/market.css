@@ -43,7 +43,7 @@
 }
 
 .searchBut:hover {
-  background-color: #999999;
+  background-color: var(--main-hov);
 }
 .categoriesList {
   min-width: 320px;

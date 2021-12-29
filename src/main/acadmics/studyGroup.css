@@ -1,0 +1,100 @@
+.studyTab {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.studyNav {
+  width: 100%;
+  height: 50px;
+  background-color: var(--main-bg);
+  color: #fff;
+  position: fixed;
+  top: 3.8rem;
+}
+
+.studyNavbar {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.studyLink {
+  width: 33%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.studyLink:hover {
+  background-color: var(--main-hov);
+}
+
+.sessions {
+  width: 50%;
+  min-height: 100%;
+  padding-top: 8rem;
+  overflow: scroll;
+  padding-bottom: 8rem;
+}
+
+.studyCard {
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid;
+  margin-bottom: 15px;
+}
+
+.studyDetails {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.joinBut {
+  width: 70px;
+  height: 30px;
+  background-color: var(--main-bg);
+  color: #fff;
+  border: 0px;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.joinBut:hover {
+    background-color: var(--main-hov);
+    cursor: pointer;
+}
+
+.createSessBut {
+    font-size: 40px;
+    width: 60px;
+    height: 60px;
+    border: 0px;
+    background-color: var(--main-bg);
+    border-radius: 100%;
+    color: #fff;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1;
+}
+
+.createSessBut:hover {
+    background-color: var(--main-hov);
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 750px) {
+    .sessions {
+        width: 100%;
+    }
+}

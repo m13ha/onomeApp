@@ -4,7 +4,8 @@ import Navbar from "./navbar/navbar";
 //import Profile from "./profile/profile";
 //import Update from "./profile/upateProfile";
 //import Map from "./map/map";
-import Market from "./market/market";
+//import Market from "./market/market";
+import Study from "./acadmics/studyGroup";
 
 const Home = () => {
     return ( 
@@ -15,7 +16,8 @@ const Home = () => {
             {/* <Profile></Profile> */}
             {/* <Update></Update> */}
             {/* <Map></Map> */}
-            <Market></Market>
+            {/* <Market></Market> */}
+            <Study></Study>
        </div> 
     );
 }

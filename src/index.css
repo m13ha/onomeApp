@@ -72,4 +72,5 @@ code {
 @import "./main/feed/feed.css";
 @import "./main/chatrooms/chat.css";
 @import "./main/profile/profile.css";
-@import "./main/market/market.css"
+@import "./main/market/market.css";
+@import "./main/acadmics/studyGroup.css"
