@@ -42,7 +42,7 @@ const Feed = () => {
                             <div className="image">
                                 <img src={newsPaper} alt="" />
                             </div>
-                            <div className="info">
+                            <div className="postinfo">
                                 <h1>CULTISM IN BENIN</h1>
                                 <p>A look into tht ave sufgj ffhgy bfbfkmfjf bfhfufjkfkf fgfgfgfj 0ososos hdhdudjd djdjdji</p>
                             </div>
@@ -55,7 +55,7 @@ const Feed = () => {
                             <div className="image">
                                 <img src={newsPaper} alt="" />
                             </div>
-                            <div className="info">
+                            <div className="postinfo">
                                 <h1>CULTISM IN BENIN</h1>
                                 <p>A look into tht ave sufgj ffhgy bfbfkmfjf bfhfufjkfkf fgfgfgfj 0ososos hdhdudjd djdjdji</p>
                             </div>
@@ -68,7 +68,7 @@ const Feed = () => {
                             <div className="image">
                                 <img src={newsPaper} alt="" />
                             </div>
-                            <div className="info">
+                            <div className="postinfo">
                                 <h1>CULTISM IN BENIN</h1>
                                 <p>A look into tht ave sufgj ffhgy bfbfkmfjf bfhfufjkfkf fgfgfgfj 0ososos hdhdudjd djdjdji</p>
                             </div>
@@ -81,7 +81,7 @@ const Feed = () => {
                             <div className="image">
                                 <img src={newsPaper} alt="" />
                             </div>
-                            <div className="info">
+                            <div className="postinfo">
                                 <h1>CULTISM IN BENIN</h1>
                                 <p>A look into tht ave sufgj ffhgy bfbfkmfjf bfhfufjkfkf fgfgfgfj 0ososos hdhdudjd djdjdji</p>
                             </div>
@@ -144,6 +144,8 @@ const Feed = () => {
                         </div>
                     </div>
                 }
+
+                
             </div>
         </div>
     );

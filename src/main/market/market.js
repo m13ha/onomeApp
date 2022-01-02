@@ -31,7 +31,7 @@ const Market = () => {
           <ul className="categoriesList">
             <li onClick={handleCategoriesPick}>Food And Snacks</li>
             <li onClick={handleCategoriesPick}>Clothing</li>
-            <li onClick={handleCategoriesPick}>Phones And Tablets</li>
+            <li onClick={handleCategoriesPick}>Phones And Accessories</li>
             <li onClick={handleCategoriesPick}>Electronics</li>
             <li onClick={handleCategoriesPick}>Beauty And Makeup</li>
             <li onClick={handleCategoriesPick}>Fitness And Health</li>

@@ -73,4 +73,6 @@ code {
 @import "./main/chatrooms/chat.css";
 @import "./main/profile/profile.css";
 @import "./main/market/market.css";
-@import "./main/acadmics/studyGroup.css"
+@import "./main/acadmics/studyGroup.css";
+@import "./main/kiosk/kiosk.css";
+@import "./main/feed/article.css";

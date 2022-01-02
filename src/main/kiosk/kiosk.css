@@ -1,0 +1,114 @@
+.kioskTab {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+}
+
+.kioskNav {
+    width: 100%;
+    height: 50px;
+    min-width: 320px;
+    background-color: var(--main-bg);
+    color: #fff;
+    position: fixed;
+    top: 3.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kioskNav ul {
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .kioskNav ul li {
+    width: 33%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .kioskNav ul li:hover {
+    background-color: var(--main-hov);
+  }
+
+  .myProducts {
+      width: 50%;
+      height: 100%;
+  }
+
+  .uploadForm {
+    width: 500px;
+    min-width: 320px;
+    height: 100%;
+    padding-top: 10rem;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .pickUploadForm {
+      width: 100%;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-around;
+  }
+
+  .pickUploadForm button {
+    width: 100px;
+    height: 40px;
+    background-color: var(--main-bg);
+    color: #fff;
+    border: 0px;
+    border-radius: 10px;
+  }
+
+  .pickUploadForm button:hover {
+      background-color: var(--main-hov);
+      cursor: pointer;
+  }
+
+  .uploadForm form {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 1rem;
+      padding-bottom: 10rem;
+  }
+
+  .uploadForm input,
+  .uploadForm select,
+  .uploadForm label {
+      width: 100%;
+      height: 35px;
+  }
+
+  .uploadForm textarea {
+      width: 100%;
+      padding: 1rem;
+      font-size: 16px;
+      margin-bottom: 1rem;
+  }
+
+  .formBtn {
+    width: 100px;
+    height: 40px;
+    background-color: var(--main-bg);
+    color: #fff;
+    border: 0px;
+    border-radius: 10px;
+    margin-top: 1rem;
+  }
+
+  .formBtn:hover {
+    background-color: var(--main-hov);
+    cursor: pointer;
+  }

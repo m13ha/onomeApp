@@ -53,8 +53,9 @@
   margin: 1rem 0px;
   justify-content: space-around;
   align-items: center;
-  border-bottom: 1px solid rgb(179, 179, 179);
+  border: 1px solid;
   padding: 15px 10px;
+  border-radius: 20px;
 }
 
 .image {
@@ -68,13 +69,19 @@
     height: 150px;
 }
 
+.postinfo {
+  width: 60%;
+}
+
 .info h1 {
   margin-bottom: 15px;
 }
 
 .card:hover {
-  border-radius: 20px;
-  background-color: rgb(219, 219, 219);
+  border: 0px;
+  box-shadow: 0px 0px 19px 1px rgba(0,0,0,0.75);
+-webkit-box-shadow: 0px 0px 19px 1px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 19px 1px rgba(0,0,0,0.75);
 }
 
 .forumCard {
@@ -118,7 +125,10 @@
 }
 
 .forumCard:hover {
-  background-color: rgb(219, 219, 219);
+  border: 0px;
+  box-shadow: 0px 0px 19px 1px rgba(0,0,0,0.75);
+-webkit-box-shadow: 0px 0px 19px 1px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 19px 1px rgba(0,0,0,0.75);
 }
 
 .meme {
