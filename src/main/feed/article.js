@@ -1,7 +1,16 @@
 const Article = () => {
-  const handleReply = (e) => {
+
+  const handleReplyForm = (e) => {
     e.preventDefault();
-  };
+    let element = e.target;
+    let parent = e.target.parentElement.parentElement.parentElement;
+    if(e.target.nodeName === "P") {
+      parent.children[1].className  = "showForm";
+    }else if (e.target.nodeName === "BUTTON") {
+      parent.children[1].className  = "replyForm";
+    }
+  }
+
 
   return (
     <div className="container">
@@ -64,9 +73,22 @@ const Article = () => {
             </p>
             <div className="comment-actions">
               <p>Accolade</p>
-              <p>Reply</p>
+              <p onClick={handleReplyForm}>Reply</p>
               <p>Report</p>
             </div>
+          </div>
+          <div className="replyForm">
+            <form action="">
+              <textarea
+                name="reply"
+                id="replyField"
+                cols="30"
+                rows="10"
+                placeholder="Reply"
+              ></textarea>
+              <button onClick={handleReplyForm}>cancel</button>
+              <button>Submit</button>
+            </form>
           </div>
           <div className="reply-field">
             <div className="reply">
@@ -82,9 +104,22 @@ const Article = () => {
               </p>
               <div className="comment-actions">
                 <p>Accolade</p>
-                <p onClick={handleReply}>Reply</p>
+                <p onClick={handleReplyForm}>Reply</p>
                 <p>Report</p>
               </div>
+            </div>
+            <div className="replyForm">
+              <form action="">
+                <textarea
+                  name="reply"
+                  id="replyField"
+                  cols="30"
+                  rows="10"
+                  placeholder="Reply"
+                ></textarea>
+                <button onClick={handleReplyForm}>Cancel</button>
+                <button>Submit</button>
+              </form>
             </div>
           </div>
         </div>
