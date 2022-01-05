@@ -8,7 +8,7 @@
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 15px;
+  margin-bottom: 3rem;
   flex-wrap: wrap;
   margin-top: 1rem;
 }
@@ -32,18 +32,19 @@
 
 .form-field {
   display: flex;
+  min-width: 320px;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: flex-start;
   box-shadow: -1px 6px 9px 0px rgba(0,0,0,0.75);
   -webkit-box-shadow: -1px 6px 9px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: -1px 6px 9px 0px rgba(0,0,0,0.75);
-  padding: 3rem;
+  padding: 1.5rem;
   position: relative;
 }
 
 .form-title {
   width: 100%;
+  height: 100px;
   margin-bottom: 60px;
   text-align: center;
   display: flex;
@@ -62,10 +63,11 @@
 
 .field {
   width: 50%;
-  height: 100%;
-  padding: 3rem;
+  padding: 1.5rem;
   display: flex;
-  flex-wrap: wrap;
+  align-content: space-between;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .userType {
@@ -77,7 +79,7 @@
   height: 70px;
   background-color: var(--main-bg);
   color: #fff;
-  margin: 20px auto;
+  margin: 30px;
   border: 0px;
   font-size: 14px;
 }
@@ -94,18 +96,6 @@
 
 .field-quart {
   width: 25%;
-}
-
-.closeForm {
-  color: #000;
-  position: absolute;
-  right: 0;
-  top: 0;
-  font-size: 17px;
-  margin: 10px;
-  width: 30px;
-  height: 30px;
-  border: 0px;
 }
 
 label {
@@ -138,12 +128,14 @@ select {
 }
 
 .btn {
-  width: 50%;
-  margin: 30px;
+  width: 100%;
+  margin: 10px;
   align-items: center;
   text-align: center;
   position: relative;
 }
+
+.btn button 
 
 
 .btn button:hover {
@@ -177,6 +169,7 @@ select {
   color: #fff;
   border: 0px;
   border-radius: 10px;
+  margin: 10px;
 }
 
 
@@ -197,17 +190,26 @@ select {
       }
 
       .form-title {
-        padding-top: 2rem;
+        padding-top: 1rem;
       }
 
       .form-field {
-        padding: 0px;
+        padding: 5rem;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
       }
+
+
 
 }
 
 @media screen and (max-width: 400px) {
    .field{
+     padding-top: 2rem;
+   }
+
+   .form-field {
      padding: 0px;
    }
 }

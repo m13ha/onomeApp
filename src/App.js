@@ -1,11 +1,11 @@
-import Home from './main/home';
-// import UserReg from './signUp/userReg';
+// import Home from './main/home';
+import UserReg from './signUp/userReg';
 
 
 function App() {
   return (
-    // <UserReg></UserReg>
-    <Home></Home>
+    <UserReg></UserReg>
+    // <Home></Home>
   );
 }
 

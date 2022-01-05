@@ -15,9 +15,6 @@ const UserReg = () => {
   const loadStudentForm = (e) => {
     setFormType(
       <div className="form-field">
-        <button onClick={resetForm} className="closeForm">
-          X
-        </button>
         <div className="row form-title">
           <div className="field-mobile">
             <h1>Hi, Am here to help.</h1>
@@ -69,7 +66,7 @@ const UserReg = () => {
             <div className="field-mobile">
               <label htmlFor="Age">Age</label>
               <br />
-              <input id="age" type="date" required />
+              <input id="age" type="number" min="16" required />
             </div>
           </div>
           <div className="row check">
@@ -81,6 +78,7 @@ const UserReg = () => {
             </div>
           </div>
           <div className="field-mobile btn">
+            <button onClick={resetForm}>Close</button>
             <button>Submit</button>
           </div>
         </form>
@@ -91,9 +89,6 @@ const UserReg = () => {
   const loadBusinessForm = () => {
     setFormType(
       <div className="form-field">
-        <button onClick={resetForm} className="closeForm">
-          X
-        </button>
         <div className="row form-title">
           <div className="field-mobile">
             <h1>Hi, Am here to serve</h1>
@@ -152,6 +147,7 @@ const UserReg = () => {
             </div>
           </div>
           <div className="field-mobile btn">
+            <button onClick={resetForm}>Close</button>
             <button>Submit</button>
           </div>
         </form>
@@ -164,9 +160,6 @@ const UserReg = () => {
 
     setFormType(
       <div className="form-field">
-        <button onClick={resetForm} className="closeForm">
-          X
-        </button>
         <div className="row form-title">
           <div className="field-mobile">
             <h1>Hi, Am here to help.</h1>
@@ -237,6 +230,7 @@ const UserReg = () => {
             </div>
           </div>
           <div className="field-mobile btn">
+            <button onClick={resetForm}>Close</button>
             <button>Submit</button>
           </div>
         </form>
@@ -244,46 +238,44 @@ const UserReg = () => {
     );
   };
 
-  const loadProfForm = () => {
-    setFormType(
-      <div className="row form-title">
-        <div className="form-field">
-          <button onClick={resetForm} className="closeForm">
-            X
-          </button>
-          <div className="field-mobile">
-            <h1>Coming Soon!!!</h1>
-          </div>
-        </div>
-      </div>
-    );
-  };
+  // const loadProfForm = () => {
+  //   setFormType(
+  //     <div className="row form-title">
+  //       <div className="form-field">
+  //         <button onClick={resetForm} className="closeForm">
+  //           X
+  //         </button>
+  //         <div className="field-mobile">
+  //           <h1>Coming Soon!!!</h1>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   );
+  // };
 
   const loadLoginForm = () => {
     setFormType(
       <div className="form-field">
-        <button onClick={resetForm} className="closeForm">
-          X
-        </button>
         <div className="row form-title">
           <div className="field-mobile">
             <h1>Welcome Back</h1>
           </div>
         </div>
         <form className="form">
+          <div className="field-mobile">
+            <label htmlFor="userName">Username</label>
+            <br />
+            <input id="userName" type="text" required />
+          </div>
           <div className="row">
             <div className="field-mobile">
               <label htmlFor="password">Password</label>
               <br />
               <input id="password" type="password" required />
             </div>
-            <div className="field-mobile">
-              <label htmlFor="userName">Username</label>
-              <br />
-              <input id="userName" type="text" required />
-            </div>
           </div>
           <div className="field-mobile btn">
+            <button onClick={resetForm}>Close</button>
             <button>Login</button>
           </div>
         </form>
@@ -300,8 +292,8 @@ const UserReg = () => {
       </div>
       <div className="field">
         <div className="loginBut">
-            {loginForm && <button onClick={loadLoginForm}>Login</button>}
-            {regForm && <button onClick={resetForm}>Register</button>}
+          {loginForm && <button onClick={loadLoginForm}>Login</button>}
+          {regForm && <button onClick={resetForm}>Register</button>}
         </div>
         {(() => {
           if (formType === null) {
@@ -313,7 +305,7 @@ const UserReg = () => {
                   </div>
                 </div>
                 <div className="row userType">
-                  <button onClick={loadProfForm}>Professor</button>
+                  {/* <button onClick={loadProfForm}>Professor</button> */}
                   <button onClick={loadStudentForm}>Undergraduate</button>
                   <button onClick={loadAlumniForm}>Alumni</button>
                   <button onClick={loadBusinessForm}>Business</button>
