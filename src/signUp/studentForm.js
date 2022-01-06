@@ -89,17 +89,17 @@ const StudentForm = ({ resetForm }) => {
             <br />
             <input
               type="number"
-              min={currentYear.getFullYear - 10}
-              max={currentYear.getFullYear}
+              min={currentYear.getFullYear() - 10}
+              max={currentYear.getFullYear()}
               step="1"
               required
-              placeholder="1980"
+              placeholder={currentYear.getFullYear() - 10}
             />
           </div>
           <div className="field-mobile">
             <label htmlFor="Age">Age</label>
             <br />
-            <input id="age" type="number" min="16" required />
+            <input id="age" type="number" min="16" placeholder="16" required />
           </div>
         </div>
         <div className="row check">
