@@ -1,4 +1,4 @@
-import faculties from "./faculties";
+import faculties from "../utils/faculties";
 import { useState } from "react";
 
 const StudentForm = ({ resetForm }) => {

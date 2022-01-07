@@ -1,13 +1,13 @@
-// import Home from './main/home';
+import Home from './main/home';
 //import UserReg from './signUp/userReg';
-import ConfirmPage from "./signUp/confirmation";
+// import ConfirmPage from "./signUp/confirmation";
 
 
 function App() {
   return (
     //<UserReg></UserReg>
-    // <Home></Home>
-    <ConfirmPage></ConfirmPage>
+    <Home></Home>
+    // <ConfirmPage></ConfirmPage>
   );
 }
 

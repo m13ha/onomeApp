@@ -63,7 +63,7 @@ const Kiosk = () => {
               <label htmlFor="prodPrice">Price</label>
               <input id="prodPrice" type="number" min="1" step="any" />
               <label htmlFor="prodImg">Image of Product</label>
-              <input id="prodImg" type="file" />
+              <input id="prodImg" type="file"accept="image/png, image/gif, image/jpeg"/>
               <button className="formBtn">Upload</button>
             </form>
           )}
@@ -82,7 +82,7 @@ const Kiosk = () => {
                 minLength="30"
               ></textarea>
               <label htmlFor="prodImg">Image Of Business/Shop</label>
-              <input id="prodImg" type="file" />
+              <input id="prodImg" type="file" accept="image/png, image/gif, image/jpeg"/>
               <button className="formBtn">Upload</button>
             </form>
           )}

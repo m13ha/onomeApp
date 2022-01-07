@@ -7,7 +7,7 @@ import Navbar from "./navbar/navbar";
 //import Market from "./market/market";
 //import Study from "./acadmics/studyGroup";
 //import Kiosk from "./kiosk/kiosk";
-// import Article from "./feed/article";
+import Article from "./feed/article";
 
 const Home = () => {
     return ( 
@@ -21,7 +21,7 @@ const Home = () => {
             {/* <Market></Market> */}
             {/* <Study></Study> */}
             {/* <Kiosk></Kiosk> */}
-            {/* <Article></Article> */}
+            <Article></Article>
        </div> 
     );
 }

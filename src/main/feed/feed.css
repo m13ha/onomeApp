@@ -46,6 +46,27 @@
   padding: 12px;
 }
 
+.feedForm {
+  width: 100%;
+  display: grid;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+}
+
+.feedForm label {
+  width: 100%;
+  margin: 10px;
+  font-weight: bold;
+}
+
+.feedForm textarea {
+  width: 90%;
+  height: 400px;
+  margin: auto;
+  padding: 1rem;
+}
+
 .card {
   width: 100%;
   display: flex;
@@ -130,6 +151,8 @@
 -webkit-box-shadow: 0px 0px 19px 1px rgba(0,0,0,0.75);
 -moz-box-shadow: 0px 0px 19px 1px rgba(0,0,0,0.75);
 }
+
+
 
 .meme {
   min-width: 300px;

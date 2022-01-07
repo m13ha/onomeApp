@@ -1,16 +1,14 @@
 const Article = () => {
-
   const handleReplyForm = (e) => {
     e.preventDefault();
     let element = e.target;
     let parent = e.target.parentElement.parentElement.parentElement;
-    if(e.target.nodeName === "P") {
-      parent.children[1].className  = "showForm";
-    }else if (e.target.nodeName === "BUTTON") {
-      parent.children[1].className  = "replyForm";
+    if (e.target.nodeName === "P") {
+      parent.children[1].className = "showForm";
+    } else if (e.target.nodeName === "BUTTON") {
+      parent.children[1].className = "replyForm";
     }
-  }
-
+  };
 
   return (
     <div className="container">
@@ -45,6 +43,10 @@ const Article = () => {
           nulla, rerum quis fugiat optio eaque qui facilis, suscipit error
           tempora architecto accusantium harum ratione odit quisquam.
         </p>
+      </div>
+      <div className="approval">
+        <button>Approve</button>
+        <button>Delete</button>
       </div>
       <div className="comments">
         <div className="commentForm">
