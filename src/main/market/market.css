@@ -78,7 +78,7 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  padding-top: 1rem;
+  padding-top: 2rem;
   position: relative;
   border-top: 2px solid #999999;
   overflow: scroll;
@@ -95,7 +95,7 @@
   text-align: center;
 }
 
-.productCard img {
+.prodImg {
   width: 100%;
   min-width: 100px;
 }

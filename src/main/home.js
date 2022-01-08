@@ -4,7 +4,7 @@ import Navbar from "./navbar/navbar";
 // import Profile from "./profile/profile";
 // import Update from "./profile/upateProfile";
 //import Map from "./map/map";
-//import Market from "./market/market";
+// import Market from "./market/market";
 //import Study from "./acadmics/studyGroup";
 //import Kiosk from "./kiosk/kiosk";
 import Article from "./feed/article";

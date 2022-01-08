@@ -5,8 +5,8 @@
 }
 
 :root {
-  --main-bg: rgb(162, 69, 238);
-  --main-hov: rgb(205, 150, 250);
+  --main-bg: #a245ee;
+  --main-hov: #cd96fa;
 }
 
 html {
@@ -65,6 +65,43 @@ code {
   width: 3000px;
   height: 2500px;
   position: absolute;
+}
+
+.approval {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.approval button {
+  width: 50px;
+  height: 50px;
+  background-color: var(--main-bg);
+  margin: 10px;
+  border: 0px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+}
+
+.approval button:nth-child(2) {
+  background-color: rgb(170, 12, 12);
+
+}
+
+.approval button:hover {
+   background-color: var(--main-hov);
+}
+
+.approval button:nth-child(2):hover {
+  background-color: rgb(255, 59, 59);
+}
+
+.actionIcon {
+  width: 35px;
+  height: 35px;
 }
 
 @import "./signUp/userReg.css";

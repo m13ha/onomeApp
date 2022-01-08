@@ -1,7 +1,8 @@
+import icons from "../../utils/icons";
+
 const Article = () => {
   const handleReplyForm = (e) => {
     e.preventDefault();
-    let element = e.target;
     let parent = e.target.parentElement.parentElement.parentElement;
     if (e.target.nodeName === "P") {
       parent.children[1].className = "showForm";
@@ -44,10 +45,24 @@ const Article = () => {
           tempora architecto accusantium harum ratione odit quisquam.
         </p>
       </div>
-      <div className="approval">
-        <button>Approve</button>
-        <button>Delete</button>
-      </div>
+      {true && (
+        <div className="approval">
+          <button>
+            <img
+              className="actionIcon"
+              src={icons.action.check.location}
+              alt={icons.action.check.alt}
+            />
+          </button>
+          <button>
+            <img
+              className="actionIcon"
+              src={icons.action.delete.location}
+              alt={icons.action.delete.alt}
+            />
+          </button>
+        </div>
+      )}
       <div className="comments">
         <div className="commentForm">
           <form action="">
