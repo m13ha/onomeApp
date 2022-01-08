@@ -1,6 +1,11 @@
+import { useState } from "react";
 import icons from "../../utils/icons";
 
 const Article = () => {
+  let accolades = Object.entries(icons.accolades);
+  const [currAccolade, setCurrAccolade] = useState();
+  const [modal, setModal] = useState(false);
+
   const handleReplyForm = (e) => {
     e.preventDefault();
     let parent = e.target.parentElement.parentElement.parentElement;
@@ -9,6 +14,25 @@ const Article = () => {
     } else if (e.target.nodeName === "BUTTON") {
       parent.children[1].className = "replyForm";
     }
+  };
+
+  const loadAccolade = (e, array) => {
+    let accolades = document.getElementsByClassName("accolade-card");
+    for (let item of accolades) {
+      item.className = "accolade-card";
+    }
+
+    e.currentTarget.className += " currAccolade";
+    setCurrAccolade(array);
+    console.log(array);
+  };
+
+  const openModal = () => {
+    setModal(true);
+  };
+
+  const closeModal = () => {
+    setModal(false);
   };
 
   return (
@@ -89,7 +113,7 @@ const Article = () => {
               quae quis debitis nulla?
             </p>
             <div className="comment-actions">
-              <p>Accolade</p>
+              <p onClick={openModal}>Accolade</p>
               <p onClick={handleReplyForm}>Reply</p>
               <p>Report</p>
             </div>
@@ -120,7 +144,7 @@ const Article = () => {
                 eum quae quis debitis nulla?
               </p>
               <div className="comment-actions">
-                <p>Accolade</p>
+                <p onClick={openModal}>Accolade</p>
                 <p onClick={handleReplyForm}>Reply</p>
                 <p>Report</p>
               </div>
@@ -141,6 +165,48 @@ const Article = () => {
           </div>
         </div>
       </div>
+      {modal && (
+        <div className="accolade-modal">
+          <div className="accolades">
+            <button onClick={closeModal} className="closeLeft">
+              x
+            </button>
+            {accolades.map((array, index) => {
+              return (
+                <div
+                  key={index}
+                  className="accolade-card"
+                  onClick={(e) => {
+                    loadAccolade(e, array);
+                  }}
+                >
+                  <img
+                    className="accoladeMin"
+                    src={array[1].location}
+                    alt={array[1].alt}
+                  />
+                  <p>{array[1].title}</p>
+                  <p>{array[1].price}</p>
+                </div>
+              );
+            })}
+          </div>
+          <div className="accolade-details">
+            {currAccolade && (
+              <div className="accolade-full">
+                <img
+                  className="accoladeMax"
+                  src={currAccolade[1].location}
+                  alt={currAccolade[1].alt}
+                />
+                <h3>{currAccolade[1].title}</h3>
+                <p>{currAccolade[1].msg}</p>
+              </div>
+            )}
+            <button>Give</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

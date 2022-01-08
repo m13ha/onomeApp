@@ -118,8 +118,6 @@
   margin: 1rem;
 }
 
-
-
 .comment-actions {
   width: 80%;
   min-width: 300px;
@@ -190,6 +188,116 @@
 
 .comment-actions p:hover {
   background-color: rgb(194, 194, 194);
+}
+
+.accolade-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: rgba(75, 71, 71, 0.322);
+}
+
+.accolades {
+  width: 40%;
+  height: 50%;
+  min-width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  justify-content: space-around;
+  padding: 10px;
+  padding-top: 2.5rem;
+  background-color: #fff;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  position: relative;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+}
+
+.accolades::-webkit-scrollbar {
+  display: none;
+}
+
+.accolade-details {
+  width: 15%;
+  height: 50%;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  border-left: 2px solid #000;
+  flex-wrap: wrap;
+}
+
+.accolade-full {
+   width: 100%;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+}
+
+.accolade-full p {
+  margin: 10px;
+  font-weight: bold;
+}
+
+.accolade-details button {
+  width: 100px;
+  height: 40px;
+  background-color: var(--main-bg);
+  color: #fff;
+  border: 0px;
+  border-radius: 10px;
+  margin: 10px;
+  align-self: flex-end;
+}
+
+.accolade-details button:hover {
+  background-color: var(--main-hov);
+  cursor: pointer;
+}
+
+.accolade-card {
+  width: 15%;
+  height: 150px;
+  min-width: 100px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  margin: 10px;
+  padding: 5px;
+  border: 1px solid #000;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.currAccolade {
+  border: 3px solid var(--main-hov);
+}
+
+.accoladeMin {
+  width: 70px;
+  height: 70px;
+}
+
+.accoladeMax {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
 }
 
 @media screen and (max-width: 650px) {
