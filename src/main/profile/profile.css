@@ -123,4 +123,8 @@
         width: 100%;
         min-width: 320px;
     }
+
+    .updateContainer {
+        padding-top: 5rem;
+    }
 }

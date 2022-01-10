@@ -328,7 +328,7 @@
   }
 
   .accolades {
-    height: 300px;
+    height: 230px;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 0px;
@@ -340,5 +340,17 @@
     border-top-right-radius: 0px;
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
+  }
+
+  
+.accoladeMin {
+  width: 55px;
+  height: 55px;
+}
+
+  .accoladeMax {
+    width: 75px;
+    height: 75px;
+    margin: 10px;
   }
 }
