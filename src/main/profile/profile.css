@@ -119,7 +119,7 @@
 }
 
 @media screen and (max-width: 650px) {
-    .userdetails {
+    .userDetails {
         width: 100%;
         min-width: 320px;
     }
