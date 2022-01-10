@@ -22,7 +22,12 @@ const Navbar = () => {
         <ul className="navList">
           <section className="p-left">
             <li>
-              <img src={icons.navIcons.userAvatar.url} alt="user" width="40px" height="40px" />
+              <img
+                src={icons.navIcons.userAvatar.url}
+                alt="user"
+                width="40px"
+                height="40px"
+              />
             </li>
             <li className="userName">Hi, Micheal Nwaokocha</li>
           </section>
@@ -31,7 +36,7 @@ const Navbar = () => {
               {close && (
                 <img
                   onClick={handleMenuClick}
-                  src={icons.navIcons.menu}
+                  src={icons.navIcons.menu.url}
                   alt="drop menu"
                   width="40px"
                   height="40px"
@@ -47,7 +52,7 @@ const Navbar = () => {
             <Link to="/home/">
               <li>
                 <img
-                  src={icons.navIcons.newsPaper}
+                  src={icons.navIcons.newsPaper.url}
                   alt="drop menu"
                   width="30px"
                   height="30px"
@@ -57,42 +62,27 @@ const Navbar = () => {
             <Link to="/home/chats">
               <li>
                 <img
-                  src={icons.navIcons.emailIcon}
+                  src={icons.navIcons.emailIcon.url}
                   alt="drop menu"
                   width="30px"
                   height="30px"
                 />
               </li>
             </Link>
-            {/* <Link >
-              <li>
-                <img
-                  src={bookIcon}
-                  alt="drop menu"
-                  width="30px"
-                  height="30px"
-                />
-              </li>
-            </Link> */}
             <Link to="/home/map">
               <li>
-                <img src={icons.navIcons.pinIcon} alt="drop menu" width="30px" height="30px" />
-              </li>
-            </Link>
-            {/* <Link>
-              <li>
                 <img
-                  src={relaIcon}
+                  src={icons.navIcons.pinIcon.url}
                   alt="drop menu"
                   width="30px"
                   height="30px"
                 />
               </li>
-            </Link> */}
+            </Link>
             <Link to="/home/market">
               <li>
                 <img
-                  src={icons.navIcons.cartIcon}
+                  src={icons.navIcons.cartIcon.url}
                   alt="drop menu"
                   width="30px"
                   height="30px"
@@ -102,7 +92,7 @@ const Navbar = () => {
             <Link to="/home/kiosk">
               <li>
                 <img
-                  src={icons.navIcons.shopIcon}
+                  src={icons.navIcons.shopIcon.url}
                   alt="drop menu"
                   width="30px"
                   height="30px"
@@ -112,7 +102,7 @@ const Navbar = () => {
             <Link to="/home/profile">
               <li>
                 <img
-                  src={icons.navIcons.setProfile}
+                  src={icons.navIcons.setProfile.url}
                   alt="drop menu"
                   width="30px"
                   height="30px"
@@ -120,7 +110,12 @@ const Navbar = () => {
               </li>
             </Link>
             <li onClick={handleMenuClick}>
-              <img src={icons.navIcons.closeMenu} alt="drop menu" width="30px" height="30px" />
+              <img
+                src={icons.navIcons.closeMenu.url}
+                alt="drop menu"
+                width="30px"
+                height="30px"
+              />
             </li>
           </ul>
         </div>

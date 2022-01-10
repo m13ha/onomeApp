@@ -1,7 +1,6 @@
 import Home from "./main/home";
 import UserReg from "./signUp/userReg";
 import ConfirmPage from "./signUp/confirmation";
-import { Navigate } from "react-router-dom";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
