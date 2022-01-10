@@ -32,7 +32,7 @@
 
 .form-field {
   display: flex;
-  min-width: 320px;
+  min-width: 300px;
   align-items: center;
   flex-wrap: wrap;
   box-shadow: -2px 0px 13px -3px rgba(0,0,0,0.75);
