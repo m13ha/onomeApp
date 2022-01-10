@@ -1,4 +1,4 @@
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import newsPaper from "../../assets/images/home/navbar/newspaper-folded.png";
 import { Link } from "react-router-dom";
 

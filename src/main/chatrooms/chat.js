@@ -1,4 +1,4 @@
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 
 const Chats = () => {
     const [chatList, setChatList] = useState(true);
