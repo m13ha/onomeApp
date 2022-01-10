@@ -54,8 +54,8 @@ const Navbar = () => {
                 <img
                   src={icons.navIcons.newsPaper.url}
                   alt="drop menu"
-                  width="20px"
-
+                  width="30px"
+                  height="30px"
                 />
               </li>
             </Link>
@@ -64,8 +64,8 @@ const Navbar = () => {
                 <img
                   src={icons.navIcons.emailIcon.url}
                   alt="drop menu"
-                  width="20px"
-
+                  width="30px"
+                  height="30px"
                 />
               </li>
             </Link>
@@ -74,8 +74,8 @@ const Navbar = () => {
                 <img
                   src={icons.navIcons.pinIcon.url}
                   alt="drop menu"
-                  width="20px"
-
+                  width="30px"
+                  height="30px"
                 />
               </li>
             </Link>
@@ -84,8 +84,8 @@ const Navbar = () => {
                 <img
                   src={icons.navIcons.cartIcon.url}
                   alt="drop menu"
-                  width="20px"
-
+                  width="30px"
+                  height="30px"
                 />
               </li>
             </Link>
@@ -94,8 +94,8 @@ const Navbar = () => {
                 <img
                   src={icons.navIcons.shopIcon.url}
                   alt="drop menu"
-                  width="20px"
-
+                  width="30px"
+                  height="30px"
                 />
               </li>
             </Link>
@@ -104,8 +104,8 @@ const Navbar = () => {
                 <img
                   src={icons.navIcons.setProfile.url}
                   alt="drop menu"
-                  width="20px"
-
+                  width="30px"
+                  height="30px"
                 />
               </li>
             </Link>
@@ -113,7 +113,8 @@ const Navbar = () => {
               <img
                 src={icons.navIcons.closeMenu.url}
                 alt="drop menu"
-                width="20px"
+                width="30px"
+                height="30px"
               />
             </li>
           </ul>
