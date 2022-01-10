@@ -50,7 +50,7 @@ const UserReg = () => {
             </div>
           </div>
           <div className="field-mobile btn">
-            <Link to="/home">
+            <Link to="/home/">
               <button>Login</button>
             </Link>
           </div>
