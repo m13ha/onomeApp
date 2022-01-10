@@ -1,5 +1,6 @@
 import faculties from "../utils/faculties";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const StudentForm = ({ resetForm }) => {
   const currentYear = new Date();
@@ -112,7 +113,9 @@ const StudentForm = ({ resetForm }) => {
         </div>
         <div className="field-mobile btn">
           <button onClick={resetForm}>Close</button>
-          <button>Submit</button>
+          <Link to="/confirmation">
+            <button>Sign-Up</button>
+          </Link>
         </div>
       </form>
     </div>

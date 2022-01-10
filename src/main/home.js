@@ -1,29 +1,31 @@
 import Navbar from "./navbar/navbar";
-//  import Feed from "./feed/feed";
-// import Chats from "./chatrooms/chat";
-// import Profile from "./profile/profile";
-// import Update from "./profile/upateProfile";
-//import Map from "./map/map";
-// import Market from "./market/market";
-//import Study from "./acadmics/studyGroup";
-//import Kiosk from "./kiosk/kiosk";
+import Feed from "./feed/feed";
+import Chats from "./chatrooms/chat";
+import Profile from "./profile/profile";
+import Update from "./profile/upateProfile";
+import Map from "./map/map";
+import Market from "./market/market";
+// import Study from "./acadmics/studyGroup";
+import Kiosk from "./kiosk/kiosk";
 import Article from "./feed/article";
+import { Route, Routes } from "react-router-dom";
 
 const Home = () => {
-    return ( 
-       <div className="container">
-           <Navbar></Navbar>
-           {/* <Feed></Feed> */}
-           {/* <Chats></Chats> */}
-            {/* <Profile></Profile> */}
-            {/* <Update></Update> */}
-            {/* <Map></Map> */}
-            {/* <Market></Market> */}
-            {/* <Study></Study> */}
-            {/* <Kiosk></Kiosk> */}
-            <Article></Article>
-       </div> 
-    );
-}
- 
+  return (
+    <div className="container">
+      <Navbar></Navbar>
+      <Routes>
+        <Route exact path="/" element={<Feed />} />
+        <Route exact path="/map" element={<Map />} />
+        <Route exact path="/chats" element={<Chats />} />
+        <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/updateprf" element={<Update />} />
+        <Route exact path="/market" element={<Market />} />
+        <Route exact path="/kiosk" element={<Kiosk />} />
+        <Route exact path="/feedpost" element={<Article />} />
+      </Routes>
+    </div>
+  );
+};
+
 export default Home;

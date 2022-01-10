@@ -3,6 +3,7 @@ import { useState } from "react";
 import StudentForm from "./studentForm";
 import Alumni from "./alumini";
 import BusForm from "./businessForm";
+import { Link } from "react-router-dom";
 
 const UserReg = () => {
   const [formType, setFormType] = useState(null);
@@ -49,7 +50,9 @@ const UserReg = () => {
             </div>
           </div>
           <div className="field-mobile btn">
-            <button>Login</button>
+            <Link to="/home">
+              <button>Login</button>
+            </Link>
           </div>
         </form>
       </div>

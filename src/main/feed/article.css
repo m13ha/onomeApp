@@ -203,6 +203,7 @@
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
+  align-content: center;
   background-color: rgba(75, 71, 71, 0.322);
 }
 
@@ -324,5 +325,20 @@
   .reply {
     width: 80%;
     margin-left: 4rem;
+  }
+
+  .accolades {
+    height: 300px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 0px;
+  }
+
+  .accolade-details {
+    border-top: 2px solid #000;
+    border-left: 0px solid #000;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
   }
 }

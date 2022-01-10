@@ -1,4 +1,6 @@
-const BusForm = ({resetForm}) => {
+import { Link } from "react-router-dom";
+
+const BusForm = ({ resetForm }) => {
   return (
     <div className="form-field">
       <div className="row form-title">
@@ -53,7 +55,9 @@ const BusForm = ({resetForm}) => {
         </div>
         <div className="field-mobile btn">
           <button onClick={resetForm}>Close</button>
-          <button>Submit</button>
+          <Link to="/confirmation">
+            <button>Sign-Up</button>
+          </Link>
         </div>
       </form>
     </div>

@@ -1,5 +1,6 @@
 import faculties from "../utils/faculties";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Alumni = ({ resetForm }) => {
   const currentYear = new Date();
@@ -68,7 +69,7 @@ const Alumni = ({ resetForm }) => {
             <br />
             {depts ? (
               <select name="Department" id="department" required>
-                   <option value="--">Select Your Department</option>
+                <option value="--">Select Your Department</option>
                 {depts.map((object, index) => {
                   return (
                     <option value={object.value} key={index}>
@@ -113,7 +114,9 @@ const Alumni = ({ resetForm }) => {
         </div>
         <div className="field-mobile btn">
           <button onClick={resetForm}>Close</button>
-          <button>Submit</button>
+          <Link to="/confirmation">
+            <button>Sign-Up</button>
+          </Link>
         </div>
       </form>
     </div>

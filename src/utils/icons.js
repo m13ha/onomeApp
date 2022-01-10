@@ -18,6 +18,18 @@ import runner from "../assets/accolades/run.png";
 import solar from "../assets/accolades/solar-system.png";
 import superhero from "../assets/accolades/superhero.png";
 
+//nav icons
+
+import userAvatar from "../../assets/images/home/navbar/user.png";
+import menu from "../../assets/images/home/navbar/menu.png";
+import emailIcon from "../../assets/images/home/navbar/email.png";
+import pinIcon from "../../assets/images/home/navbar/pin.png";
+import shopIcon from "../../assets/images/home/navbar/shop.png";
+import cartIcon from "../../assets/images/home/navbar/shopping-cart.png";
+import closeMenu from "../../assets/images/home/navbar/close.png";
+import newsPaper from "../../assets/images/home/navbar/newspaper-folded.png";
+import setProfile from "../../assets/images/home/navbar/settings.png";
+
 
 const icons = {
     action: {
@@ -129,6 +141,35 @@ const icons = {
             price: 100,
         },
     },
+    navIcons: {
+        userAvatar: {
+            url: userAvatar,
+        },
+        pinIcon: {
+            url: pinIcon,
+        },
+        menu: {
+            url: menu,
+        },
+        shopIcon: {
+            url: shopIcon,
+        },
+        emailIcon: {
+            url: emailIcon,
+        },
+        cartIcon: {
+            url: cartIcon,
+        },
+        closeMenu: {
+            url: closeMenu,
+        },
+        newsPaper: {
+            url: newsPaper,
+        },
+        setProfile: {
+            url: setProfile,
+        },
+    }
 }
 
 

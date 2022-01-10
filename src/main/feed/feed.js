@@ -1,5 +1,6 @@
 import { useState } from "react/cjs/react.development";
 import newsPaper from "../../assets/images/home/navbar/newspaper-folded.png";
+import { Link } from "react-router-dom";
 
 const Feed = () => {
   const [news, setNews] = useState(true);
@@ -68,6 +69,25 @@ const Feed = () => {
             <button className="createSessBut" onClick={loadNewsForm}>
               +
             </button>
+            <Link to="/home/feedpost">
+              <div className="card">
+                <div className="image">
+                  <img src={newsPaper} alt="" />
+                </div>
+                <div className="postinfo">
+                  <h1>CULTISM IN BENIN</h1>
+                  <p>
+                    A look into tht ave sufgj ffhgy bfbfkmfjf bfhfufjkfkf
+                    fgfgfgfj 0ososos hdhdudjd djdjdji
+                  </p>
+                </div>
+                <div className="postData">
+                  <p>views: 100</p>
+                  <p>like: 100</p>
+                  <p>Comments: 30</p>
+                </div>
+              </div>
+            </Link>
             <div className="card">
               <div className="image">
                 <img src={newsPaper} alt="" />
@@ -80,7 +100,7 @@ const Feed = () => {
                 </p>
               </div>
               <div className="postData">
-              <p>views: 100</p>
+                <p>views: 100</p>
                 <p>like: 100</p>
                 <p>Comments: 30</p>
               </div>
@@ -97,7 +117,7 @@ const Feed = () => {
                 </p>
               </div>
               <div className="postData">
-              <p>views: 100</p>
+                <p>views: 100</p>
                 <p>like: 100</p>
                 <p>Comments: 30</p>
               </div>
@@ -114,24 +134,7 @@ const Feed = () => {
                 </p>
               </div>
               <div className="postData">
-              <p>views: 100</p>
-                <p>like: 100</p>
-                <p>Comments: 30</p>
-              </div>
-            </div>
-            <div className="card">
-              <div className="image">
-                <img src={newsPaper} alt="" />
-              </div>
-              <div className="postinfo">
-                <h1>CULTISM IN BENIN</h1>
-                <p>
-                  A look into tht ave sufgj ffhgy bfbfkmfjf bfhfufjkfkf fgfgfgfj
-                  0ososos hdhdudjd djdjdji
-                </p>
-              </div>
-              <div className="postData">
-              <p>views: 100</p>
+                <p>views: 100</p>
                 <p>like: 100</p>
                 <p>Comments: 30</p>
               </div>
@@ -166,7 +169,7 @@ const Feed = () => {
                 <h3>Why is pure water so expensive now in uniben?</h3>
               </div>
               <div className="postData">
-              <p>views: 100</p>
+                <p>views: 100</p>
                 <p>like: 100</p>
                 <p>Comments: 30</p>
               </div>
