@@ -38,7 +38,7 @@
   box-shadow: -2px 0px 13px -3px rgba(0,0,0,0.75);
   -webkit-box-shadow: -2px 0px 13px -3px rgba(0,0,0,0.75);
   -moz-box-shadow: -2px 0px 13px -3px rgba(0,0,0,0.75);
-  padding: 1.5rem;
+  padding: 0.7rem;
   position: relative;
 }
 
@@ -63,7 +63,7 @@
 
 .field {
   width: 50%;
-  padding: 1.5rem;
+  padding: 0.7rem;
   display: flex;
   align-content: space-between;
   justify-content: space-evenly;
@@ -112,11 +112,9 @@ label {
 input {
   width: 80%;
   height: 30px;
-  min-width: 200px;
-  border-radius: 5px;
+  min-width: 180px;
   margin: 10px;
   padding-left: 8px;
-  outline: 1px solid #f3f4f6;
 }
 
 input:focus {
