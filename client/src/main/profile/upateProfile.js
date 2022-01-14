@@ -11,12 +11,12 @@ const Update = () => {
                     <div className="field-mobile">
                         <label htmlFor="firstName">First name</label>
                         <br />
-                        <input id="firstName" type="text" required value="Michael"/>
+                        <input id="firstName" type="text" required/>
                     </div>
                     <div className="field-mobile">
                         <label htmlFor="lastName">Last name</label>
                         <br />
-                        <input id="lastName" type="text" required value="Nwaokocha" />
+                        <input id="lastName" type="text" required/>
                     </div>
                 </div>
                 <div className="row">

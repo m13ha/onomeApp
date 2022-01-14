@@ -1,10 +1,16 @@
 import { useState } from "react";
 
 const Kiosk = () => {
+  const [uploadPage, setUploadPage] = useState(false);
   const [isService, setIsService] = useState(false);
   const [isProduct, setIsProduct] = useState(true);
   const [prodPage, setProdPage] = useState(true);
-  const [uploadPage, setUploadPage] = useState(false);
+  const [prodName, setProdName] = useState();
+  const [prodImg, setProdImgg] = useState();
+  const [category, setCategory] = useState();
+  const [price, setPrice] = useState();
+  const [desc, setDesc] = useState();
+
 
   const loadProdForm = () => {
     setIsService(false);
@@ -44,7 +50,15 @@ const Kiosk = () => {
           {isProduct && (
             <form action="">
               <label htmlFor="category">Category</label>
-              <select name="" id="category" value={setIsService}>
+              <select
+                name=""
+                id="category"
+                value={category}
+                onChange={(e) => {
+                  setCategory(e.target.value);
+                }}
+                required
+              >
                 <option value="-">Pick a Category</option>
                 <option value="Food And Snacks">Food And Snacks</option>
                 <option value="Clothing">Clothing</option>
@@ -59,18 +73,53 @@ const Kiosk = () => {
                 </option>
               </select>
               <label htmlFor="prodNames">Name of Product</label>
-              <input id="prodName" type="text" />
+              <input
+                id="prodName"
+                type="text"
+                value={prodName}
+                onChange={(e) => {
+                  setProdName(e.target.value);
+                }}
+                required
+              />
               <label htmlFor="prodPrice">Price</label>
-              <input id="prodPrice" type="number" min="1" step="any" />
+              <input
+                id="prodPrice"
+                type="number"
+                min="1"
+                step="any"
+                value={price}
+                onChange={(e) => {
+                  setPrice(e.target.value);
+                }}
+                required
+              />
               <label htmlFor="prodImg">Image of Product</label>
-              <input id="prodImg" type="file"accept="image/png, image/gif, image/jpeg"/>
+              <input
+                id="prodImg"
+                type="file"
+                accept="image/png, image/gif, image/jpeg"
+                value={prodImg}
+                onChange={(e) => {
+                  setProdImgg(e.target.value);
+                }}
+                required
+              />
               <button className="formBtn">Upload</button>
             </form>
           )}
           {isService && (
             <form action="">
               <label htmlFor="prodNames">Name Of Service</label>
-              <input id="prodName" type="text" />
+              <input
+                id="prodName"
+                type="text"
+                value={prodName}
+                onChange={(e) => {
+                  setProdName(e.target.value);
+                }}
+                required
+              />
               <label htmlFor="details">Details</label>
               <textarea
                 name="details"
@@ -80,9 +129,12 @@ const Kiosk = () => {
                 rows="10"
                 maxLength="100"
                 minLength="30"
+                value={desc}
+                onChange={(e) => {
+                  setDesc(e.target.value);
+                }}
+                required
               ></textarea>
-              <label htmlFor="prodImg">Image Of Business/Shop</label>
-              <input id="prodImg" type="file" accept="image/png, image/gif, image/jpeg"/>
               <button className="formBtn">Upload</button>
             </form>
           )}

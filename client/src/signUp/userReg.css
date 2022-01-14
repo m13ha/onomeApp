@@ -184,6 +184,12 @@ select {
   margin: 10px;
 }
 
+.errmsg {
+   font-size: 15px;
+   color: #eb1717;
+   font-weight: bold;
+}
+
 
 
 @media screen and (max-width: 1024px) {

@@ -5,6 +5,7 @@ const Article = () => {
   let accolades = Object.entries(icons.accolades);
   const [currAccolade, setCurrAccolade] = useState();
   const [modal, setModal] = useState(false);
+  const [comment, setComment] = useState();
 
   const handleReplyForm = (e) => {
     e.preventDefault();
@@ -96,6 +97,10 @@ const Article = () => {
               cols="30"
               rows="10"
               placeholder="Leave a Comment"
+              value={comment}
+              onChange={(e) => {
+                setComment(e.target.value);
+              }}
             ></textarea>
             <button>Submit</button>
           </form>

@@ -6,6 +6,7 @@ import { useState } from "react";
 const Market = () => {
   const [productList, setProductList] = useState(false);
   const [categories, setCategories] = useState(true);
+  const [search, setSearch] = useState();
 
   const handleCategoriesPick = () => {
     setCategories(false);
@@ -21,7 +22,14 @@ const Market = () => {
     <div className="marketContainer">
       <div className="searchTab">
         <form action="">
-          <input type="text" id="searchText" />
+          <input
+            type="text"
+            id="searchText"
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+          />
           <button type="submit" className="searchBut">
             Search
           </button>
@@ -54,7 +62,7 @@ const Market = () => {
             <img className="prodImg" src={prod2} alt="" />
             <p>Dress Shoes</p>
             <p>#12,000</p>
-            {true &&
+            {true && (
               <div className="approval">
                 <button>
                   <img
@@ -71,7 +79,7 @@ const Market = () => {
                   />
                 </button>
               </div>
-            }
+            )}
           </div>
           <div className="productCard">
             <img className="prodImg" src={prod1} alt="" />

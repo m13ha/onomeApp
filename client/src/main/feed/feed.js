@@ -8,6 +8,10 @@ const Feed = () => {
   const [newsForm, setNewsForm] = useState(false);
   const [forumForm, setForumForm] = useState(false);
   const [memes, setMemes] = useState(false);
+  const [title, setTitle] = useState();
+  const [msg, setMsg] = useState();
+  const [desc, setDesc] = useState();
+  const [postImg, setPostImg] = useState();
 
   const loadNews = () => {
     setMemes(false);
@@ -205,11 +209,35 @@ const Feed = () => {
           <div className="row feedForm">
             <form action="" className="form">
               <label htmlFor="title">Title</label>
-              <input id="title" type="text" required />
+              <input
+                id="title"
+                type="text"
+                value={title}
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                }}
+                required
+              />
+              <label htmlFor="desc">Description</label>
+              <input
+                id="desc"
+                type="text"
+                value={desc}
+                onChange={(e) => {
+                  setDesc(e.target.value);
+                }}
+                required
+              />
               <label htmlFor="img" accept="image/png, image/gif, image/jpeg">
                 Article Image
               </label>
-              <input type="file" />
+              <input
+                type="file"
+                value={postImg}
+                onChange={(e) => {
+                  setPostImg(e.target.value);
+                }}
+              />
               <label htmlFor="news">Ariticle</label>
               <textarea
                 name="news"
@@ -217,6 +245,10 @@ const Feed = () => {
                 cols="30"
                 rows="10"
                 placeholder="write your Article here"
+                value={msg}
+                onChange={(e) => {
+                  setMsg(e.target.value);
+                }}
                 required
               ></textarea>
               <button>Submit</button>
@@ -227,13 +259,24 @@ const Feed = () => {
           <div className="row feedForm">
             <form action="" className="form">
               <label htmlFor="title">Title</label>
-              <input id="title" type="text" required />
+              <input
+                id="title"
+                type="text"
+                value={title}
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                }}
+              />
               <label htmlFor="news">Additional Information</label>
               <textarea
                 name="news"
                 id="news"
                 cols="30"
                 rows="10"
+                value={msg}
+                onChange={(e) => {
+                  setMsg(e.target.value);
+                }}
                 placeholder="(optional)"
               ></textarea>
               <button>Submit</button>

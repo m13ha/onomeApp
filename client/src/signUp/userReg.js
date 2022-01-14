@@ -10,7 +10,8 @@ const UserReg = () => {
   const [loginForm, setLoginForm] = useState(true);
   const [regForm, setRegForm] = useState(false);
 
-  const resetForm = () => {
+  const resetForm = (e) => {
+    e.preventDefault();
     setFormType(null);
     setLoginForm(true);
     setRegForm(false);
