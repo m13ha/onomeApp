@@ -1,18 +1,46 @@
 import avatar from "../assets/images/UserReg/Beautiful-Black-Woman-2.svg";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../utils/user";
 import StudentForm from "./studentForm";
 import Alumni from "./alumini";
 import BusForm from "./businessForm";
-import { Link } from "react-router-dom";
+import Login from "./login";
 
 const UserReg = () => {
   const [formType, setFormType] = useState(null);
   const [loginForm, setLoginForm] = useState(true);
   const [regForm, setRegForm] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let storage = sessionStorage;
+    let currentUser = JSON.parse(storage.getItem("onomeUser"));
+    if (currentUser) {
+      if (currentUser.user === true && currentUser.isVerified === false) {
+        console.log(`i work`);
+        navigate("/confirmation", { replace: true });
+      }
+    }
+    console.log(currentUser);
+  });
 
   const resetForm = (e) => {
     e.preventDefault();
-    setFormType(null);
+    setFormType(
+      <div className="row">
+        <div className="row form-title">
+          <div className="field-mobile">
+            <h1>Welcome</h1>
+          </div>
+        </div>
+        <div className="row userType">
+          <button onClick={loadStudentForm}>Undergraduate</button>
+          <button onClick={loadAlumniForm}>Alumni</button>
+          <button onClick={loadBusinessForm}>Business</button>
+        </div>
+      </div>
+    );
     setLoginForm(true);
     setRegForm(false);
   };
@@ -30,34 +58,7 @@ const UserReg = () => {
   };
 
   const loadLoginForm = () => {
-    setFormType(
-      <div className="form-field">
-        <div className="row form-title">
-          <div className="field-mobile">
-            <h1>Welcome Back</h1>
-          </div>
-        </div>
-        <form className="form">
-          <div className="field-mobile">
-            <label htmlFor="userName">Username</label>
-            <br />
-            <input id="userName" type="text" required />
-          </div>
-          <div className="row">
-            <div className="field-mobile">
-              <label htmlFor="password">Password</label>
-              <br />
-              <input id="password" type="password" required />
-            </div>
-          </div>
-          <div className="field-mobile btn">
-            <Link to="/home">
-              <button>Login</button>
-            </Link>
-          </div>
-        </form>
-      </div>
-    );
+    setFormType(<Login />);
     setRegForm(true);
     setLoginForm(false);
   };
@@ -74,20 +75,7 @@ const UserReg = () => {
         </div>
         {(() => {
           if (formType === null) {
-            return (
-              <div className="row">
-                <div className="row form-title">
-                  <div className="field-mobile">
-                    <h1>Welcome</h1>
-                  </div>
-                </div>
-                <div className="row userType">
-                  <button onClick={loadStudentForm}>Undergraduate</button>
-                  <button onClick={loadAlumniForm}>Alumni</button>
-                  <button onClick={loadBusinessForm}>Business</button>
-                </div>
-              </div>
-            );
+            loadLoginForm();
           } else {
             return formType;
           }

@@ -31,12 +31,13 @@ routes.post("/api/reg", async (req, res) => {
   user
     .save()
     .then((result) => {
-      let info = {
-        email: result.email,
-      }
-      res.send(info);
+      // let info = {
+      //   email: result.email,
+      //   isVerfied: result.isVerfied,
+      // }
+      res.send(result);
     })
-    .catch((err) => res.send(err));
+    .catch((err) => res.status(500).send(err));
 });
 
 module.exports = routes;

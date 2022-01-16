@@ -1,12 +1,11 @@
 import faculties from "../utils/faculties";
-import { useState } from "react";
 import createUser from "../controller.js/userCreate";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState} from "react";
 import { UserContext } from "../utils/user";
 
 const StudentForm = ({ resetForm }) => {
-  const {setUser} = useContext(UserContext);
+  const {user,setUser} = useContext(UserContext);
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -22,6 +21,7 @@ const StudentForm = ({ resetForm }) => {
   const [tos, setTos] = useState("");
   const currentYear = new Date();
   const [depts, setDepts] = useState();
+
 
   const loadDepts = (e) => {
     setDepts(false);
@@ -73,7 +73,7 @@ const StudentForm = ({ resetForm }) => {
       isVerified: false,
     };
 
-    let success = await createUser(data, setErrorMsg, setUser);
+    let success = await createUser(data, setErrorMsg, setUser, user);
 
     if(success){
       navigate('/confirmation', {replace: true});
