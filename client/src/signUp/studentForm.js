@@ -1,8 +1,13 @@
 import faculties from "../utils/faculties";
 import { useState } from "react";
 import createUser from "../controller.js/userCreate";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../utils/user";
 
 const StudentForm = ({ resetForm }) => {
+  const {setUser} = useContext(UserContext);
+  const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userName, setUserName] = useState("");
@@ -67,7 +72,14 @@ const StudentForm = ({ resetForm }) => {
       isMod: true,
       isVerified: false,
     };
-    createUser(data, setErrorMsg);
+
+    let success = await createUser(data, setErrorMsg, setUser);
+
+    if(success){
+      navigate('/confirmation', {replace: true});
+    }
+
+    console.log(success);
   };
 
   const pswdChecker = (value) => {

@@ -30,9 +30,13 @@ routes.post("/api/reg", async (req, res) => {
 
   user
     .save()
-    .then((result) => res.send(result))
+    .then((result) => {
+      let info = {
+        email: result.email,
+      }
+      res.send(info);
+    })
     .catch((err) => res.send(err));
-
 });
 
 module.exports = routes;
