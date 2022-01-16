@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 
 const ConfirmPage = () => {
   return (
@@ -11,9 +11,7 @@ const ConfirmPage = () => {
         </p>
         <form action="" className="form">
           <input type="text" required />
-          <Link to="/home">
-            <button>Confirm</button>
-          </Link>
+          <button>Confirm</button>
         </form>
       </div>
     </div>

@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const User = require('./model/users')
+const routes = require('./routes/routes')
 const app = express();
-require("dotenv/config");
+require("dotenv").config();
 
 let port = process.env.PORT || 8080;
 
@@ -19,19 +19,5 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use(express.json());
+app.use('/', routes);
 app.use(express.urlencoded({ extended: true }));
-
-app.get("/", (req, res) => {
-  let data = req.body;
-  console.log(data);
-  res.send("we are live");
-});
-
-app.post("/api/reg", (req, res) => {
-    const body = req.body;
-    let user = new User(body);
-
-    user.save(user)
-        .then(result => console.log(result))
-        .catch(err => console.log(err));
-});

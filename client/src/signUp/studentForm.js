@@ -1,6 +1,5 @@
 import faculties from "../utils/faculties";
 import { useState } from "react";
-// import { Link } from "react-router-dom";
 import createUser from "../controller.js/userCreate";
 
 const StudentForm = ({ resetForm }) => {
@@ -9,7 +8,7 @@ const StudentForm = ({ resetForm }) => {
   const [userName, setUserName] = useState("");
   const [pswd, setPswd] = useState("");
   const [pswd2, setPswd2] = useState("");
-  const [age, setAge] = useState("");
+  const [dob, setDob] = useState("");
   const [faculty, setFaculty] = useState("");
   const [dept, setDept] = useState("");
   const [gender, setGender] = useState("");
@@ -39,7 +38,7 @@ const StudentForm = ({ resetForm }) => {
       case 40: // Down
         break;
       default:
-        var regex = new RegExp("^[a-zA-Z0-9]+$");
+        var regex = new RegExp("^[a-zA-Z0-9-]+$");
         var key = e.key;
         if (!regex.test(key)) {
           e.preventDefault();
@@ -49,25 +48,26 @@ const StudentForm = ({ resetForm }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let data = {
       firstName,
       lastName,
       userName,
       pswd,
-      age,
+      dob: new Date(dob),
       faculty,
       department: dept,
       gender,
       yearOfAdm,
       tos,
-      isUser: true,
+      isStudent: true,
+      isCompany: false,
       isAdmin: true,
       isMod: true,
       isVerified: false,
     };
-    createUser(data);
+    createUser(data, setErrorMsg);
   };
 
   const pswdChecker = (value) => {
@@ -224,18 +224,18 @@ const StudentForm = ({ resetForm }) => {
             />
           </div>
           <div className="field-mobile">
-            <label htmlFor="Age">Age</label>
+            <label htmlFor="dob">Date Of Birth</label>
             <br />
             <input
-              id="age"
-              type="number"
-              min="16"
-              name="age"
+              id="dob"
+              type="date"
+              max={`${currentYear.getFullYear() - 16}-12-12`}
+              name="Date of Birth"
               onKeyDown={handleKeyDown}
-              placeholder="16"
-              value={age}
+              value={dob}
               onChange={(e) => {
-                setAge(e.target.value);
+                setDob(e.target.value);
+                console.log(e.target.value);
               }}
               required
             />
@@ -248,7 +248,7 @@ const StudentForm = ({ resetForm }) => {
             <input
               id="password"
               type="password"
-              min="6"
+              minLength="6"
               name="pwd"
               onKeyDown={handleKeyDown}
               value={pswd}
@@ -263,7 +263,7 @@ const StudentForm = ({ resetForm }) => {
             <br />
             <input
               id="password2"
-              min="6"
+              minLength="6"
               type="password"
               name="pwd2"
               onKeyDown={handleKeyDown}
