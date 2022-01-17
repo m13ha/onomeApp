@@ -1,4 +1,4 @@
-const mailer = require('../controller/mailer')
+const mailer = require("../controller/mailer");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -81,7 +81,7 @@ const userSchema = new Schema(
     email: {
       type: String,
       required: true,
-      unique: true
+      unique: true,
     },
 
     phone: {
@@ -129,11 +129,11 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-userSchema.post('save', function(doc, next) {
-  console.log('user saved to database');
+userSchema.post("save", function (doc, next) {
+  console.log("user saved to database");
   mailer(doc.vcode, doc.email);
   next();
-})
+});
 
 const User = mongoose.model("user", userSchema);
 

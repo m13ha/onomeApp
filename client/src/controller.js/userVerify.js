@@ -9,10 +9,10 @@ const verifyUser = async (data) => {
     })
     .catch((err) => {
       console.log(err.response);
-      // if(err.status === 500){
-      //   setErrorMsg(err.response);
-      // }
     });
 
   return success;
 };
+
+
+export default verifyUser;

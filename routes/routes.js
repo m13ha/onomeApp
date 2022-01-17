@@ -31,13 +31,27 @@ routes.post("/api/reg", async (req, res) => {
   user
     .save()
     .then((result) => {
-      // let info = {
-      //   email: result.email,
-      //   isVerfied: result.isVerfied,
-      // }
-      res.send(result);
+      let info = {
+        email: result.email,
+        isVerfied: result.isVerfied,
+      }
+      res.send(info);
     })
     .catch((err) => res.status(500).send(err));
 });
+
+routes.post("/api/verify", async (req, res) => {
+  const body = req.body;
+  let email = body.email;
+  let code = body.code;
+  
+  let user = await User.findOne({ email });
+
+  if (user) {
+    if (user.vcode == code) {
+        user = await User.findOneAndUpdate({email}, {isVerified: true, vcode: 0}, {new: true})
+    }
+  }
+})
 
 module.exports = routes;
