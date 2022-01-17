@@ -1,7 +1,6 @@
 import avatar from "../assets/images/UserReg/Beautiful-Black-Woman-2.svg";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../utils/user";
 import StudentForm from "./studentForm";
 import Alumni from "./alumini";
 import BusForm from "./businessForm";

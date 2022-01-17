@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../utils/user";
 import { useNavigate } from "react-router-dom";
-import verifyUser from "../controller.js/userVerify"
+import verifyUser from "../controller.js/userVerify";
 
 const ConfirmPage = () => {
+  const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
   const [code, setCode] = useState("");
@@ -14,11 +15,12 @@ const ConfirmPage = () => {
     if (currentUser) {
       setUser(currentUser);
       if (currentUser.user === false) {
-        if (currentUser.isVerified === true) {
-          navigate("/", { replace: true });
-        } else if (currentUser.email === null) {
+        if (currentUser.email === null) {
           navigate("/", { replace: true });
         }
+      }
+      if (currentUser.isVerified === true) {
+        navigate("/", { replace: true });
       }
     }
 
@@ -32,13 +34,13 @@ const ConfirmPage = () => {
       code: code,
     };
 
-    let success = await verifyUser(data);
+    let success = await verifyUser(data, setErrorMsg);
 
     if (success) {
       let storage = sessionStorage;
       let currentUser = JSON.parse(storage.getItem("onomeUser"));
       currentUser.isVerified = true;
-      storage.setItem('onomeUser', currentUser);
+      storage.setItem("onomeUser", JSON.stringify(currentUser));
       navigate("/", { replace: true });
     }
 
@@ -53,6 +55,7 @@ const ConfirmPage = () => {
           <b>{user.email && user.email}</b>
           <br /> please input it below
         </p>
+        <div className="row errmsg">{errorMsg}</div>
         <form action="" className="form" onSubmit={handleSubmit}>
           <input
             type="number"

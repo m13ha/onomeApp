@@ -82,10 +82,15 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
+      lowercase: true,
     },
 
     phone: {
       type: String,
+    },
+
+    points: {
+      type: Number
     },
 
     addr: {

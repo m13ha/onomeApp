@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const verifyUser = async (data, setErrorMsg) => {
+const loginUser = async (data, setErrorMsg) => {
   let success = await axios
-    .post("/api/verify", data)
+    .post("/api/login", data)
     .then((res) => {
       console.log(res);
       return true;
@@ -18,4 +18,4 @@ const verifyUser = async (data, setErrorMsg) => {
 };
 
 
-export default verifyUser;
+export default loginUser;

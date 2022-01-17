@@ -5,7 +5,7 @@ import { useContext, useState} from "react";
 import { UserContext } from "../utils/user";
 
 const StudentForm = ({ resetForm }) => {
-  const {user,setUser} = useContext(UserContext);
+  const {setUser} = useContext(UserContext);
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -43,7 +43,7 @@ const StudentForm = ({ resetForm }) => {
       case 40: // Down
         break;
       default:
-        var regex = new RegExp("^[a-zA-Z0-9-]+$");
+        var regex = new RegExp("^[a-zA-Z0-9- _]+$");
         var key = e.key;
         if (!regex.test(key)) {
           e.preventDefault();
@@ -64,6 +64,7 @@ const StudentForm = ({ resetForm }) => {
       faculty,
       department: dept,
       gender,
+      points: 200,
       yearOfAdm,
       tos,
       isStudent: true,
@@ -73,7 +74,7 @@ const StudentForm = ({ resetForm }) => {
       isVerified: false,
     };
 
-    let success = await createUser(data, setErrorMsg, setUser, user);
+    let success = await createUser(data, setErrorMsg, setUser);
 
     if(success){
       navigate('/confirmation', {replace: true});

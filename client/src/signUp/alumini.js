@@ -1,8 +1,12 @@
 import faculties from "../utils/faculties";
-import { useState } from "react";
 import createUser from "../controller.js/userCreate";
+import { useNavigate } from "react-router-dom";
+import { useContext, useState} from "react";
+import { UserContext } from "../utils/user";
 
 const Alumni = ({ resetForm }) => {
+  const navigate = useNavigate();
+  const {setUser} = useContext(UserContext);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [userName, setUserName] = useState('');
@@ -39,7 +43,7 @@ const Alumni = ({ resetForm }) => {
       case 40: // Down
         break;
       default:
-        var regex = new RegExp("^[a-zA-Z0-9- ]+$");
+        var regex = new RegExp("^[a-zA-Z0-9- _]+$");
         var key = e.key;
         if (!regex.test(key)) {
           e.preventDefault();
@@ -49,7 +53,7 @@ const Alumni = ({ resetForm }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let data = {
       firstName,
@@ -61,6 +65,7 @@ const Alumni = ({ resetForm }) => {
       department: dept,
       gender,
       yearOfAdm,
+      points: 200,
       tos,
       isStudent: true,
       isCompany: false,
@@ -69,7 +74,13 @@ const Alumni = ({ resetForm }) => {
       isVerified: false,
     };
     
-    createUser(data, setErrorMsg);
+    let success = await createUser(data, setErrorMsg, setUser);
+
+    if(success){
+      navigate('/confirmation', {replace: true});
+    }
+
+    console.log(success);
 
   };
 

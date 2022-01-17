@@ -1,8 +1,12 @@
 // import { u } from "react-router-dom";
-import { useState } from "react";
 import createUser from "../controller.js/userCreate";
+import { useNavigate } from "react-router-dom";
+import { useContext, useState} from "react";
+import { UserContext } from "../utils/user";
 
 const BusForm = ({ resetForm }) => {
+  const navigate = useNavigate();
+  const {user,setUser} = useContext(UserContext);
   const [busName, setBusName] = useState("");
   const [userName, setUserName] = useState("");
   const [pswd, setPswd] = useState("");
@@ -24,7 +28,7 @@ const BusForm = ({ resetForm }) => {
       case 40: // Down
         break;
       default:
-        var regex = new RegExp("^[a-zA-Z0-9- ]+$");
+        var regex = new RegExp("^[a-zA-Z0-9- _]+$");
         var key = e.key;
         if (!regex.test(key)) {
           e.preventDefault();
@@ -34,7 +38,7 @@ const BusForm = ({ resetForm }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let data = {
       busName,
@@ -42,17 +46,20 @@ const BusForm = ({ resetForm }) => {
       pswd,
       tos,
       email,
-      phone: phone,
-      addr: addr,
-      isStudent: false,
+      isStudent: true,
       isCompany: true,
-      isAdmin: false,
-      isMod: false,
+      isAdmin: true,
+      isMod: true,
       isVerified: false,
     };
-    console.log(data);
 
-    createUser(data, setErrorMsg);
+    let success = await createUser(data, setErrorMsg, setUser, user);
+
+    if(success){
+      navigate('/confirmation', {replace: true});
+    }
+
+    console.log(success);
   };
 
   const pswdChecker = (value) => {
