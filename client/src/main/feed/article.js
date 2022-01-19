@@ -39,7 +39,7 @@ const Article = () => {
   return (
     <div className="container">
       <div className="blogDetails">
-        <img
+        <img className="blogDetailsimg"
           src="https://uniben.edu.ng/wp-content/uploads/2021/01/149440-OTYQY4-678-1-300x148.png"
           alt=""
         />
@@ -69,20 +69,32 @@ const Article = () => {
           nulla, rerum quis fugiat optio eaque qui facilis, suscipit error
           tempora architecto accusantium harum ratione odit quisquam.
         </p>
+        <div className="postData">
+          <p>
+            <img src={icons.action.views.url} width="25px" alt="views" /> 100
+          </p>
+          <p>
+            <img src={icons.action.liked.url} width="25px" alt="liked" /> 100
+          </p>
+          <p>
+            <img src={icons.action.comment.url} width="25px" alt="comments" />{" "}
+            25
+          </p>
+        </div>
       </div>
       {true && (
         <div className="approval">
           <button>
             <img
               className="actionIcon"
-              src={icons.action.check.location}
+              src={icons.action.check.url}
               alt={icons.action.check.alt}
             />
           </button>
           <button>
             <img
               className="actionIcon"
-              src={icons.action.delete.location}
+              src={icons.action.delete.url}
               alt={icons.action.delete.alt}
             />
           </button>
@@ -187,7 +199,7 @@ const Article = () => {
                 >
                   <img
                     className="accoladeMin"
-                    src={array[1].location}
+                    src={array[1].url}
                     alt={array[1].alt}
                   />
                   <p>{array[1].title}</p>
@@ -201,7 +213,7 @@ const Article = () => {
               <div className="accolade-full">
                 <img
                   className="accoladeMax"
-                  src={currAccolade[1].location}
+                  src={currAccolade[1].url}
                   alt={currAccolade[1].alt}
                 />
                 <h3>{currAccolade[1].title}</h3>

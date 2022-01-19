@@ -1,5 +1,6 @@
 import { useState } from "react";
 import newsPaper from "../../assets/images/home/navbar/newspaper-folded.png";
+import icons from "../../utils/icons";
 import { Link } from "react-router-dom";
 
 const Feed = () => {
@@ -86,9 +87,16 @@ const Feed = () => {
                   </p>
                 </div>
                 <div className="postData">
-                  <p>views: 100</p>
-                  <p>like: 100</p>
-                  <p>Comments: 30</p>
+                  <p>
+                    <img src={icons.action.views.url} width="25px"  alt="views" /> 100
+                  </p>
+                  <p>
+                    <img src={icons.action.liked.url} width="25px" alt="liked" /> 100
+                  </p>
+                  <p>
+                    <img src={icons.action.comment.url} width="25px" alt="comments" />{" "}
+                    25
+                  </p>
                 </div>
               </div>
             </Link>
@@ -104,9 +112,15 @@ const Feed = () => {
                 </p>
               </div>
               <div className="postData">
-                <p>views: 100</p>
-                <p>like: 100</p>
-                <p>Comments: 30</p>
+                <p>
+                  <img src={icons.action.views.url} width="25px" alt="views" /> 100
+                </p>
+                <p>
+                  <img src={icons.action.liked.url} width="25px" alt="liked" /> 100
+                </p>
+                <p>
+                  <img src={icons.action.comment.url} width="25px" alt="comments" /> 25
+                </p>
               </div>
             </div>
             <div className="card">
@@ -121,9 +135,15 @@ const Feed = () => {
                 </p>
               </div>
               <div className="postData">
-                <p>views: 100</p>
-                <p>like: 100</p>
-                <p>Comments: 30</p>
+                <p>
+                  <img src={icons.action.views.url} width="25px" alt="views" /> 100
+                </p>
+                <p>
+                  <img src={icons.action.liked.url} width="25px" alt="liked" /> 100
+                </p>
+                <p>
+                  <img src={icons.action.comment.url} width="25px" alt="comments" /> 25
+                </p>
               </div>
             </div>
             <div className="card">
@@ -138,9 +158,15 @@ const Feed = () => {
                 </p>
               </div>
               <div className="postData">
-                <p>views: 100</p>
-                <p>like: 100</p>
-                <p>Comments: 30</p>
+                <p>
+                  <img src={icons.action.views.url} width="25px" alt="views" /> 100
+                </p>
+                <p>
+                  <img src={icons.action.liked.url} width="25px" alt="liked" /> 100
+                </p>
+                <p>
+                  <img src={icons.action.comment.url} width="25px" alt="comments" /> 25
+                </p>
               </div>
             </div>
           </div>
@@ -159,9 +185,15 @@ const Feed = () => {
                 <h3>Why is pure water so expensive now in uniben?</h3>
               </div>
               <div className="postData">
-                <p>views: 100</p>
-                <p>like: 100</p>
-                <p>Comments: 30</p>
+                <p>
+                  <img src={icons.action.views.url} width="25px" alt="views" /> 100
+                </p>
+                <p>
+                  <img src={icons.action.liked.url} width="25px" alt="liked" /> 100
+                </p>
+                <p>
+                  <img src={icons.action.comment.url} width="25px" alt="comments" /> 25
+                </p>
               </div>
             </div>
             <div className="forumCard">
@@ -173,9 +205,15 @@ const Feed = () => {
                 <h3>Why is pure water so expensive now in uniben?</h3>
               </div>
               <div className="postData">
-                <p>views: 100</p>
-                <p>like: 100</p>
-                <p>Comments: 30</p>
+                <p>
+                  <img src={icons.action.views.url} width="25px" alt="views" /> 100
+                </p>
+                <p>
+                  <img src={icons.action.liked.url} width="25px" alt="liked" /> 100
+                </p>
+                <p>
+                  <img src={icons.action.comment.url} width="25px" alt="comments" /> 25
+                </p>
               </div>
             </div>
             <div className="forumCard">
@@ -187,9 +225,15 @@ const Feed = () => {
                 <h3>Why is pure water so expensive now in uniben?</h3>
               </div>
               <div className="postData">
-                <p>views: 100</p>
-                <p>like: 100</p>
-                <p>Comments: 30</p>
+                <p>
+                  <img src={icons.action.views.url} width="25px" alt="views" /> 100
+                </p>
+                <p>
+                  <img src={icons.action.liked.url} width="25px" alt="liked" /> 100
+                </p>
+                <p>
+                  <img src={icons.action.comment.url} width="25px" alt="comments" /> 25
+                </p>
               </div>
             </div>
           </div>
@@ -242,7 +286,7 @@ const Feed = () => {
               <textarea
                 name="news"
                 id="news"
-                cols="30"
+                cols="25"
                 rows="10"
                 placeholder="write your Article here"
                 value={msg}
@@ -271,7 +315,7 @@ const Feed = () => {
               <textarea
                 name="news"
                 id="news"
-                cols="30"
+                cols="25"
                 rows="10"
                 value={msg}
                 onChange={(e) => {

@@ -1,10 +1,13 @@
 import deleteIcon from "../assets/images/delete.png";
 import returnIcon from "../assets/images/turn-back.png";
 import commentIcon from "../assets/images/comment.png";
+import commentIconWhite from "../assets/images/commentWhite.png";
 import likeIcon from "../assets/images/like.png";
 import likedIcon from "../assets/images/love.png";
 import viewsIcon from "../assets/images/view.png";
 import checkIcon from "../assets/images/check-mark.png";
+import sendCoins from "../assets/images/cash-back.png";
+
 
 // ACCOLADES ICONS
 import jackophyte from "../assets/accolades/book-stack.png";
@@ -29,42 +32,51 @@ import cartIcon from "../assets/images/home/navbar/shopping-cart.png";
 import closeMenu from "../assets/images/home/navbar/close.png";
 import newsPaper from "../assets/images/home/navbar/newspaper-folded.png";
 import setProfile from "../assets/images/home/navbar/settings.png";
+import logout from "../assets/images/home/navbar/logout.png";
 
 
 const icons = {
     action: {
         delete: {
-            location: deleteIcon,
+            url: deleteIcon,
             alt: "delete"
         },
         back: {
-            location: returnIcon,
+            url: returnIcon,
             alt: "back"
         },
         comment: {
-            location: commentIcon,
+            url: commentIcon,
+            alt: "comment"
+        },
+        commentWhite: {
+            url: commentIconWhite,
             alt: "comment"
         },
         like: {
-            location: likeIcon,
+            url: likeIcon,
             alt: "like"
         },
         liked: {
-            location: likedIcon,
+            url: likedIcon,
             alt: "liked"
         },
         views: {
-            location: viewsIcon,
+            url: viewsIcon,
             alt: "views"
         },
         check: {
-            location: checkIcon,
+            url: checkIcon,
             alt: "check"
         },
+        sendCoins: {
+            url: sendCoins,
+            alt: "check"
+        }
     },
     accolades: {
         jacker: {
-            location: jackophyte,
+            url: jackophyte,
             alt: "Accolade",
             title: "Jackophyte Accolade",
             msg: "This accolade is for the prestigious, jacker book na your mate.",
@@ -72,7 +84,7 @@ const icons = {
 
         },
         brain: {
-            location: superBrain,
+            url: superBrain,
             alt: "Accolade",
             title: "Brainious Accolade",
             msg: "This accolade is for those individuals who portray high mental alertness and Intelligence, Too much Sense.",
@@ -80,7 +92,7 @@ const icons = {
 
         },
         bulb: {
-            location: bulbBrain,
+            url: bulbBrain,
             alt: "Accolade",
             title: "Ingenious Accolade",
             msg: "This accolade is for those special individuals that transcend the normal capabilities of the brain and go beyond, MAXIMUM INTELLIGENCE!!!",
@@ -88,7 +100,7 @@ const icons = {
 
         },
         crown: {
-            location: crown,
+            url: crown,
             alt: "Accolade",
             title: "Royal Accolade",
             msg: "This is a special accolade for those individuals whose words deserve to be recognized as royalty, All Hail!.",
@@ -96,7 +108,7 @@ const icons = {
 
         },
         medal: {
-            location: medal,
+            url: medal,
             alt: "Accolade",
             title: "Medal of Comrade Accolade",
             msg: "This accolade is for the comrades among us, we stand together.",
@@ -104,7 +116,7 @@ const icons = {
 
         },
         muscles: {
-            location: muscles,
+            url: muscles,
             alt: "Accolade",
             title: "Power Accolade",
             msg: "Power is Power but Power pass Power, All power to you comrade",
@@ -112,7 +124,7 @@ const icons = {
 
         },
         fist: {
-            location: punch,
+            url: punch,
             alt: "Accolade",
             title: "Fist Of Solidarity Accolade",
             msg: "The accolade of Strength and Unity, All power to you Comrade",
@@ -120,21 +132,21 @@ const icons = {
 
         },
         movement: {
-            location: runner,
+            url: runner,
             alt: "Accolade",
             title: "Movement Accolade",
             msg: "The accolade for the sharpest minds among us",
             price: 50,
         },
         galactic: {
-            location: solar,
+            url: solar,
             alt: "Accolade",
             title: "Galactic Accolade",
             msg: "For those whose awareness and awesomeness span the solar system and beyond.",
             price: 100,
         },
         superComrade: {
-            location: superhero,
+            url: superhero,
             alt: "Accolade",
             title: "Super Comrade Accolade",
             msg: "Its a bird, its a plane...no, Its Super Comrade",
@@ -168,6 +180,9 @@ const icons = {
         },
         setProfile: {
             url: setProfile,
+        },
+        logout: {
+            url: logout,
         },
     }
 }

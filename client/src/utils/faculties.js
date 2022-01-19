@@ -245,7 +245,7 @@ const faculties = [
   },
   {
     name: "Medicine",
-    value: "Meds",
+    value: "Med",
     departments: [
       {
         value: "Bms",

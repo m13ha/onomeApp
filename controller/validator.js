@@ -9,4 +9,9 @@ const validator =  async (faculty, firstname, lastname, pswd) => {
     return [studentEmail, validationCode, newPswd];
 }
 
-module.exports = validator;
+const validate =  async (pswd, hash) => {
+    let newPswd = await bcrypt.compare(pswd, hash);
+    return newPswd
+}
+
+module.exports = {validator, validate};

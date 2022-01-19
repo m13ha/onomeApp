@@ -54,6 +54,7 @@ const Alumni = ({ resetForm }) => {
   };
 
   const handleSubmit = async (e) => {
+    setErrorMsg('');
     e.preventDefault();
     let data = {
       firstName,

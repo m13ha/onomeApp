@@ -1,10 +1,30 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import {useContext, useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../../utils/user";
 import icons from "../../utils/icons";
+import logOutUser from "../../controller.js/logout";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(true);
+  const { user, setUser } = useContext(UserContext);
+
+  useEffect(() => {
+    let storage = sessionStorage;
+    let currentUser = JSON.parse(storage.getItem("onomeUser"));
+    if (currentUser) {
+      setUser(currentUser);
+      console.log(currentUser);
+      if(currentUser.isVerified === false){
+        navigate('/', {replace: true})
+      }
+    }else {
+      navigate('/', {replace: true})
+    }
+
+    console.log(currentUser);
+  }, []);
 
   const handleMenuClick = () => {
     if (open) {
@@ -15,6 +35,14 @@ const Navbar = () => {
       setClose(false);
     }
   };
+
+  const handleLogOut = async () => {
+      let success = await logOutUser(setUser);
+
+      if(success){
+        navigate('/', {replace: true});
+      }
+  }
 
   return (
     <div className="navbar">
@@ -29,7 +57,7 @@ const Navbar = () => {
                 height="40px"
               />
             </li>
-            <li className="userName">Hi, Micheal Nwaokocha</li>
+            <li className="userName">{user.userName}</li>
           </section>
           <section className="p-right">
             <li className="hamBtn">
@@ -50,7 +78,7 @@ const Navbar = () => {
         <div className="sideBar">
           <ul className="sideList">
             <Link to="/home/">
-              <li>
+              <li  onClick={handleMenuClick}>
                 <img
                   src={icons.navIcons.newsPaper.url}
                   alt="drop menu"
@@ -60,7 +88,7 @@ const Navbar = () => {
               </li>
             </Link>
             <Link to="/home/chats">
-              <li>
+              <li  onClick={handleMenuClick}>
                 <img
                   src={icons.navIcons.emailIcon.url}
                   alt="drop menu"
@@ -70,7 +98,7 @@ const Navbar = () => {
               </li>
             </Link>
             <Link to="/home/map">
-              <li>
+              <li  onClick={handleMenuClick}>
                 <img
                   src={icons.navIcons.pinIcon.url}
                   alt="drop menu"
@@ -80,7 +108,7 @@ const Navbar = () => {
               </li>
             </Link>
             <Link to="/home/market">
-              <li>
+              <li  onClick={handleMenuClick}>
                 <img
                   src={icons.navIcons.cartIcon.url}
                   alt="drop menu"
@@ -90,25 +118,34 @@ const Navbar = () => {
               </li>
             </Link>
             <Link to="/home/kiosk">
-              <li>
+              <li  onClick={handleMenuClick}>
                 <img
                   src={icons.navIcons.shopIcon.url}
                   alt="drop menu"
                   width="30px"
                   height="30px"
                 />
-              </li>
+              </li >
             </Link>
             <Link to="/home/profile">
-              <li>
+              <li  onClick={handleMenuClick}>
                 <img
                   src={icons.navIcons.setProfile.url}
                   alt="drop menu"
                   width="30px"
                   height="30px"
+                 
                 />
               </li>
             </Link>
+            <li onClick={handleLogOut}>
+              <img
+                src={icons.navIcons.logout.url}
+                alt="drop menu"
+                width="30px"
+                height="30px"
+              />
+            </li>
             <li onClick={handleMenuClick}>
               <img
                 src={icons.navIcons.closeMenu.url}

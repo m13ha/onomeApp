@@ -16,9 +16,9 @@ const Profile = () => {
             </h2>
           </div>
           <div className="butArea">
-            <button>Message</button>
-            <button>Send Points</button>
-            <button>Buy Points</button>
+            <button><img src={icons.action.commentWhite.url} width="35px" alt="send message" /></button>
+            <button><img src={icons.action.sendCoins.url} width="35px" alt="send message" />Buy</button>
+            <button><img src={icons.action.sendCoins.url} width="35px" alt="send message" />Send</button>
           </div>
         </div>
         <div className="subDetails">

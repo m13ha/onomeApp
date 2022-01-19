@@ -1,6 +1,7 @@
 const express = require("express");
 const User = require("../model/users");
-const validator = require("../controller/validator");
+const { validator, validate } = require("../controller/validator");
+const createToken = require('../controller/createToken');
 const routes = express();
 
 routes.get("/", (req, res) => {
@@ -68,19 +69,44 @@ routes.post("/api/verify", async (req, res) => {
 
 routes.post("/api/login", async (req, res) => {
   const body = req.body;
-  let username = body.username;
+  let username = body.userName;
   let pswd = body.pswd;
 
-  let user = await User.findOne({ username });
-
-  if (user) {
-    if (user.vcode == code) {
-    } else {
-      res.status(501).send(`Incorrect password`);
-    }
-  } else {
-    res.status(502).send(`That username does not exist`);
-  }
+  User.findOne({ userName: username })
+    .then((user) => {
+      if (user) {
+        let validity = validate(pswd, user.pswd);
+        if (validity) {
+          const token = createToken(user._id);
+          res.cookie('ono', token, {httpOnly: true, maxAge: 1000 * 3 * 24 * 60 * 60})
+          res.send({
+            user: true,
+            busName: user.busName,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            userName: user.userName,
+            isCompany: user.isCompany,
+            isMod: user.isMod,
+            isAdmin: user.isAdmin,
+            isVerified: user.isVerfied,
+            email: user.email,
+            points: user.points,
+          });
+        } else {
+          res.status(501).send(`Incorrect password`);
+        }
+      } else {
+        res.status(502).send(`That username does not exist`);
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
+
+routes.get('/api/logout', (req, res) => {
+  res.cookie('ono', '', {httpOnly: true, maxAge: 1});
+  res.send('done');
+})
 
 module.exports = routes;

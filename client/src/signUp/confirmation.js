@@ -18,8 +18,7 @@ const ConfirmPage = () => {
         if (currentUser.email === null) {
           navigate("/", { replace: true });
         }
-      }
-      if (currentUser.isVerified === true) {
+      }else if (currentUser.isVerified === true) {
         navigate("/", { replace: true });
       }
     }
@@ -28,6 +27,7 @@ const ConfirmPage = () => {
   }, []);
 
   const handleSubmit = async (e) => {
+    setErrorMsg('');
     e.preventDefault();
     let data = {
       email: user.email,
