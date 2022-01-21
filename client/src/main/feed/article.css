@@ -1,3 +1,17 @@
+.backButton {
+  font-size: 40px;
+  width: 60px;
+  height: 60px;
+  border: 0px;
+  background-color: var(--main-bg);
+  border-radius: 100%;
+  color: #fff;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1;
+}
+
 .blogDetails {
   width: 75%;
   padding: 4rem 1rem 1rem 1rem;
@@ -5,6 +19,21 @@
   justify-content: center;
   flex-wrap: wrap;
   border-bottom: 1px solid rgb(160, 160, 160);
+}
+
+.blogDetails h1 {
+  width: 100%;
+  margin: 15px;
+}
+
+.blogContent {
+  width: 100%;
+  margin: 3rem;
+}
+
+.articleP {
+  width: 100%;
+  margin: 1rem;
 }
 
 .blogDetailsimg {
@@ -201,6 +230,7 @@
   align-items: center;
   align-content: center;
   background-color: rgba(75, 71, 71, 0.322);
+  z-index: 1;
 }
 
 .accolades {
@@ -219,6 +249,7 @@
   position: relative;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;
+  z-index: 10;
 }
 
 .accolades::-webkit-scrollbar {
@@ -237,13 +268,15 @@
   border-top-right-radius: 20px;
   border-left: 2px solid #000;
   flex-wrap: wrap;
+  z-index: 10;
 }
 
 .accolade-full {
-   width: 100%;
-   justify-content: center;
-   align-items: center;
-   text-align: center;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
 }
 
 .accolade-full p {
@@ -286,6 +319,19 @@
   border: 3px solid var(--main-hov);
 }
 
+.accoladeClose {
+  background-color: var(--main-bg);
+  color: #fff;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 14px;
+  margin: 10px;
+  width: 20px;
+  height: 20px;
+  border: 0px;
+}
+
 .accoladeMin {
   width: 70px;
   height: 70px;
@@ -298,11 +344,9 @@
 }
 
 @media screen and (max-width: 650px) {
-
   .blogDetails {
     width: 100%;
   }
-
 
   .comments {
     width: 100%;
@@ -345,11 +389,10 @@
     border-bottom-left-radius: 20px;
   }
 
-  
-.accoladeMin {
-  width: 55px;
-  height: 55px;
-}
+  .accoladeMin {
+    width: 55px;
+    height: 55px;
+  }
 
   .accoladeMax {
     width: 75px;

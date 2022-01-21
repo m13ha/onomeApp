@@ -81,7 +81,6 @@
 }
 
 .image {
-  background-color: #000;
   border-radius: 15px;
   margin-right: 10px;
 }
@@ -115,6 +114,14 @@
 
 }
 
+.pending {
+  border: 5px solid #4aa9e9;
+}
+
+.approved{
+  border: 1px solid #000000;
+}
+
 .post {
   width: 100%;
   display: flex;
@@ -139,12 +146,12 @@
 .postData p {
   width: 50%;
   height: 30px;
-  
-  background-color: #fff ;
+  background-color: var(--main-bg);
   display: flex;
   justify-content: center;
   font-weight: bold;
   align-items: center;
+  color: #fff;
 }
 
 .postData p img {
@@ -152,7 +159,11 @@
 }
 
 .postData p:hover {
-  background-color: rgb(230, 230, 230);
+  background-color: var(--main-hov);
+}
+
+.postData p:active {
+  background-color: var(--main-hov);
 }
 
 .forumCard:hover {

@@ -15,11 +15,27 @@ function App() {
   const providerValue = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   useEffect(() => {
+    let viewLogs = JSON.parse(storage.getItem("onoViewLogs"));
+    let likeLogs = JSON.parse(storage.getItem("onoLikeLogs"));
+
+    // check for the presense of view and like Logs
+    if(viewLogs){
+      storage.setItem('onoViewLogs', JSON.stringify(viewLogs));
+    }else{
+      storage.setItem('onoViewLogs', JSON.stringify([]));
+    }
+
+    if(likeLogs){
+      storage.setItem('onoLikeLogs', JSON.stringify(likeLogs));
+    }else{
+      storage.setItem('onoLikeLogs', JSON.stringify([]));
+    }
+
+    
     let currentUser = JSON.parse(storage.getItem("onomeUser"));
     if (currentUser) {
       setUser(currentUser);
     }
-    console.log(currentUser);
   }, []);
 
   return (

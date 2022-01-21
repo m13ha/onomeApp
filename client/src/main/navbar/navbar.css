@@ -76,12 +76,12 @@
 .p-left {
   height: 100%;
   display: flex;
-  width: 93%;
+  width: 85%;
 }
 
 .p-right {
   height: 100%;
-  width: 7%;
+  width: 15%;
   display: flex;
   justify-content: space-around;
 }

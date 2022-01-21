@@ -23,7 +23,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fff;
+  background-color: #eeeeee;
 }
 
 code {
@@ -111,8 +111,14 @@ a:active {
 }
 
 .actionIcon {
-  width: 35px;
-  height: 35px;
+  width: 35px !important;
+  height: 35px !important;
+}
+
+@media screen and (max-width: 300px) {
+    .container{
+      display: block;
+    }
 }
 
 @import "./signUp/userReg.css";
