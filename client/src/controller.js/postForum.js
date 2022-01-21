@@ -1,8 +1,16 @@
 import axios from "axios";
 
-const verifyUser = async (data, setErrorMsg) => {
+const postForum = async (data, setErrorMsg) => {
+
+  let post = data;
+  post.isForum = true;
+  post.isNews = false;
+  post.approval = false;
+  post.likes = 0;
+  post.views = 0;
+
   let success = await axios
-    .post("/api/verify", data)
+    .post("/api/article", data)
     .then((res) => {
       return true;
     })
@@ -16,4 +24,4 @@ const verifyUser = async (data, setErrorMsg) => {
 };
 
 
-export default verifyUser;
+export default postForum;

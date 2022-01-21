@@ -1,6 +1,5 @@
 import deleteIcon from "../assets/images/delete.png";
 import returnIcon from "../assets/images/turn-back.png";
-import commentIcon from "../assets/images/comment.png";
 import commentIconWhite from "../assets/images/commentWhite.png";
 import likeIcon from "../assets/images/like.png";
 import likedIcon from "../assets/images/love.png";
@@ -45,19 +44,15 @@ const icons = {
             url: returnIcon,
             alt: "back"
         },
-        comment: {
-            url: commentIcon,
-            alt: "comment"
-        },
         commentWhite: {
             url: commentIconWhite,
             alt: "comment"
         },
-        like: {
+        liked: {
             url: likeIcon,
             alt: "like"
         },
-        liked: {
+        like: {
             url: likedIcon,
             alt: "liked"
         },

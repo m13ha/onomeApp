@@ -15,7 +15,6 @@ const Navbar = () => {
     let currentUser = JSON.parse(storage.getItem("onomeUser"));
     if (currentUser) {
       setUser(currentUser);
-      console.log(currentUser);
       if(currentUser.isVerified === false){
         navigate('/', {replace: true})
       }
@@ -23,7 +22,6 @@ const Navbar = () => {
       navigate('/', {replace: true})
     }
 
-    console.log(currentUser);
   }, []);
 
   const handleMenuClick = () => {
@@ -60,6 +58,7 @@ const Navbar = () => {
             <li className="userName">{user.userName}</li>
           </section>
           <section className="p-right">
+          <li className="userName">Credits: {user.points}</li>
             <li className="hamBtn">
               {close && (
                 <img

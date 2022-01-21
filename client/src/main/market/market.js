@@ -54,7 +54,7 @@ const Market = () => {
           <button onClick={handleProductListClose} className="createSessBut">
             <img
               className="actionIcon"
-              src={icons.action.back.location}
+              src={icons.action.back.url}
               alt={icons.action.back.alt}
             />
           </button>
@@ -67,14 +67,14 @@ const Market = () => {
                 <button>
                   <img
                     className="actionIcon"
-                    src={icons.action.check.location}
+                    src={icons.action.check.url}
                     alt={icons.action.check.alt}
                   />
                 </button>
                 <button>
                   <img
                     className="actionIcon"
-                    src={icons.action.delete.location}
+                    src={icons.action.delete.url}
                     alt={icons.action.delete.alt}
                   />
                 </button>

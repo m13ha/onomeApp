@@ -5,7 +5,6 @@ const createUser = async (data, setErrorMsg, setUser) => {
   let success = await axios
     .post("/api/reg", data)
     .then((res) => {
-      console.log(res);
       storage.setItem(
         "onomeUser",
         JSON.stringify({

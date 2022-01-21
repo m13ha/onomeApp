@@ -1,18 +1,66 @@
-import { useState } from "react";
-import newsPaper from "../../assets/images/home/navbar/newspaper-folded.png";
-import icons from "../../utils/icons";
-import { Link } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
+import { UserContext } from "../../utils/user";
+import {useNavigate } from "react-router-dom";
+import postArticle from "../../controller.js/postArticle";
+import postForum from "../../controller.js/postForum";
+import getArticles from "../../controller.js/getNews";
+import NewsFeed from "./newsFeed";
+import ForumFeed from "./forumFeed";
 
 const Feed = () => {
+  const navigate = useNavigate();
   const [news, setNews] = useState(true);
   const [forum, setForum] = useState(false);
   const [newsForm, setNewsForm] = useState(false);
+  const [newsArr, setNewsArr] = useState([]);
   const [forumForm, setForumForm] = useState(false);
   const [memes, setMemes] = useState(false);
-  const [title, setTitle] = useState();
-  const [msg, setMsg] = useState();
-  const [desc, setDesc] = useState();
-  const [postImg, setPostImg] = useState();
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [description, setDesc] = useState("");
+  const [postImg, setPostImg] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  const { user } = useContext(UserContext);
+
+  useEffect(() => {
+    getArticles(setNewsArr);
+  }, []);
+
+  const handleArticleSubmit = async (e) => {
+    e.preventDefault();
+    let data = {
+      title,
+      description,
+      content,
+      postImg,
+      author: user.userName,
+    };
+
+    let success = await postArticle(data, setErrorMsg, postImg);
+
+    if (success) {
+      navigate(0, { replace: true });
+    }
+
+    console.log(success);
+  };
+
+  const handleForumSubmit = async (e) => {
+    e.preventDefault();
+    let data = {
+      title,
+      content,
+      author: user.userName,
+    };
+
+    let success = await postForum(data, setErrorMsg);
+
+    if (success) {
+      navigate(0, { replace: true });
+    }
+
+    console.log(success);
+  };
 
   const loadNews = () => {
     setMemes(false);
@@ -71,104 +119,13 @@ const Feed = () => {
         </div>
         {news && (
           <div className="feedContent">
-            <button className="createSessBut" onClick={loadNewsForm}>
-              +
-            </button>
-            <Link to="/home/feedpost">
-              <div className="card">
-                <div className="image">
-                  <img src={newsPaper} alt="" />
-                </div>
-                <div className="postinfo">
-                  <h1>CULTISM IN BENIN</h1>
-                  <p>
-                    A look into tht ave sufgj ffhgy bfbfkmfjf bfhfufjkfkf
-                    fgfgfgfj 0ososos hdhdudjd djdjdji
-                  </p>
-                </div>
-                <div className="postData">
-                  <p>
-                    <img src={icons.action.views.url} width="25px"  alt="views" /> 100
-                  </p>
-                  <p>
-                    <img src={icons.action.liked.url} width="25px" alt="liked" /> 100
-                  </p>
-                  <p>
-                    <img src={icons.action.comment.url} width="25px" alt="comments" />{" "}
-                    25
-                  </p>
-                </div>
-              </div>
-            </Link>
-            <div className="card">
-              <div className="image">
-                <img src={newsPaper} alt="" />
-              </div>
-              <div className="postinfo">
-                <h1>CULTISM IN BENIN</h1>
-                <p>
-                  A look into tht ave sufgj ffhgy bfbfkmfjf bfhfufjkfkf fgfgfgfj
-                  0ososos hdhdudjd djdjdji
-                </p>
-              </div>
-              <div className="postData">
-                <p>
-                  <img src={icons.action.views.url} width="25px" alt="views" /> 100
-                </p>
-                <p>
-                  <img src={icons.action.liked.url} width="25px" alt="liked" /> 100
-                </p>
-                <p>
-                  <img src={icons.action.comment.url} width="25px" alt="comments" /> 25
-                </p>
-              </div>
-            </div>
-            <div className="card">
-              <div className="image">
-                <img src={newsPaper} alt="" />
-              </div>
-              <div className="postinfo">
-                <h1>CULTISM IN BENIN</h1>
-                <p>
-                  A look into tht ave sufgj ffhgy bfbfkmfjf bfhfufjkfkf fgfgfgfj
-                  0ososos hdhdudjd djdjdji
-                </p>
-              </div>
-              <div className="postData">
-                <p>
-                  <img src={icons.action.views.url} width="25px" alt="views" /> 100
-                </p>
-                <p>
-                  <img src={icons.action.liked.url} width="25px" alt="liked" /> 100
-                </p>
-                <p>
-                  <img src={icons.action.comment.url} width="25px" alt="comments" /> 25
-                </p>
-              </div>
-            </div>
-            <div className="card">
-              <div className="image">
-                <img src={newsPaper} alt="" />
-              </div>
-              <div className="postinfo">
-                <h1>CULTISM IN BENIN</h1>
-                <p>
-                  A look into tht ave sufgj ffhgy bfbfkmfjf bfhfufjkfkf fgfgfgfj
-                  0ososos hdhdudjd djdjdji
-                </p>
-              </div>
-              <div className="postData">
-                <p>
-                  <img src={icons.action.views.url} width="25px" alt="views" /> 100
-                </p>
-                <p>
-                  <img src={icons.action.liked.url} width="25px" alt="liked" /> 100
-                </p>
-                <p>
-                  <img src={icons.action.comment.url} width="25px" alt="comments" /> 25
-                </p>
-              </div>
-            </div>
+            {user.isMod && (
+              <button className="createSessBut" onClick={loadNewsForm}>
+                +
+              </button>
+            )}
+            {user.isMod && <NewsFeed newsArr={newsArr} status={'pending'} approval={false}/>}
+            {<NewsFeed newsArr={newsArr} status={'approved'} approval={true}/>}
           </div>
         )}
         {forum && (
@@ -176,66 +133,8 @@ const Feed = () => {
             <button className="createSessBut" onClick={loadForumForm}>
               +
             </button>
-            <div className="forumCard">
-              <div className="op-info">
-                <h4>Angelmikeal</h4>
-                <p>6 hours ago</p>
-              </div>
-              <div className="post">
-                <h3>Why is pure water so expensive now in uniben?</h3>
-              </div>
-              <div className="postData">
-                <p>
-                  <img src={icons.action.views.url} width="25px" alt="views" /> 100
-                </p>
-                <p>
-                  <img src={icons.action.liked.url} width="25px" alt="liked" /> 100
-                </p>
-                <p>
-                  <img src={icons.action.comment.url} width="25px" alt="comments" /> 25
-                </p>
-              </div>
-            </div>
-            <div className="forumCard">
-              <div className="op-info">
-                <h4>Angelmikeal</h4>
-                <p>6 hours ago</p>
-              </div>
-              <div className="post">
-                <h3>Why is pure water so expensive now in uniben?</h3>
-              </div>
-              <div className="postData">
-                <p>
-                  <img src={icons.action.views.url} width="25px" alt="views" /> 100
-                </p>
-                <p>
-                  <img src={icons.action.liked.url} width="25px" alt="liked" /> 100
-                </p>
-                <p>
-                  <img src={icons.action.comment.url} width="25px" alt="comments" /> 25
-                </p>
-              </div>
-            </div>
-            <div className="forumCard">
-              <div className="op-info">
-                <h4>Angelmikeal</h4>
-                <p>6 hours ago</p>
-              </div>
-              <div className="post">
-                <h3>Why is pure water so expensive now in uniben?</h3>
-              </div>
-              <div className="postData">
-                <p>
-                  <img src={icons.action.views.url} width="25px" alt="views" /> 100
-                </p>
-                <p>
-                  <img src={icons.action.liked.url} width="25px" alt="liked" /> 100
-                </p>
-                <p>
-                  <img src={icons.action.comment.url} width="25px" alt="comments" /> 25
-                </p>
-              </div>
-            </div>
+            {user.isMod && <ForumFeed newsArr={newsArr} status={'pending'} approval={false}/>}
+            {<ForumFeed newsArr={newsArr} status={'approved'} approval={true}/>}
           </div>
         )}
         {memes && (
@@ -251,7 +150,12 @@ const Feed = () => {
         )}
         {newsForm && (
           <div className="row feedForm">
-            <form action="" className="form">
+            <form
+              className="form"
+              onSubmit={handleArticleSubmit}
+              encType="multipart/form-data"
+            >
+              <div className="row errmsg">{errorMsg}</div>
               <label htmlFor="title">Title</label>
               <input
                 id="title"
@@ -266,10 +170,11 @@ const Feed = () => {
               <input
                 id="desc"
                 type="text"
-                value={desc}
+                value={description}
                 onChange={(e) => {
                   setDesc(e.target.value);
                 }}
+                maxLength="80"
                 required
               />
               <label htmlFor="img" accept="image/png, image/gif, image/jpeg">
@@ -277,10 +182,11 @@ const Feed = () => {
               </label>
               <input
                 type="file"
-                value={postImg}
                 onChange={(e) => {
-                  setPostImg(e.target.value);
+                  setPostImg(e.target.files[0]);
+                  console.log(e);
                 }}
+                required
               />
               <label htmlFor="news">Ariticle</label>
               <textarea
@@ -289,9 +195,9 @@ const Feed = () => {
                 cols="25"
                 rows="10"
                 placeholder="write your Article here"
-                value={msg}
+                value={content}
                 onChange={(e) => {
-                  setMsg(e.target.value);
+                  setContent(e.target.value);
                 }}
                 required
               ></textarea>
@@ -301,7 +207,8 @@ const Feed = () => {
         )}
         {forumForm && (
           <div className="row feedForm">
-            <form action="" className="form">
+            <form action="" className="form" onSubmit={handleForumSubmit}>
+              <div className="row errmsg">{errorMsg}</div>
               <label htmlFor="title">Title</label>
               <input
                 id="title"
@@ -310,6 +217,8 @@ const Feed = () => {
                 onChange={(e) => {
                   setTitle(e.target.value);
                 }}
+                required
+                maxLength="100"
               />
               <label htmlFor="news">Additional Information</label>
               <textarea
@@ -317,9 +226,9 @@ const Feed = () => {
                 id="news"
                 cols="25"
                 rows="10"
-                value={msg}
+                value={content}
                 onChange={(e) => {
-                  setMsg(e.target.value);
+                  setContent(e.target.value);
                 }}
                 placeholder="(optional)"
               ></textarea>

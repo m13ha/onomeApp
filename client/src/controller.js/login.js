@@ -25,7 +25,6 @@ const loginUser = async (data, setErrorMsg) => {
     })
     .catch((err) => console.log(err));
 
-  console.log(success);
   return success;
 };
 

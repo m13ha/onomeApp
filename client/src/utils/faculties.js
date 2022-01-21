@@ -4,32 +4,25 @@ const faculties = [
     value: "Agric",
     departments: [
       {
-        value: "Aquacul",
-        name: "Aquaculture And Fishery Management",
+        value: "Aquaculture And Fishery Management",
       },
       {
-        value: "ForestLife",
-        name: "Forest Resource And Wild Life",
+        value: "Forest Resource And Wild Life",
       },
       {
-        value: "AniSci",
-        name: "Animal Science",
+        value: "Animal Science",
       },
       {
-        value: "CropSci",
-        name: "Crop Science",
+        value: "Crop Science",
       },
       {
-        value: "AgricEco",
-        name: "Agricultural Economics And Extension Services",
+        value: "Agricultural Economics And Extension Services",
       },
       {
-        value: "FoodSci",
-        name: "Food Science And Nutrition",
+        value: "Food Science And Nutrition",
       },
       {
-        value: "SoilSci",
-        name: "Soil Science And Management",
+        value: "Soil Science And Management",
       },
     ],
   },
@@ -38,36 +31,25 @@ const faculties = [
     value: "Art",
     departments: [
       {
-        value: "LingStudies",
-        name: "Linguistics Studies",
+        value: "Linguistics Studies",
       },
       {
-        value: "EngLit",
-        name: "English And Literature",
+        value: "English And Literature",
       },
       {
-        value: "ForeLang",
-        name: "Foreign Languages",
+        value: "Foreign Languages",
       },
       {
-        value: "HisIntStu",
-        name: "History And International Studies",
-      },
-      {
-        value: "MasCom",
-        name: "Mass Communication",
+        value: "History And International Studies",
       },
       {
         value: "Philosophy",
-        name: "Philosophy",
       },
       {
         value: "Religion",
-        name: "Religion",
       },
       {
-        value: "ThrArts",
-        name: "Theatre Arts",
+        value: "Theatre Arts And Mass Communication",
       },
     ],
   },
@@ -76,24 +58,19 @@ const faculties = [
     value: "SoSci",
     departments: [
       {
-        value: "ECO",
-        name: "Economics",
+        value: "Economics",
       },
       {
-        value: "GeoRegPln",
-        name: "Geo Regional Planning",
+        value: "Geo Regional Planning",
       },
       {
-        value: "PolSci",
-        name: "Political Science",
+        value: "Political Science",
       },
       {
-        value: "SociWrk",
-        name: "Social Work",
+        value: "Social Work",
       },
       {
-        value: "SociAnth",
-        name: "Sociology And Anthropology",
+        value: "Sociology And Anthropology",
       },
     ],
   },
@@ -102,36 +79,28 @@ const faculties = [
     value: "Engn",
     departments: [
       {
-        value: "ChemEng",
-        name: "Chemical Engineering",
+        value: "Chemical Engineering",
       },
       {
-        value: "CivilEng",
-        name: "Civil Engineering",
+        value: "Civil Engineering",
       },
       {
-        value: "CompEng",
-        name: "Computer Engineering",
+        value: "Computer Engineering",
       },
       {
-        value: "ElecEng",
-        name: "Electrical/Electronic Engineering",
+        value: "Electrical/Electronic Engineering",
       },
       {
-        value: "MechEng",
-        name: "Mechanical Engineering",
+        value: "Mechanical Engineering",
       },
       {
-        value: "MetalEng",
-        name: "Metallurgical And Material Engineering",
+        value: "Metallurgical And Material Engineering",
       },
       {
-        value: "PetroEng",
-        name: "Petroleum Engineering",
+        value: "Petroleum Engineering",
       },
       {
-        value: "ProdEng",
-        name: "Production Engineering",
+        value: "Production Engineering",
       },
     ],
   },
@@ -140,24 +109,19 @@ const faculties = [
     value: "EnvSci",
     departments: [
       {
-        value: "Archit",
-        name: "Architecture",
+        value: "Architecture",
       },
       {
-        value: "EstMgt",
-        name: "Estate Management",
+        value: "Estate Management",
       },
       {
-        value: "FiApSci",
-        name: "Fine/Applied Science",
+        value: "Fine/Applied Science",
       },
       {
         value: "Geomantics",
-        name: "Geomantics",
       },
       {
-        value: "QuanSurv",
-        name: "Quantity Survey",
+        value: "Quantity Survey",
       },
     ],
   },
@@ -166,20 +130,16 @@ const faculties = [
     value: "Law",
     departments: [
       {
-        value: "BusLaw",
-        name: "Business Law",
+        value: "Business Law",
       },
       {
-        value: "JursInt",
-        name: "Jurisprudence And International Law",
+        value: "Jurisprudence And International Law",
       },
       {
-        value: "PrivLaw",
-        name: "Private And Property Law",
+        value: "Private And Property Law",
       },
       {
-        value: "PubLaw",
-        name: "Public Law",
+        value: "Public Law",
       },
     ],
   },
@@ -188,20 +148,19 @@ const faculties = [
     value: "Dent",
     departments: [
       {
-        value: "OralMax",
-        name: "Oral And Maxillofacial Surgery",
+        value: "Oral Surgery and Pathology",
       },
       {
-        value: "OralRad",
-        name: "Oral Diagnosis And Radiology",
+        value: "Oral Diagnosis And Radiology",
       },
       {
-        value: "PreDent",
-        name: "Preventive Dentistry",
+        value: "Preventive Dentistry",
       },
       {
-        value: "ResDEnt",
-        name: "Restorative Dentistry",
+        value: "Restorative Dentistry",
+      },
+      {
+        value: "Periodontics Dentistry",
       },
     ],
   },
@@ -210,36 +169,28 @@ const faculties = [
     value: "MgtSci",
     departments: [
       {
-        value: "Accnt",
-        name: "Accounting",
+        value: "Accounting",
       },
       {
-        value: "ActSci",
-        name: "Actuarial Science",
+        value: "Actuarial Science",
       },
       {
-        value: "BanFin",
-        name: "Banking And Finance",
+        value: "Banking And Finance",
       },
       {
-        value: "BusAdmin",
-        name: "Business Administrator",
+        value: "Business Administrator",
       },
       {
-        value: "Ent",
-        name: "Entrepreneurship",
+        value: "Entrepreneurship",
       },
       {
-        value: "Hrm",
-        name: "Human Resources",
+        value: "Human Resources",
       },
       {
-        value: "Insu",
-        name: "Insurance",
+        value: "Insurance",
       },
       {
-        value: "Mrkt",
-        name: "Marketing",
+        value: "Marketing",
       },
     ],
   },
@@ -248,38 +199,126 @@ const faculties = [
     value: "Med",
     departments: [
       {
-        value: "Bms",
-        name: "Basic Medical Science",
+        value: "Surgery",
       },
       {
-        value: "Dent",
-        name: "Dentistry",
+        value: "Mental Health",
       },
       {
-        value: "Meds",
-        name: "Medicine",
+        value: "Morbid Anatomy",
+      },
+      {
+        value: "Ophthalmology",
+      },
+      {
+        value: "Orthopaedics & Traumatology",
       },
     ],
   },
+
+  {
+    name: "Basic Med Science",
+    value: "BMS",
+    departments: [
+      {
+        value: "Nursing Sciences",
+      },
+      {
+        value: "Radiography",
+      },
+      {
+        value: "Physiology",
+      },
+      {
+        value: "Physiotherapy",
+      },
+      {
+        value: "Medical Laboratory Science",
+      },
+    ],
+  },
+  {
+    name: "Medicine",
+    value: "Med",
+    departments: [
+      {
+        value: "",
+      },
+      {
+        value: "",
+      },
+      {
+        value: "",
+      },
+    ],
+  },
+  {
+    name: "Education",
+    value: "edu",
+    departments: [
+      {
+        value: "Adult and Non-formal Education",
+      },
+      {
+        value: "Curriculum and Instructional Technology",
+      },
+      {
+        value: "Human Kinetics and Sports Science",
+      },
+      {
+        value: "Education Evaluation and Counselling Psychology",
+      },
+      {
+        value: "Educational Foundations",
+      },
+      {
+        value: "Health, Safety and Environmental Education",
+      },
+      {
+        value: "Vocation and Technical Education",
+      },
+    ],
+  },
+  {
+    name: "Life Sciences",
+    value: "lifesci",
+    departments: [
+      {
+        value: "Optometry",
+      },
+      {
+        value: "Biochemistry",
+      },
+      {
+        value: "Plant Biology and Biotechnology",
+      },
+      {
+        value: "Environmental Management and Toxicology",
+      },
+    ],
+  },
+  
   {
     name: "Pharmacy",
     value: "Pharma",
     departments: [
       {
-        value: "CliPharm",
-        name: "Clinical Pharmacy Practice",
+        value: "Clinical Pharmacy Practice",
       },
       {
-        value: "ChemPharm",
-        name: "Pharmaceutical Chemistry",
+        value: "Pharmaceutical Chemistry",
       },
       {
-        value: "PharMicro",
-        name: "Pharmacuetical Microbiology",
+        value: "Pharmacuetical Microbiology",
       },
       {
-        value: "PharmTox",
-        name: "Pharmacology And Toxicology",
+        value: "Pharmacology And Toxicology",
+      },
+      {
+        value: "Pharmacology",
+      },
+      {
+        value: "Pharmaceutics & Pharmaceutical Technology",
       },
     ],
   },
@@ -288,28 +327,22 @@ const faculties = [
     value: "PhySci",
     departments: [
       {
-        value: "Chem",
-        name: "Chemistry",
+        value: "Chemistry",
       },
       {
-        value: "CompSci",
-        name: "Computer Science",
+        value: "Computer Science",
       },
       {
-        value: "Geo",
-        name: "Geology",
+        value: "Geology",
       },
       {
-        value: "Math",
-        name: "Mathematics",
+        value: "Mathematics",
       },
       {
-        value: "Phys",
-        name: "Physics",
+        value: "Physics",
       },
       {
-        value: "Stats",
-        name: "Statistics",
+        value: "Statistics",
       },
     ],
   },
@@ -318,20 +351,16 @@ const faculties = [
     value: "VetMed",
     departments: [
       {
-        value: "VPHM",
-        name: "Vet Pub Health and Medicine",
+        value: "Vet Pub Health and Medicine",
       },
       {
-        value: "VTSR",
-        name: "Vet Surgery and Radiology",
+        value: "Vet Surgery and Radiology",
       },
       {
-        value: "VTMicro",
-        name: "Veterinary Microbiology",
+        value: "Veterinary Microbiology",
       },
       {
-        value: "VTPara",
-        name: "Veterinary Parasitology",
+        value: "Veterinary Parasitology",
       },
     ],
   },

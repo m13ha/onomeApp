@@ -1,0 +1,42 @@
+import { Link } from "react-router-dom";
+import icons from "../../utils/icons";
+
+const NewsFeed = ({ newsArr, status, approval }) => {
+  return newsArr.map((object, index) => {
+    if (object.approval === approval && object.isNews === true) {
+      return (
+        <Link to="/home/feedpost" state={{ article: object }} key={index}>
+          <div className={`card ${status}`}>
+            <div className="image">
+              <img src={object.postImg} alt="" />
+            </div>
+            <div className="postinfo">
+              <h2>{object.title}</h2>
+              <p>{object.description}</p>
+            </div>
+            <div className="postData">
+              <p>
+                <img src={icons.action.views.url} width="25px" alt="views" />
+                {object.views}
+              </p>
+              <p>
+                <img src={icons.action.liked.url} width="25px" alt="liked" />
+                {object.likes}
+              </p>
+              <p>
+                <img
+                  src={icons.action.commentWhite.url}
+                  width="25px"
+                  alt="comments"
+                />
+                {object.Comments.length}
+              </p>
+            </div>
+          </div>
+        </Link>
+      );
+    }
+  });
+};
+
+export default NewsFeed;

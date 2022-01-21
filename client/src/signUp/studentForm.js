@@ -71,7 +71,7 @@ const StudentForm = ({ resetForm }) => {
       isStudent: true,
       isCompany: false,
       isAdmin: true,
-      isMod: true,
+      isMod: false,
       isVerified: false,
     };
 
@@ -206,7 +206,7 @@ const StudentForm = ({ resetForm }) => {
                 {depts.map((object, index) => {
                   return (
                     <option value={object.value} key={index}>
-                      {object.name}
+                      {object.value}
                     </option>
                   );
                 })}
