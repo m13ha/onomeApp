@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
     "client": "cd client && npm run start",
-    "dev": "concurrently \"nodemon server.js --ignore client\" \"npm run client\""
+    "dev": "concurrently \"nodemon server.js --ignore client\" \"npm run client\"",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "Angelmikeal",
   "license": "MIT",
