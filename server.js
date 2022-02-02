@@ -24,6 +24,9 @@ mongoose
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.resolve(__dirname, "./client/build")));
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 app.use('/', routes);
 app.use('/', postRoutes);
 app.use(express.urlencoded({ extended: true }));
