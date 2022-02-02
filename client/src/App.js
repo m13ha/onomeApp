@@ -17,6 +17,7 @@ function App() {
   useEffect(() => {
     let viewLogs = JSON.parse(storage.getItem("onoViewLogs"));
     let likeLogs = JSON.parse(storage.getItem("onoLikeLogs"));
+    let postLogs = JSON.parse(storage.getItem("onoPostLogs"));
 
     // check for the presense of view and like Logs
     if(viewLogs){
@@ -29,6 +30,12 @@ function App() {
       storage.setItem('onoLikeLogs', JSON.stringify(likeLogs));
     }else{
       storage.setItem('onoLikeLogs', JSON.stringify([]));
+    }
+
+    if(postLogs){
+      storage.setItem('onoPostLogs', JSON.stringify(postLogs));
+    }else{
+      storage.setItem('onoPostLogs', JSON.stringify([]));
     }
 
     

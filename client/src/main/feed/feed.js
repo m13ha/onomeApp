@@ -2,7 +2,6 @@ import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../utils/user";
 import {useNavigate } from "react-router-dom";
 import postArticle from "../../controller.js/postArticle";
-import postForum from "../../controller.js/postForum";
 import getArticles from "../../controller.js/getNews";
 import NewsFeed from "./newsFeed";
 import ForumFeed from "./forumFeed";
@@ -36,7 +35,7 @@ const Feed = () => {
       author: user.userName,
     };
 
-    let success = await postArticle(data, setErrorMsg, postImg);
+    let success = await postArticle(data, setErrorMsg, 'news', postImg);
 
     if (success) {
       navigate(0, { replace: true });
@@ -53,7 +52,7 @@ const Feed = () => {
       author: user.userName,
     };
 
-    let success = await postForum(data, setErrorMsg);
+    let success = await postArticle(data, setErrorMsg, 'forum');
 
     if (success) {
       navigate(0, { replace: true });

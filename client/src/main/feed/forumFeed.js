@@ -31,7 +31,7 @@ const ForumFeed = ({ newsArr, status, approval}) => {
                   width="25px"
                   alt="comments"
                 />
-                {object.Comments.length}
+                {object.count}
               </p>
             </div>
           </div>

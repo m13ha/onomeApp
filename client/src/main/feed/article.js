@@ -6,6 +6,8 @@ import postApprove from "../../controller.js/postApproval";
 import postDeny from "../../controller.js/postDeny";
 import likePost from "../../controller.js/likePost";
 import viewPost from "../../controller.js/viewPost";
+import postComment from "../../controller.js/postComment";
+import moment from "moment";
 
 const Article = ({ loaction }) => {
   let storage = sessionStorage;
@@ -18,11 +20,21 @@ const Article = ({ loaction }) => {
   const [likeState, setLikeState] = useState(icons.action.like.url);
   const [modal, setModal] = useState(false);
   const [comment, setComment] = useState();
+  const [reply, setReply] = useState();
   const { user } = useContext(UserContext);
 
   useEffect(() => {
     let viewLogs = JSON.parse(storage.getItem("onoViewLogs"));
     let likeLogs = JSON.parse(storage.getItem("onoLikeLogs"));
+    let postLogs = JSON.parse(storage.getItem("onoPostLogs"));
+
+    if (postLogs.length >= 0) {
+      postLogs.forEach((object) => {
+        if (object._id === article._id) {
+          setPost(object);
+        }
+      });
+    }
 
     if (likeLogs.includes(article._id)) {
       setLikeState(icons.action.liked.url);
@@ -34,6 +46,8 @@ const Article = ({ loaction }) => {
         if (success) {
           setPost(success);
           viewLogs.push(post._id);
+          postLogs.push(success);
+          storage.setItem("onoPostLogs", JSON.stringify(postLogs));
           storage.setItem("onoViewLogs", JSON.stringify(viewLogs));
         }
       }
@@ -42,6 +56,12 @@ const Article = ({ loaction }) => {
 
   const handleReplyForm = (e) => {
     e.preventDefault();
+    let forms = document.getElementsByClassName("showForm");
+
+    for (let i = 0; i < forms.length; i++) {
+      forms[i].className = "replyForm";
+    }
+
     let parent = e.target.parentElement.parentElement.parentElement;
     if (e.target.nodeName === "P") {
       parent.children[1].className = "showForm";
@@ -52,6 +72,7 @@ const Article = ({ loaction }) => {
 
   const handleLike = async (e) => {
     let likeLogs = JSON.parse(storage.getItem("onoLikeLogs"));
+    let postLogs = JSON.parse(storage.getItem("onoPostLogs"));
 
     if (likeState === icons.action.like.url) {
       let success = await likePost(article._id);
@@ -59,7 +80,15 @@ const Article = ({ loaction }) => {
       if (success) {
         setLikeState(icons.action.liked.url);
         likeLogs.push(article._id);
-        storage.setItem('onoLikeLogs', JSON.stringify(likeLogs));
+        storage.setItem("onoLikeLogs", JSON.stringify(likeLogs));
+
+        postLogs.forEach((object, index) => {
+          if (object._id === success._id) {
+            postLogs[index] = success;
+          }
+        });
+
+        storage.setItem("onoPostLogs", JSON.stringify(postLogs));
         setPost(success);
       }
     } else {
@@ -82,6 +111,66 @@ const Article = ({ loaction }) => {
     let success = await postApprove(post._id);
     if (success) {
       navigate(-1);
+    }
+  };
+
+  const handleComment = async (e) => {
+    e.preventDefault();
+    let postLogs = JSON.parse(storage.getItem("onoPostLogs"));
+
+    let data = {
+      to: post._id,
+      author: user.userName,
+      content: comment,
+    };
+
+    let success = await postComment(data, "comment", setPost);
+    if (success) {
+      setPost(success);
+      //navigate("/todos", { state: { success } })
+      setComment("");
+
+      postLogs.forEach((object, index) => {
+        if (object._id === success._id) {
+          postLogs[index] = success;
+        }
+      });
+
+      storage.setItem("onoPostLogs", JSON.stringify(postLogs));
+    }
+  };
+
+  const handleReply = async (author, id) => {
+    let forms = document.getElementsByClassName("showForm");
+    let postLogs = JSON.parse(storage.getItem("onoPostLogs"));
+
+    let data = {
+      to: author,
+      author: user.userName,
+      content: reply,
+      post_id: article._id,
+      id,
+    };
+
+    console.log(data);
+
+    let success = await postComment(data, "reply", setPost);
+
+    for (let i = 0; i < forms.length; i++) {
+      forms[i].className = "replyForm";
+    }
+
+    if (success) {
+      setPost(success);
+      //navigate("/todos", { state: { success } })
+      setReply("");
+      postLogs.forEach((object, index) => {
+        if (object._id === success._id) {
+          postLogs[index] = success;
+        }
+      });
+
+      storage.setItem("onoPostLogs", JSON.stringify(postLogs));
     }
   };
 
@@ -147,7 +236,7 @@ const Article = ({ loaction }) => {
               width="25px"
               alt="comments"
             />
-            {post.Comments.length}
+            {post.count}
           </p>
         </div>
       </div>
@@ -171,7 +260,7 @@ const Article = ({ loaction }) => {
       )}
       <div className="comments">
         <div className="commentForm">
-          <form action="">
+          <form onSubmit={handleComment}>
             <textarea
               name="comment"
               id="commentField"
@@ -182,74 +271,97 @@ const Article = ({ loaction }) => {
               onChange={(e) => {
                 setComment(e.target.value);
               }}
+              required
             ></textarea>
             <button>Submit</button>
           </form>
         </div>
-        <div className="comment-field">
-          <div className="comment">
-            <div className="op-data">
-              <h4>Angelmikeal</h4>
-              <p>6 hours ago</p>
-            </div>
-            <p className="content">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum
-              officia minima ullam eaque repudiandae, perspiciatis aliquam quas,
-              placeat dicta, harum aperiam? Ab provident temporibus eius eum
-              quae quis debitis nulla?
-            </p>
-            <div className="comment-actions">
-              <p onClick={openModal}>Accolade</p>
-              <p onClick={handleReplyForm}>Reply</p>
-              <p>Report</p>
-            </div>
-          </div>
-          <div className="replyForm">
-            <form action="">
-              <textarea
-                name="reply"
-                id="replyField"
-                cols="30"
-                rows="10"
-                placeholder="Reply"
-              ></textarea>
-              <button onClick={handleReplyForm}>cancel</button>
-              <button>Submit</button>
-            </form>
-          </div>
-          <div className="reply-field">
-            <div className="reply">
-              <div className="op-data">
-                <h4>Angelmikeal</h4>
-                <p>6 hours ago</p>
+        {post.Comments.map((object, index) => {
+          let root = object._id;
+          return (
+            <div className="comment-field" key={index}>
+              <div className="comment">
+                <div className="op-data">
+                  <h4>{object.author}</h4>
+                  <p>{moment(object.createdAt).fromNow()}</p>
+                </div>
+                <p className="content">{object.content}</p>
+                <div className="comment-actions">
+                  <p onClick={openModal}>Accolade</p>
+                  <p onClick={handleReplyForm}>Reply</p>
+                </div>
               </div>
-              <p className="content">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum
-                officia minima ullam eaque repudiandae, perspiciatis aliquam
-                quas, placeat dicta, harum aperiam? Ab provident temporibus eius
-                eum quae quis debitis nulla?
-              </p>
-              <div className="comment-actions">
-                <p onClick={openModal}>Accolade</p>
-                <p onClick={handleReplyForm}>Reply</p>
-                <p>Report</p>
+              <div className="replyForm">
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    handleReply(object.author, root);
+                  }}
+                >
+                  <textarea
+                    name="reply"
+                    id="replyField"
+                    cols="30"
+                    rows="10"
+                    placeholder="Reply"
+                    value={reply}
+                    onChange={(e) => {
+                      setReply(e.target.value);
+                    }}
+                    required
+                  ></textarea>
+                  <button onClick={handleReplyForm}>cancel</button>
+                  <button>Submit</button>
+                </form>
               </div>
+              {object.replies.map((object, index) => {
+                return (
+                  <div className="reply-field" key={index}>
+                    <div className="reply">
+                      <div className="op-data">
+                        <b>
+                          <p>{object.author}</p>
+                        </b>
+                        <p>{moment(object.createdAt).fromNow()}</p>
+                      </div>
+                      <p className="content">
+                        <b>{`@${object.to} `}</b>
+                        {object.content}
+                      </p>
+                      <div className="comment-actions">
+                        <p onClick={openModal}>Accolade</p>
+                        <p onClick={handleReplyForm}>Reply</p>
+                      </div>
+                    </div>
+                    <div className="replyForm">
+                      <form
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                          handleReply(object.author, root);
+                        }}
+                      >
+                        <textarea
+                          name="reply"
+                          id="replyField"
+                          cols="30"
+                          rows="10"
+                          placeholder="Reply"
+                          value={reply}
+                          onChange={(e) => {
+                            setReply(e.target.value);
+                          }}
+                          required
+                        ></textarea>
+                        <button onClick={handleReplyForm}>Cancel</button>
+                        <button>Submit</button>
+                      </form>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-            <div className="replyForm">
-              <form action="">
-                <textarea
-                  name="reply"
-                  id="replyField"
-                  cols="30"
-                  rows="10"
-                  placeholder="Reply"
-                ></textarea>
-                <button onClick={handleReplyForm}>Cancel</button>
-                <button>Submit</button>
-              </form>
-            </div>
-          </div>
-        </div>
+          );
+        })}
       </div>
       {modal && (
         <div className="accolade-modal">

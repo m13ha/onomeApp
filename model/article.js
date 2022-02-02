@@ -19,8 +19,6 @@ const ReplySchema = new Schema(
     },
 
     accoalades: [],
-
-    replies: [this],
   },
   { timestamps: true }
 );
@@ -33,6 +31,11 @@ const CommentSchema = new Schema(
     },
 
     content: {
+      type: String,
+      required: true,
+    },
+
+    to: {
       type: String,
       required: true,
     },
@@ -76,19 +79,28 @@ const ArticleSchema = new Schema(
       required: true,
     },
 
+    count: {
+      type: Number,
+      required: true,
+    },
+
     description: {
       type: String,
     },
+
     postImg: {
       type: String,
     },
+
     content: {
       type: String,
     },
+
     author: {
       type: String,
       required: true,
     },
+
     Comments: [CommentSchema],
   },
   { timestamps: true }

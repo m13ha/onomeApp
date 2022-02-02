@@ -1,19 +1,32 @@
 import axios from "axios";
 import uploadImage from "./upload";
 
-const postArticle = async (data, setErrorMsg, img) => {
-  let image = await uploadImage(img).then((resp) => {
-    console.log(resp.data.data);
-    return resp.data.data.image.url;
-  });
+const postArticle = async (data, setErrorMsg, type ,img) => {
+  let post;
 
-  let post = data;
-  post.postImg = image;
-  post.isForum = false;
-  post.isNews = true;
-  post.approval = false;
-  post.likes = 0;
-  post.views = 0;
+  if(type === 'forum'){
+    post = data;
+    post.isForum = true;
+    post.isNews = false;
+    post.approval = false;
+    post.likes = 0;
+    post.views = 0;
+    post.count = 0;
+  }else if (type === 'news'){
+    let image = await uploadImage(img).then((resp) => {
+      console.log(resp.data.data);
+      return resp.data.data.image.url;
+    });
+  
+    post = data;
+    post.postImg = image;
+    post.isForum = false;
+    post.isNews = true;
+    post.approval = false;
+    post.likes = 0;
+    post.views = 0;
+    post.count = 0;
+  }
 
   let success = await axios
     .post("/api/article", post)

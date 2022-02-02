@@ -189,7 +189,7 @@
 }
 
 
-@media screen and (max-width: 910px) {
+@media screen and (max-width: 850px) {
   .feed {
     width: 100%;
     min-width: 320px;
