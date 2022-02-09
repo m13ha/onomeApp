@@ -3,13 +3,16 @@ import { UserContext } from "../../utils/user";
 import { useNavigate } from "react-router-dom";
 import postArticle from "../../controller.js/postArticle";
 import getArticles from "../../controller.js/getArticles";
-import ForumMapper from "./forumMapper";
+import NewsMapper from "./newsMapper";
 
-const ForumFeed = () => {
+
+const NewsFeed = () => {
   const navigate = useNavigate();
   const [newsArr, setNewsArr] = useState([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [description, setDesc] = useState("");
+  const [postImg, setPostImg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const { user } = useContext(UserContext);
 
@@ -17,15 +20,17 @@ const ForumFeed = () => {
     getArticles(setNewsArr);
   }, []);
 
-  const handleForumSubmit = async (e) => {
+  const handleArticleSubmit = async (e) => {
     e.preventDefault();
     let data = {
       title,
+      description,
       content,
+      postImg,
       author: user.userName,
     };
 
-    let success = await postArticle(data, setErrorMsg, "forum");
+    let success = await postArticle(data, setErrorMsg, "news", postImg);
 
     if (success) {
       navigate(0, { replace: true });
@@ -34,21 +39,27 @@ const ForumFeed = () => {
     console.log(success);
   };
 
-  const loadForumForm = () => {};
+  const loadNewsForm = () => {};
 
   return (
     <div className="feed">
       <div className="feedContent">
-        <button className="createSessBut" onClick={loadForumForm}>
-          +
-        </button>
         {user.isMod && (
-          <ForumMapper newsArr={newsArr} status={"pending"} approval={false} />
+          <button className="createSessBut" onClick={loadNewsForm}>
+            +
+          </button>
         )}
-        {<ForumMapper newsArr={newsArr} status={"approved"} approval={true} />}
+        {user.isMod && (
+          <NewsMapper newsArr={newsArr} status={"pending"} approval={false} />
+        )}
+        {<NewsMapper newsArr={newsArr} status={"approved"} approval={true} />}
       </div>
       <div className="feedForm">
-        <form action="" className="form" onSubmit={handleForumSubmit}>
+        <form
+          className="form"
+          onSubmit={handleArticleSubmit}
+          encType="multipart/form-data"
+        >
           <div className="row errmsg">{errorMsg}</div>
           <label htmlFor="title">Title</label>
           <input
@@ -59,19 +70,41 @@ const ForumFeed = () => {
               setTitle(e.target.value);
             }}
             required
-            maxLength="100"
           />
-          <label htmlFor="news">Additional Information</label>
+          <label htmlFor="desc">Description</label>
+          <input
+            id="desc"
+            type="text"
+            value={description}
+            onChange={(e) => {
+              setDesc(e.target.value);
+            }}
+            maxLength="80"
+            required
+          />
+          <label htmlFor="img" accept="image/png, image/gif, image/jpeg">
+            Article Image
+          </label>
+          <input
+            type="file"
+            onChange={(e) => {
+              setPostImg(e.target.files[0]);
+              console.log(e);
+            }}
+            required
+          />
+          <label htmlFor="news">Ariticle</label>
           <textarea
             name="news"
             id="news"
             cols="25"
             rows="10"
+            placeholder="write your Article here"
             value={content}
             onChange={(e) => {
               setContent(e.target.value);
             }}
-            placeholder="(optional)"
+            required
           ></textarea>
           <button>Submit</button>
         </form>
@@ -80,4 +113,4 @@ const ForumFeed = () => {
   );
 };
 
-export default ForumFeed;
+export default NewsFeed;

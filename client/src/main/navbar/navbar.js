@@ -76,7 +76,7 @@ const Navbar = () => {
       {open && (
         <div className="sideBar">
           <ul className="sideList">
-            <Link to="/home/">
+            <Link to="/home/feed">
               <li  onClick={handleMenuClick}>
                 <img
                   src={icons.navIcons.newsPaper.url}

@@ -5,6 +5,10 @@ import Profile from "./profile/profile";
 import Update from "./profile/upateProfile";
 import Map from "./map/map";
 import Market from "./market/market";
+import MemesFeed from "../main/feed/memesFeed";
+import ForumFeed from "../main/feed/forumFeed";
+import NewsFeed from "../main/feed/newFeed";
+
 // import Study from "./acadmics/studyGroup";
 import Kiosk from "./kiosk/kiosk";
 import Article from "./feed/article";
@@ -15,7 +19,12 @@ const Home = () => {
     <div className="container">
       <Navbar></Navbar>
       <Routes>
-        <Route exact path="/" element={<Feed />} />
+        {/* <Route exact path="/" element={<Feed />} /> */}
+        <Route path="/feed" element={<Feed />}>
+          <Route path="/feed/news" element={<NewsFeed />} />
+          <Route path="/feed/forum" element={<ForumFeed />} />
+          <Route  path="/feed/memes" element={<MemesFeed />} />
+        </Route>
         <Route exact path="/map" element={<Map />} />
         <Route exact path="/chats" element={<Chats />} />
         <Route exact path="/profile" element={<Profile />} />

@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom";
 import icons from "../../utils/icons";
 
-const NewsFeed = ({ newsArr, status, approval }) => {
+const NewsMapper = ({ newsArr, status, approval }) => {
+  let storage = sessionStorage;
+  let likeLogs = JSON.parse(storage.getItem("onoLikeLogs"));
+
   return newsArr.map((object, index) => {
     if (object.approval === approval && object.isNews === true) {
       return (
         <Link to="/home/feedpost" state={{ article: object }} key={index}>
           <div className={`card ${status}`}>
             <div className="image">
-              <img src={object.postImg} alt="" />
+              <img src={object.postImg}/>
             </div>
             <div className="postinfo">
               <h2>{object.title}</h2>
@@ -20,7 +23,15 @@ const NewsFeed = ({ newsArr, status, approval }) => {
                 {object.views}
               </p>
               <p>
-                <img src={icons.action.liked.url} width="25px" alt="liked" />
+                <img
+                  src={
+                    likeLogs.includes(object._id)
+                      ? icons.action.liked.url
+                      : icons.action.like.url
+                  }
+                  width="25px"
+                  alt="liked"
+                />
                 {object.likes}
               </p>
               <p>
@@ -39,4 +50,4 @@ const NewsFeed = ({ newsArr, status, approval }) => {
   });
 };
 
-export default NewsFeed;
+export default NewsMapper;
