@@ -13,8 +13,21 @@ import NewsFeed from "../main/feed/newFeed";
 import Kiosk from "./kiosk/kiosk";
 import Article from "./feed/article";
 import { Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/home") {
+      navigate("/home/feed/news", { replace: true });
+    }
+  }, [location]);
+
+
+
   return (
     <div className="container">
       <Navbar></Navbar>

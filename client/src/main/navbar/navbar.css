@@ -28,11 +28,16 @@
 }
 
 .sideBar {
+  display: none;
   position: fixed;
   left: 0;
   top: 25%;
   z-index: 2;
   background-color: var(--main-bg);
+}
+
+.showSideBar {
+  display: block;
 }
 
 .sideList {
@@ -99,12 +104,16 @@
   margin-top: 0px;
 }
 
+.activeTab {
+  background-color: #5c01c1 !important;
+}
+
 
 @media screen and (max-width: 325px) {
   .sideBar {
     position: fixed;
     left: 0;
-    top: 15%;
+    top: 20%;
   }
   
 

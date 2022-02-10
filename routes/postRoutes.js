@@ -12,7 +12,7 @@ postRoutes.post("/api/article", async (req, res) => {
     .then((result) => {
       res.send(result);
     })
-    .catch((err) => res.send(err));
+    .catch((err) => res.status(404).send(err));
 });
 
 postRoutes.get("/api/articles", async (req, res) => {

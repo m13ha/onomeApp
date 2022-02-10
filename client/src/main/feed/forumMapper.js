@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import icons from "../../utils/icons";
 import moment from "moment";
 
-const ForumMapper = ({ newsArr, status, approval }) => {
+const ForumMapper = ({ postArr, status, approval }) => {
   let storage = sessionStorage;
   let likeLogs = JSON.parse(storage.getItem("onoLikeLogs"));
 
-  return newsArr.map((object, index) => {
+  return postArr.map((object, index) => {
     moment(object.createdAt).fromNow();
 
     if (object.approval === approval && object.isForum === true) {

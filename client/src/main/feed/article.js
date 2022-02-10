@@ -46,9 +46,14 @@ const Article = ({ loaction }) => {
         if (success) {
           setPost(success);
           viewLogs.push(post._id);
-          postLogs.push(success);
-          storage.setItem("onoPostLogs", JSON.stringify(postLogs));
           storage.setItem("onoViewLogs", JSON.stringify(viewLogs));
+
+          postLogs.forEach((object, index) => {
+            if (object._id === success._id) {
+              postLogs[index] = success;
+            }
+          });
+
         }
       }
     })();
@@ -127,7 +132,6 @@ const Article = ({ loaction }) => {
     let success = await postComment(data, "comment", setPost);
     if (success) {
       setPost(success);
-      //navigate("/todos", { state: { success } })
       setComment("");
 
       postLogs.forEach((object, index) => {

@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 import icons from "../../utils/icons";
 
-const NewsMapper = ({ newsArr, status, approval }) => {
+const NewsMapper = ({ postArr, status, approval }) => {
   let storage = sessionStorage;
   let likeLogs = JSON.parse(storage.getItem("onoLikeLogs"));
 
-  return newsArr.map((object, index) => {
+  return postArr.map((object, index) => {
     if (object.approval === approval && object.isNews === true) {
       return (
         <Link to="/home/feedpost" state={{ article: object }} key={index}>
           <div className={`card ${status}`}>
             <div className="image">
-              <img src={object.postImg}/>
+              <img src={object.postImg} alt={object.description}/>
             </div>
             <div className="postinfo">
               <h2>{object.title}</h2>
