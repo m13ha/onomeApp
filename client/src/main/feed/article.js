@@ -179,11 +179,20 @@ const Article = ({ loaction }) => {
   };
 
   const deletePost = async () => {
+    let postLogs = JSON.parse(storage.getItem("onoPostLogs"));
     let success = await postDeny(post._id);
+
+    postLogs.forEach((object, index) => {
+      if (object._id === post._id) {
+        postLogs.splice(index)
+      }
+    });
 
     if (success) {
       navigate(-1);
     }
+
+    storage.setItem("onoPostLogs", JSON.stringify(postLogs));
   };
 
   const openModal = () => {
@@ -211,7 +220,7 @@ const Article = ({ loaction }) => {
       </button>
       <div className="blogDetails">
         {post.isNews && (
-          <img className="blogDetailsimg" src={post.postImg} alt="post" />
+          <img className="blogDetailsimg" src={post.postImg.fullImage} alt="post" />
         )}
         {post.isForum && <h3 className="articleP">{post.title}</h3>}
         {post.isNews && <h1>{post.title}</h1>}

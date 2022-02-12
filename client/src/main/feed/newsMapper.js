@@ -11,7 +11,7 @@ const NewsMapper = ({ postArr, status, approval }) => {
         <Link to="/home/feedpost" state={{ article: object }} key={index}>
           <div className={`card ${status}`}>
             <div className="image">
-              <img src={object.postImg} alt={object.description}/>
+              <img src={object.postImg.thumb} alt={object.description}/>
             </div>
             <div className="postinfo">
               <h2>{object.title}</h2>

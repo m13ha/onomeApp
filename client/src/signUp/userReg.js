@@ -21,7 +21,6 @@ const UserReg = () => {
         navigate("/confirmation", { replace: true });
       }
     }
-    console.log(currentUser);
   });
 
   const resetForm = (e) => {

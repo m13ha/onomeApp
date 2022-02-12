@@ -89,7 +89,7 @@ const ArticleSchema = new Schema(
     },
 
     postImg: {
-      type: String,
+      type: Object,
     },
 
     content: {

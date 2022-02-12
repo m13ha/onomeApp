@@ -68,8 +68,6 @@ const Navbar = () => {
   const handleMenuClick = () => {
     let sideNav = document.getElementById("sideNav");
 
-    console.log(sideNav);
-
     if (sideNav.className.includes("showSideBar")) {
       sideNav.className = "sideBar";
       setClose(true);

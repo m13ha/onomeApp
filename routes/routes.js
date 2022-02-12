@@ -73,10 +73,10 @@ routes.post("/api/login", async (req, res) => {
   let pswd = body.pswd;
 
   User.findOne({ userName: username })
-    .then((user) => {
+    .then(async (user) => {
       if (user) {
-        let validity = validate(pswd, user.pswd);
-        if (validity) {
+        let validity = await validate(pswd, user.pswd);
+        if (validity === true) {
           const token = createToken(user._id);
           res.cookie('ono', token, {httpOnly: true, maxAge: 1000 * 3 * 24 * 60 * 60})
           res.send({
@@ -93,10 +93,10 @@ routes.post("/api/login", async (req, res) => {
             points: user.points,
           });
         } else {
-          res.status(501).send(`Incorrect password`);
+          res.status(406).send(`Incorrect password`);
         }
       } else {
-        res.status(502).send(`That username does not exist`);
+        res.status(406).send(`That username does not exist`);
       }
     })
     .catch((err) => {

@@ -20,10 +20,12 @@ const loginUser = async (data, setErrorMsg) => {
           points: res.data.points,
         })
       );
-      console.log(res);
       return true;
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err.response)  
+      setErrorMsg(err.response.data)
+    });
 
   return success;
 };

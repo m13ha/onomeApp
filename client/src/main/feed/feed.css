@@ -206,6 +206,7 @@
   .feedContent {
     font-size: 14px;
     padding: 10px;
+    padding-bottom: 6rem;
   }
 
   .feedContent h1 {

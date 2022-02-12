@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../utils/user";
-import { useNavigate } from "react-router-dom";
 import postArticle from "../../controller.js/postArticle";
 import getArticles from "../../controller.js/getArticles";
 import ForumMapper from "./forumMapper";
@@ -8,7 +7,6 @@ import icons from "../../utils/icons";
 
 const ForumFeed = () => {
   const storage = sessionStorage;
-  const navigate = useNavigate();
   const [postArr, setPostsArr] = useState([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -39,9 +37,10 @@ const ForumFeed = () => {
     if (success) {
       getArticles(setPostsArr);
       loadForumForm();
+      setTitle("");
+      setContent("");
     }
 
-    console.log(success);
   };
 
   const loadForumForm = () => {

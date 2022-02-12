@@ -1,13 +1,11 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../utils/user";
-import { useNavigate } from "react-router-dom";
 import postArticle from "../../controller.js/postArticle";
 import getArticles from "../../controller.js/getArticles";
 import NewsMapper from "./newsMapper";
 import icons from "../../utils/icons";
 
 const NewsFeed = () => {
-  const navigate = useNavigate();
   const storage = sessionStorage;
   const [postArr, setPostsArr] = useState([]);
   const [title, setTitle] = useState("");
@@ -43,9 +41,11 @@ const NewsFeed = () => {
     if (success) {
       getArticles(setPostsArr);
       loadNewsForm();
+      setTitle("");
+      setDesc("")
+      setContent("");
     }
 
-    console.log(success);
   };
 
   const loadNewsForm = () => {
