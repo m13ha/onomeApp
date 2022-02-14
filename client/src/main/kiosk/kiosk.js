@@ -36,7 +36,7 @@ const Kiosk = () => {
     <div className="kioskTab">
       <div className="kioskNav">
         <ul>
-          <li onClick={loadProdPage}>My products And Services</li>
+          <li onClick={loadProdPage}>products And Services</li>
           <li onClick={loadUploadPage}>Upload</li>
         </ul>
       </div>

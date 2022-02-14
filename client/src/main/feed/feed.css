@@ -19,6 +19,9 @@
   background-color: var(--main-bg);
   position: sticky;
   top: 3.5rem;
+  box-shadow: -2px 0px 13px -3px rgba(0,0,0,0.75);
+  -webkit-box-shadow: -2px 0px 13px -3px rgba(0,0,0,0.75);
+  -moz-box-shadow: -2px 0px 13px -3px rgba(0,0,0,0.75);
 }
 
 .feedNavbar {
@@ -41,6 +44,10 @@
 
 .feedLink:hover {
   background-color: var(--main-hov);
+}
+
+.feedLink:active{
+  color: #fff;
 }
 
 .feedContent {
@@ -106,12 +113,6 @@
   margin-bottom: 15px;
 }
 
-.card:hover {
-  border: 0px;
-  box-shadow: -2px 0px 13px -3px rgba(0,0,0,0.75);
-  -webkit-box-shadow: -2px 0px 13px -3px rgba(0,0,0,0.75);
-  -moz-box-shadow: -2px 0px 13px -3px rgba(0,0,0,0.75);
-}
 
 .forumCard {
   width: 100%;
@@ -173,15 +174,6 @@
 .postData p:active {
   background-color: var(--main-hov);
 }
-
-.forumCard:hover {
-  border: 0px;
-  box-shadow: -2px 0px 13px -3px rgba(0,0,0,0.75);
-  -webkit-box-shadow: -2px 0px 13px -3px rgba(0,0,0,0.75);
-  -moz-box-shadow: -2px 0px 13px -3px rgba(0,0,0,0.75);
-}
-
-
 
 .meme {
   min-width: 300px;

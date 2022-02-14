@@ -76,6 +76,12 @@
   font-size: 14px;
   display: flex;
   word-wrap: break-word;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.userName img {
+  margin-right: 5px;;
 }
 
 .p-left {

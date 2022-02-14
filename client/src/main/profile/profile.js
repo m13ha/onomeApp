@@ -1,7 +1,14 @@
 import icons from "../../utils/icons";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../utils/user";
+import { useContext } from "react";
+import moment from "moment";
 
 const Profile = () => {
+  const { user } = useContext(UserContext);
+
+
+
   return (
     <div className="profileContainer">
       <div className="userDetails">
@@ -10,35 +17,29 @@ const Profile = () => {
             <img src={icons.navIcons.userAvatar.url} alt="profile" />
           </div>
           <div className="userinfo">
-            <h1>AngelMikeal </h1>
+            <h1>{user.userName}</h1>
             <h2>
-              Enterpreneurship <span>300</span>
+              {user.dept} <span>{user.yearOfAdm}</span>
             </h2>
           </div>
           <div className="butArea">
-            <button><img src={icons.action.commentWhite.url} width="35px" alt="send message" /></button>
-            <button><img src={icons.action.sendCoins.url} width="35px" alt="send message" />Buy</button>
-            <button><img src={icons.action.sendCoins.url} width="35px" alt="send message" />Send</button>
+            <button><img src={icons.navIcons.emailIcon.url} width="30px" alt="send message" />Chat</button>
+            <button><img src={icons.action.sendCoins.url} width="30px" alt="send coins" />Send</button>
+            <button>Make Mod</button>
           </div>
         </div>
         <div className="subDetails">
           <p>
-            Name <span>Nwaokocha Michael</span>
+            Name <span>{`${user.firstName} ${user.lastName}`}</span>
           </p>
           <p>
             Faculty <span>Management Science</span>
           </p>
           <p>
-            Gender <span>Male</span>
+            Gender <span>{user.gender}</span>
           </p>
           <p>
-            Age <span>23</span>
-          </p>
-          <p>
-            Points <span className="creds">10,000</span>
-          </p>
-          <p>
-            Level <span>300</span>
+            Age <span>{moment(user.dob).fromNow().split(" ")[0]}</span>
           </p>
           <Link to="/home/updateprf">
             <button>Change</button>

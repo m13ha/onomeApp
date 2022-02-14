@@ -5,7 +5,7 @@ import likeIcon from "../assets/images/like.png";
 import likedIcon from "../assets/images/love.png";
 import viewsIcon from "../assets/images/view.png";
 import checkIcon from "../assets/images/check-mark.png";
-import sendCoins from "../assets/images/cash-back.png";
+import sendCoins from "../assets/images/coins.png";
 
 
 // ACCOLADES ICONS
@@ -32,6 +32,8 @@ import closeMenu from "../assets/images/home/navbar/close.png";
 import newsPaper from "../assets/images/home/navbar/newspaper-folded.png";
 import setProfile from "../assets/images/home/navbar/settings.png";
 import logout from "../assets/images/home/navbar/logout.png";
+import buyCoins from "../assets/images/home/navbar/coins.png";
+import datingIcon from "../assets/images/home/navbar/relationship.png";
 
 
 const icons = {
@@ -179,6 +181,12 @@ const icons = {
         logout: {
             url: logout,
         },
+        buyCoins: {
+            url: buyCoins,
+        },
+        datingIcon: {
+            url: datingIcon,
+        }
     }
 }
 

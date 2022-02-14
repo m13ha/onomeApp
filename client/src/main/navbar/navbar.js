@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { UserContext } from "../../utils/user";
 import icons from "../../utils/icons";
 import logOutUser from "../../controller.js/logout";
+import numeral from "numeral";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -101,7 +102,14 @@ const Navbar = () => {
             <li className="userName">{user.userName}</li>
           </section>
           <section className="p-right">
-            <li className="userName">Credits: {user.points}</li>
+            <li className="userName">
+            <img
+                src={icons.navIcons.buyCoins.url}
+                alt="user"
+                width="25px"
+                height="25px"
+              />
+               <p>{numeral(user.points).format('0.0a')}</p></li>
             <li className="hamBtn">
               {close && (
                 <img
@@ -148,6 +156,14 @@ const Navbar = () => {
               />
             </li>
           </Link>
+          <li onClick={handleMenuClick}>
+            <img
+              src={icons.navIcons.datingIcon.url}
+              alt="drop menu"
+              width="30px"
+              height="30px"
+            />
+          </li>
           <Link to="/home/market">
             <li className="sideLink" onClick={handleMenuClick}>
               <img
@@ -158,6 +174,14 @@ const Navbar = () => {
               />
             </li>
           </Link>
+          <li onClick={handleMenuClick}>
+            <img
+              src={icons.navIcons.buyCoins.url}
+              alt="drop menu"
+              width="30px"
+              height="30px"
+            />
+          </li>
           <Link to="/home/kiosk">
             <li className="sideLink" onClick={handleMenuClick}>
               <img

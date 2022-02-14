@@ -91,6 +91,10 @@ routes.post("/api/login", async (req, res) => {
             isVerified: user.isVerfied,
             email: user.email,
             points: user.points,
+            yearOfAdm: user.yearOfAdm,
+            dept: user.department,
+            dob: user.dob,
+            gender: user.gender
           });
         } else {
           res.status(406).send(`Incorrect password`);

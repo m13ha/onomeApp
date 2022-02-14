@@ -3,7 +3,7 @@ const Update = () => {
         <div className="updateContainer">
             <div className="row form-title">
                 <div className="field-mobile">
-                    <h3>Changing Your Faculty Or Department Will Unverify Your Account And It Can Only Be done Once</h3>
+                    <h3>Changing Your Information Will Unverify Your Account And It Can Only Be done Once</h3>
                 </div>
             </div>
             <form className="form">
