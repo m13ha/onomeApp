@@ -114,7 +114,6 @@ const NewsFeed = () => {
               type="file"
               onChange={(e) => {
                 setPostImg(e.target.files[0]);
-                console.log(e);
               }}
               required
             />

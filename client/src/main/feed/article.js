@@ -53,7 +53,6 @@ const Article = ({ loaction }) => {
               postLogs[index] = success;
             }
           });
-
         }
       }
     })();
@@ -113,10 +112,21 @@ const Article = ({ loaction }) => {
   };
 
   const approvePost = async () => {
+    let postLogs = JSON.parse(storage.getItem("onoPostLogs"));
     let success = await postApprove(post._id);
+
     if (success) {
-      navigate(-1);
+
+      postLogs.forEach((object, index) => {
+        if (object._id === success._id) {
+          postLogs[index] = success;
+        }
+      });
+
+      storage.setItem("onoPostLogs", JSON.stringify(postLogs));
     }
+
+    navigate(-1);
   };
 
   const handleComment = async (e) => {
@@ -182,17 +192,18 @@ const Article = ({ loaction }) => {
     let postLogs = JSON.parse(storage.getItem("onoPostLogs"));
     let success = await postDeny(post._id);
 
-    postLogs.forEach((object, index) => {
-      if (object._id === post._id) {
-        postLogs.splice(index)
-      }
-    });
-
     if (success) {
+
+      postLogs.forEach((object, index) => {
+        if (object._id === post._id) {
+          postLogs.splice(index);
+        }
+      });
+
+      storage.setItem("onoPostLogs", JSON.stringify(postLogs));
+
       navigate(-1);
     }
-
-    storage.setItem("onoPostLogs", JSON.stringify(postLogs));
   };
 
   const openModal = () => {
@@ -220,7 +231,11 @@ const Article = ({ loaction }) => {
       </button>
       <div className="blogDetails">
         {post.isNews && (
-          <img className="blogDetailsimg" src={post.postImg.fullImage} alt="post" />
+          <img
+            className="blogDetailsimg"
+            src={post.postImg.fullImage}
+            alt="post"
+          />
         )}
         {post.isForum && <h3 className="articleP">{post.title}</h3>}
         {post.isNews && <h1>{post.title}</h1>}

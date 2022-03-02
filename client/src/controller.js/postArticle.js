@@ -39,6 +39,7 @@ const postArticle = async (data, setErrorMsg, type, img) => {
       if (err.response.status > 500) {
         setErrorMsg(err.response.data);
       }
+      console.log(err.response);
     });
 
   return success;

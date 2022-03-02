@@ -34,6 +34,7 @@ import setProfile from "../assets/images/home/navbar/settings.png";
 import logout from "../assets/images/home/navbar/logout.png";
 import buyCoins from "../assets/images/home/navbar/coins.png";
 import datingIcon from "../assets/images/home/navbar/relationship.png";
+import noticeIcon from "../assets/images/home/navbar/notification.png";
 
 
 const icons = {
@@ -186,6 +187,9 @@ const icons = {
         },
         datingIcon: {
             url: datingIcon,
+        },
+        noticeIcon: {
+            url: noticeIcon,
         }
     }
 }

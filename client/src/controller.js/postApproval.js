@@ -2,13 +2,13 @@ import axios from "axios";
 
 const postApprove = async (id) => {
   let success = await axios
-    .patch("/api/article", {
+    .patch("/api/article/approve", {
       params: {
         id: id,
       },
     })
     .then((res) => {
-      return true;
+      return res.data;
     })
     .catch((err) => {
       if (err.response.status > 500) {

@@ -192,6 +192,14 @@ const Navbar = () => {
               />
             </li>
           </Link>
+          <li className="sideLink" onClick={handleMenuClick}>
+              <img
+                src={icons.navIcons.noticeIcon.url}
+                alt="drop menu"
+                width="30px"
+                height="30px"
+              />
+            </li>
           <Link to="/home/profile">
             <li className="sideLink" onClick={handleMenuClick}>
               <img

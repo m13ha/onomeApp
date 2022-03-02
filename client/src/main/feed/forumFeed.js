@@ -13,6 +13,9 @@ const ForumFeed = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const { user } = useContext(UserContext);
   const [formStatus, setFormStatus] = useState(false);
+  const [criteria, setCriteria] = useState("popular");
+  const [timeValue, setTimeValue] = useState("24");
+  const [category, setCategory] = useState("All");
 
   useEffect(() => {
     let posts = JSON.parse(storage.getItem("onoPostLogs"));
@@ -30,6 +33,7 @@ const ForumFeed = () => {
       title,
       content,
       author: user.userName,
+      category,
     };
 
     let success = await postArticle(data, setErrorMsg, "forum");
@@ -40,7 +44,6 @@ const ForumFeed = () => {
       setTitle("");
       setContent("");
     }
-
   };
 
   const loadForumForm = () => {
@@ -55,15 +58,70 @@ const ForumFeed = () => {
     <div className="feed">
       {!formStatus && (
         <div className="feedContent">
-          
           <button className="createSessBut" onClick={loadForumForm}>
             +
           </button>
+          <div className="sortingArea">
+            <select
+              name="criteria"
+              value={criteria}
+              onChange={(e) => {
+                setCriteria(e.target.value);
+              }}
+            >
+              <option value="popular">Most popular</option>
+              <option value="liked">Most Liked</option>
+              <option value="viewed">Most viewed</option>
+            </select>
+            <select
+              name="Time"
+              value={timeValue}
+              onChange={(e) => {
+                setTimeValue(e.target.value);
+              }}
+            >
+              <option value="24">Today</option>
+              <option value="168">This Week</option>
+              <option value="720">This Month</option>
+            </select>
+            <select
+              name="category"
+              value={category}
+              onChange={(e) => {
+                setCategory(e.target.value);
+              }}
+            >
+              <option defaultValue value="All">
+                All
+              </option>
+              <option value="Anime">Anime</option>
+              <option value="Comedy">Comedy</option>
+              <option value="Culture">Culture</option>
+              <option value="Fashion">Fashion</option>
+              <option value="Health And Fitness">Health &amp; Fitness</option>
+              <option value="Politics">Politics</option>
+              <option value="Music">Music</option>
+              <option value="Movies And Tvshows">Movies &amp; Tvshows</option>
+              <option value="Science">Science</option>
+              <option value="Sports">Sports</option>
+              <option value="Sex">Sex</option>
+              <option value="Feelings">Feelings</option>
+              <option value="Finance">Finance</option>
+              <option value="Gaming">Gaming</option>
+              <option value="Food">Food</option>
+              <option value="Technology">Technology</option>
+            </select>
+          </div>
+          <div className="currentForum">
+            <h1>{category}</h1>
+          </div>
           {user.isMod && (
             <ForumMapper
               postArr={postArr}
               status={"pending"}
               approval={false}
+              category={category}
+              timeValue={parseInt(timeValue)}
             />
           )}
           {
@@ -71,7 +129,8 @@ const ForumFeed = () => {
               postArr={postArr}
               status={"approved"}
               approval={true}
-            />
+              category={category}
+              timeValue={parseInt(timeValue)}            />
           }
         </div>
       )}
@@ -97,6 +156,29 @@ const ForumFeed = () => {
               required
               maxLength="100"
             />
+            <label htmlFor="category" id="category">
+              Category
+            </label>
+            <select
+              name="category"
+              value={category}
+              onChange={(e) => {
+                setCategory(e.target.value);
+              }}
+            >
+              <option value="Anime">Anime</option>
+              <option value="Comedy">Comedy</option>
+              <option value="Culture">Culture</option>
+              <option value="Fashion">Fashion</option>
+              <option value="Health And Fitness">Health &amp; Fitness</option>
+              <option value="Politics">Politics</option>
+              <option value="Music">Music</option>
+              <option value="Movies And Tvshows">Movies &amp; Tvshows</option>
+              <option value="Science">Science</option>
+              <option value="Sports">Sport</option>
+              <option value="Sex">Sex</option>
+              <option value="Other">Others</option>
+            </select>
             <label htmlFor="news">Additional Information</label>
             <textarea
               name="news"

@@ -101,6 +101,10 @@ const ArticleSchema = new Schema(
       required: true,
     },
 
+    category: {
+      type: String,
+    },
+
     Comments: [CommentSchema],
   },
   { timestamps: true }

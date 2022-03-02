@@ -14,7 +14,6 @@
   background-color: var(--main-bg);
   min-width: 320px;
   color: #fff;
-  padding: 0px 30px;
 }
 
 .navList {
@@ -31,7 +30,7 @@
   display: none;
   position: fixed;
   left: 0;
-  top: 25%;
+  top: 20%;
   z-index: 2;
   background-color: var(--main-bg);
 }
@@ -87,14 +86,14 @@
 .p-left {
   height: 100%;
   display: flex;
-  width: 85%;
+  width: 80%;
 }
 
 .p-right {
   height: 100%;
-  width: 15%;
+  width: 20%;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
 }
 
 .hamBtn {
@@ -119,7 +118,7 @@
   .sideBar {
     position: fixed;
     left: 0;
-    top: 20%;
+    top: 17%;
   }
   
 
