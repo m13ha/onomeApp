@@ -13,19 +13,54 @@ const ForumFeed = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const { user } = useContext(UserContext);
   const [formStatus, setFormStatus] = useState(false);
-  const [criteria, setCriteria] = useState("popular");
-  const [timeValue, setTimeValue] = useState("24");
+  const [criteria, setCriteria] = useState("");
+  const [timeValue, setTimeValue] = useState("720");
   const [category, setCategory] = useState("All");
+  const [formCategory, setFormCategory] = useState();
+  const [forums, setForums] = useState([]);
 
   useEffect(() => {
     let posts = JSON.parse(storage.getItem("onoPostLogs"));
+    setCriteria("popular");
 
     if (posts.length > 0) {
       setPostsArr(posts);
+      setForums(postArr);
     } else {
       getArticles(setPostsArr);
     }
+
   }, []);
+
+  useEffect(() => {
+    switch (criteria) {
+      case "popular":
+        postArr.sort((a, b) => {
+          return ((a.likes + a.views + a.count) > (b.likes + b.views + b.count)) ? -1 : 1;
+        });
+        setForums([]);
+        setForums(postArr);
+        break;
+      case "liked":
+        postArr.sort((a, b) => {
+          return (a.likes > b.likes) ? -1 : 1;
+        });
+        setForums([]);
+        setForums(postArr);
+        break;
+      case "viewed":
+        postArr.sort((a, b) => {
+          return (a.views > b.views) ? -1 : 1;
+        });
+        setForums([]);
+        setForums(postArr);
+        break;
+  
+      default:
+        return setForums(postArr);
+    }
+    console.log(criteria);
+  }, [criteria])
 
   const handleForumSubmit = async (e) => {
     e.preventDefault();
@@ -33,7 +68,7 @@ const ForumFeed = () => {
       title,
       content,
       author: user.userName,
-      category,
+      formCategory,
     };
 
     let success = await postArticle(data, setErrorMsg, "forum");
@@ -67,6 +102,7 @@ const ForumFeed = () => {
               value={criteria}
               onChange={(e) => {
                 setCriteria(e.target.value);
+                setForums([]);
               }}
             >
               <option value="popular">Most popular</option>
@@ -117,7 +153,7 @@ const ForumFeed = () => {
           </div>
           {user.isMod && (
             <ForumMapper
-              postArr={postArr}
+              postArr={forums}
               status={"pending"}
               approval={false}
               category={category}
@@ -126,11 +162,12 @@ const ForumFeed = () => {
           )}
           {
             <ForumMapper
-              postArr={postArr}
+              postArr={forums}
               status={"approved"}
               approval={true}
               category={category}
-              timeValue={parseInt(timeValue)}            />
+              timeValue={parseInt(timeValue)}
+            />
           }
         </div>
       )}
@@ -161,11 +198,12 @@ const ForumFeed = () => {
             </label>
             <select
               name="category"
-              value={category}
+              value={formCategory}
               onChange={(e) => {
-                setCategory(e.target.value);
+                setFormCategory(e.target.value);
               }}
             >
+              <option>Select A Category</option>
               <option value="Anime">Anime</option>
               <option value="Comedy">Comedy</option>
               <option value="Culture">Culture</option>

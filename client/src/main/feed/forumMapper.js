@@ -2,20 +2,31 @@ import { Link } from "react-router-dom";
 import icons from "../../utils/icons";
 import moment from "moment";
 
-const ForumMapper = ({ postArr, status, approval, category, timeValue }) => {
+const ForumMapper = ({
+  postArr,
+  status,
+  approval,
+  category,
+  timeValue,
+}) => {
   let storage = sessionStorage;
   let likeLogs = JSON.parse(storage.getItem("onoLikeLogs"));
 
-  return postArr.map((object, index) => {
-  let now = moment(new Date)
-  let duration = moment.duration(now.diff(object.createdAt));
-  let hours = duration.asHours();
-  console.log(hours, timeValue)
 
-    if (object.approval === approval && object.isForum === true && hours <= timeValue ) {
+
+  return postArr.map((object, index) => {
+    let now = moment(new Date());
+    let duration = moment.duration(now.diff(object.createdAt));
+    let hours = duration.asHours();
+
+    if (
+      object.approval === approval &&
+      object.isForum === true &&
+      hours <= timeValue
+    ) {
       if (category === "All") {
         return (
-          <Link to="/home/feedpost" state={{ article: object }} key={index}>
+          <Link to={`/home/post/${object._id}`} key={index}>
             <div className={`forumCard ${status}`}>
               <div className="op-info">
                 <h4>{object.author}</h4>

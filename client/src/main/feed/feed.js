@@ -8,7 +8,7 @@ const Feed = () => {
 
   useEffect(() => {
     if (location.pathname === "/home/feed") {
-      navigate("/home/feed/news", { replace: true });
+      navigate("/home/news", { replace: true });
     }
   }, [location]);
 

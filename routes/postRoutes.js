@@ -24,6 +24,16 @@ postRoutes.get("/api/articles", async (req, res) => {
     .catch((err) => res.send(err));
 });
 
+postRoutes.get("/api/post", async (req, res) => {
+  let id = req.query.id;
+
+  Article.findOne({ _id: id })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => res.send(err));
+});
+
 postRoutes.patch("/api/article/approve", async (req, res) => {
   let id = req.body.params.id;
 

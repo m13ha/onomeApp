@@ -131,8 +131,8 @@ const Navbar = () => {
               <img
                 src={icons.navIcons.newsPaper.url}
                 alt="drop menu"
-                width="30px"
-                height="30px"
+                width="25px"
+                height="25px"
               />
             </li>
           </Link>
@@ -141,8 +141,8 @@ const Navbar = () => {
               <img
                 src={icons.navIcons.emailIcon.url}
                 alt="drop menu"
-                width="30px"
-                height="30px"
+                width="25px"
+                height="25px"
               />
             </li>
           </Link>
@@ -151,8 +151,8 @@ const Navbar = () => {
               <img
                 src={icons.navIcons.pinIcon.url}
                 alt="drop menu"
-                width="30px"
-                height="30px"
+                width="25px"
+                height="25px"
               />
             </li>
           </Link>
@@ -160,8 +160,8 @@ const Navbar = () => {
             <img
               src={icons.navIcons.datingIcon.url}
               alt="drop menu"
-              width="30px"
-              height="30px"
+              width="25px"
+              height="25px"
             />
           </li>
           <Link to="/home/market">
@@ -169,8 +169,8 @@ const Navbar = () => {
               <img
                 src={icons.navIcons.cartIcon.url}
                 alt="drop menu"
-                width="30px"
-                height="30px"
+                width="25px"
+                height="25px"
               />
             </li>
           </Link>
@@ -178,8 +178,8 @@ const Navbar = () => {
             <img
               src={icons.navIcons.buyCoins.url}
               alt="drop menu"
-              width="30px"
-              height="30px"
+              width="25px"
+              height="25px"
             />
           </li>
           <Link to="/home/kiosk">
@@ -187,8 +187,8 @@ const Navbar = () => {
               <img
                 src={icons.navIcons.shopIcon.url}
                 alt="drop menu"
-                width="30px"
-                height="30px"
+                width="25px"
+                height="25px"
               />
             </li>
           </Link>
@@ -196,8 +196,8 @@ const Navbar = () => {
               <img
                 src={icons.navIcons.noticeIcon.url}
                 alt="drop menu"
-                width="30px"
-                height="30px"
+                width="25px"
+                height="25px"
               />
             </li>
           <Link to="/home/profile">
@@ -205,8 +205,8 @@ const Navbar = () => {
               <img
                 src={icons.navIcons.setProfile.url}
                 alt="drop menu"
-                width="30px"
-                height="30px"
+                width="25px"
+                height="25px"
               />
             </li>
           </Link>
@@ -214,16 +214,16 @@ const Navbar = () => {
             <img
               src={icons.navIcons.logout.url}
               alt="drop menu"
-              width="30px"
-              height="30px"
+              width="25px"
+              height="25px"
             />
           </li>
           <li onClick={handleMenuClick}>
             <img
               src={icons.navIcons.closeMenu.url}
               alt="drop menu"
-              width="30px"
-              height="30px"
+              width="25px"
+              height="25px"
             />
           </li>
         </ul>

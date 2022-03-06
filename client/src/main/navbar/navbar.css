@@ -30,7 +30,7 @@
   display: none;
   position: fixed;
   left: 0;
-  top: 20%;
+  top: 17%;
   z-index: 2;
   background-color: var(--main-bg);
 }
@@ -41,7 +41,7 @@
 
 .sideList {
   display: flex;
-  width: 55px;
+  width: 50px;
   flex-direction: column;
   list-style: none;
   background-color: var(--main-bg);
@@ -52,7 +52,7 @@
   margin: auto;
   border: 1px solid #fff;
   width: 100%;
-  height: 50px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;

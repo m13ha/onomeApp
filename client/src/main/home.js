@@ -36,7 +36,7 @@ const Home = () => {
         <Route path="/feed" element={<Feed />}>
           <Route path="/feed/news" element={<NewsFeed />} />
           <Route path="/feed/forum" element={<ForumFeed />} />
-          <Route  path="/feed/memes" element={<MemesFeed />} />
+          <Route  path="/feed/entertainment" element={<MemesFeed />} />
         </Route>
         <Route exact path="/map" element={<Map />} />
         <Route exact path="/chats" element={<Chats />} />
@@ -44,7 +44,7 @@ const Home = () => {
         <Route exact path="/updateprf" element={<Update />} />
         <Route exact path="/market" element={<Market />} />
         <Route exact path="/kiosk" element={<Kiosk />} />
-        <Route exact path="/feedpost" element={<Article />} />
+        <Route exact path="/post/:id" element={<Article />} />
       </Routes>
     </div>
   );

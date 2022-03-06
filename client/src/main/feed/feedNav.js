@@ -36,7 +36,7 @@ const FeedNav = () => {
         <Link className="feedLink" to="/home/feed/forum">
           <li>Forum</li>
         </Link>
-        <Link className="feedLink" to="/home/feed/memes">
+        <Link className="feedLink" to="/home/feed/entertainment">
           <li>Memes</li>
         </Link>
       </ul>

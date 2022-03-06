@@ -8,7 +8,7 @@ const NewsMapper = ({ postArr, status, approval }) => {
   return postArr.map((object, index) => {
     if (object.approval === approval && object.isNews === true) {
       return (
-        <Link to="/home/feedpost" state={{ article: object }} key={index}>
+        <Link to={`/home/post/${object._id}`}  key={index}>
           <div className={`card ${status}`}>
             <div className="image">
               <img src={object.postImg.thumb} alt={object.description}/>
