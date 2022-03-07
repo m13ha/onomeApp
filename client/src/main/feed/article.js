@@ -31,19 +31,15 @@ const Article = () => {
     (async () => {
       let data = await getPost(id);
       if (data) {
+        
         setPost(data);
-        postLogs.forEach((object, index) => {
-          if (object._id === data._id) {
-            postLogs[index] = data;
-          }
-        });
 
         (async () => {
           if (viewLogs.includes(id) === false) {
-            let success = await viewPost(post._id);
+            let success = await viewPost(id);
             if (success) {
               setPost(success);
-              viewLogs.push(post._id);
+              viewLogs.push(id);
               storage.setItem("onoViewLogs", JSON.stringify(viewLogs));
               postLogs.forEach((object, index) => {
                 if (object._id === success._id) {
@@ -55,7 +51,6 @@ const Article = () => {
             }
           }
         })();
-        storage.setItem("onoPostLogs", JSON.stringify(postLogs));
       }
     })();
 

@@ -26,7 +26,7 @@ const ForumMapper = ({
     ) {
       if (category === "All") {
         return (
-          <Link className={`forumCardLink`} to={`/home/post/${object._id}`} key={index}>
+          <Link className="cardLink" to={`/home/post/${object._id}`} key={index}>
             <div className={`forumCard ${status}`}>
               <div className="op-info">
                 <h4>{object.author}</h4>
@@ -66,7 +66,7 @@ const ForumMapper = ({
         );
       } else if (object.category === category) {
         return (
-          <Link className={`forumCardLink`} to="/home/feedpost" state={{ article: object }} key={index}>
+          <Link className={`cardLink`} to="/home/feedpost" state={{ article: object }} key={index}>
             <div className={`forumCard ${status}`}>
               <div className="op-info">
                 <h4>{object.author}</h4>
