@@ -30,7 +30,7 @@
   display: none;
   position: fixed;
   left: 0;
-  top: 17%;
+  top: 19%;
   z-index: 2;
   background-color: var(--main-bg);
 }
@@ -114,16 +114,31 @@
 }
 
 
+
 @media screen and (max-width: 325px) {
   .sideBar {
     position: fixed;
     left: 0;
-    top: 17%;
+    top: 20%;
   }
   
 
   .sideList li {
     width: 100%;
     height: 40px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .sideBar {
+    position: fixed;
+    left: 0;
+    top: 25%;
+  }
+  
+
+  .sideList li {
+    width: 100%;
+    height: 50px;
   }
 }

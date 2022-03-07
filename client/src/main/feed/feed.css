@@ -213,13 +213,11 @@
 @media screen and (max-width: 850px) {
   .feed {
     width: 100%;
-    min-width: 320px;
+
   }
 
   .feedContent {
-    font-size: 14px;
-    padding: 10px;
-    padding-bottom: 6rem;
+    width: 100%;
   }
 
   .feedContent h1 {
