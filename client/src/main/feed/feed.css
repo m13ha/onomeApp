@@ -246,7 +246,7 @@
 }
 
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 320px) {
   .forumCard {
     width: 300px;
     min-width: 280px;

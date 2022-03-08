@@ -139,17 +139,17 @@
   .sideBar {
     position: fixed;
     left: 0;
-    top: 20%;
+    top: 18%;
   }
   
 
   .sideList li {
     width: 100%;
-    height: 35px;
+    height: 40px;
   }
 
   .sideList li img {
-    width: 25px;
+    width: 30px;
   }
 }
 

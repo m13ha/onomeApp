@@ -15,7 +15,7 @@ const FeedNav = () => {
       case "/home/feed/news":
         links[0].className += " activeTab";
         break;
-      case "/home/feed/memes":
+      case "/home/feed/entertainment":
         links[2].className += " activeTab";
         break;
       case "/home/feed/forum":
