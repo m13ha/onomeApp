@@ -43,6 +43,8 @@ function App() {
     if (currentUser) {
       setUser(currentUser);
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

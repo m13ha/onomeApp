@@ -24,6 +24,8 @@ const NewsFeed = () => {
     } else {
       getArticles(setPostsArr);
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleArticleSubmit = async (e) => {

@@ -57,6 +57,8 @@ const Article = () => {
     if (likeLogs.includes(id)) {
       setLikeState(icons.action.liked.url);
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleReplyForm = (e) => {

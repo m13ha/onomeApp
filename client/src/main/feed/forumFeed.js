@@ -30,6 +30,7 @@ const ForumFeed = () => {
       getArticles(setPostsArr);
     }
 
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -60,6 +61,8 @@ const ForumFeed = () => {
         return setForums(postArr);
     }
     console.log(criteria);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [criteria])
 
   const handleForumSubmit = async (e) => {

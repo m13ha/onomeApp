@@ -24,6 +24,8 @@ const Home = () => {
     if (location.pathname === "/home") {
       navigate("/home/feed/news", { replace: true });
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
 

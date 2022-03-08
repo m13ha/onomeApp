@@ -23,6 +23,8 @@ const Navbar = () => {
     } else {
       navigate("/", { replace: true });
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -64,6 +66,8 @@ const Navbar = () => {
       default:
         break;
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   const handleMenuClick = () => {
@@ -95,21 +99,17 @@ const Navbar = () => {
               <img
                 src={icons.navIcons.userAvatar.url}
                 alt="user"
-                width="40px"
-                height="40px"
+                width="30px"
+                height="30px"
               />
             </li>
             <li className="userName">{user.userName}</li>
           </section>
           <section className="p-right">
             <li className="userName">
-            <img
-                src={icons.navIcons.buyCoins.url}
-                alt="user"
-                width="28px"
-                
-              />
-               <p>{numeral(user.points).format('0.0a')}</p></li>
+              <img src={icons.navIcons.buyCoins.url} alt="user" width="25px" />
+              <p>{numeral(user.points).format("0.0a")}</p>
+            </li>
             <li className="hamBtn">
               {close && (
                 <img
@@ -128,103 +128,48 @@ const Navbar = () => {
         <ul className="sideList">
           <Link to="/home/feed">
             <li className="sideLink" onClick={handleMenuClick}>
-              <img
-                src={icons.navIcons.newsPaper.url}
-                alt="drop menu"
-                width="28px"
-                
-              />
+              <img src={icons.navIcons.newsPaper.url} alt="drop menu" />
             </li>
           </Link>
           <Link to="/home/chats">
             <li className="sideLink" onClick={handleMenuClick}>
-              <img
-                src={icons.navIcons.emailIcon.url}
-                alt="drop menu"
-                width="28px"
-                
-              />
+              <img src={icons.navIcons.emailIcon.url} alt="drop menu" />
             </li>
           </Link>
           <Link to="/home/map">
             <li className="sideLink" onClick={handleMenuClick}>
-              <img
-                src={icons.navIcons.pinIcon.url}
-                alt="drop menu"
-                width="28px"
-                
-              />
+              <img src={icons.navIcons.pinIcon.url} alt="drop menu" />
             </li>
           </Link>
           <li onClick={handleMenuClick}>
-            <img
-              src={icons.navIcons.datingIcon.url}
-              alt="drop menu"
-              width="28px"
-              
-            />
+            <img src={icons.navIcons.datingIcon.url} alt="drop menu" />
           </li>
           <Link to="/home/market">
             <li className="sideLink" onClick={handleMenuClick}>
-              <img
-                src={icons.navIcons.cartIcon.url}
-                alt="drop menu"
-                width="28px"
-                
-              />
+              <img src={icons.navIcons.cartIcon.url} alt="drop menu" />
             </li>
           </Link>
           <li onClick={handleMenuClick}>
-            <img
-              src={icons.navIcons.buyCoins.url}
-              alt="drop menu"
-              width="28px"
-              
-            />
+            <img src={icons.navIcons.buyCoins.url} alt="drop menu" />
           </li>
           <Link to="/home/kiosk">
             <li className="sideLink" onClick={handleMenuClick}>
-              <img
-                src={icons.navIcons.shopIcon.url}
-                alt="drop menu"
-                width="28px"
-                
-              />
+              <img src={icons.navIcons.shopIcon.url} alt="drop menu" />
             </li>
           </Link>
           <li className="sideLink" onClick={handleMenuClick}>
-              <img
-                src={icons.navIcons.noticeIcon.url}
-                alt="drop menu"
-                width="28px"
-                
-              />
-            </li>
+            <img src={icons.navIcons.noticeIcon.url} alt="drop menu" />
+          </li>
           <Link to="/home/profile">
             <li className="sideLink" onClick={handleMenuClick}>
-              <img
-                src={icons.navIcons.setProfile.url}
-                alt="drop menu"
-                width="28px"
-                
-              />
+              <img src={icons.navIcons.setProfile.url} alt="drop menu" />
             </li>
           </Link>
           <li onClick={handleLogOut}>
-            <img
-              src={icons.navIcons.logout.url}
-              alt="drop menu"
-              width="28px"
-              
-            />
+            <img src={icons.navIcons.logout.url} alt="drop menu" />
           </li>
           <li onClick={handleMenuClick}>
-            <img
-              src={icons.navIcons.closeMenu.url}
-              alt="drop menu"
-              width="28px"
-              
-            />
+            <img src={icons.navIcons.closeMenu.url} alt="drop menu" />
           </li>
         </ul>
       </div>
