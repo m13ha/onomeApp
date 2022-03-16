@@ -71,7 +71,7 @@ const ForumFeed = () => {
       title,
       content,
       author: user.userName,
-      formCategory,
+      category: formCategory,
     };
 
     let success = await postArticle(data, setErrorMsg, "forum");
