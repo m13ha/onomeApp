@@ -6,10 +6,11 @@ import logOutUser from "../../controller.js/logout";
 import numeral from "numeral";
 
 const Navbar = () => {
+  const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const location = useLocation();
   const [close, setClose] = useState(true);
-  const { user, setUser } = useContext(UserContext);
+
 
   useEffect(() => {
     let storage = sessionStorage;
@@ -126,7 +127,7 @@ const Navbar = () => {
       </div>
       <div className="sideBar" id="sideNav">
         <ul className="sideList">
-          <Link to="/home/feed">
+          <Link to="/home/feed/news">
             <li className="sideLink" onClick={handleMenuClick}>
               <img src={icons.navIcons.newsPaper.url} alt="drop menu" />
             </li>

@@ -88,13 +88,14 @@ routes.post("/api/login", async (req, res) => {
             isCompany: user.isCompany,
             isMod: user.isMod,
             isAdmin: user.isAdmin,
-            isVerified: user.isVerfied,
+            isVerified: user.isVerified,
             email: user.email,
             points: user.points,
             yearOfAdm: user.yearOfAdm,
             dept: user.department,
             dob: user.dob,
-            gender: user.gender
+            gender: user.gender,
+            faculty: user.faculty
           });
         } else {
           res.status(406).send(`Incorrect password`);

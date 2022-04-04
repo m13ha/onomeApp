@@ -130,6 +130,8 @@ const userSchema = new Schema(
     directMsg: [userMsg],
 
     notification: [notice],
+
+    rooms: [],
   },
   { timestamps: true }
 );

@@ -1,8 +1,11 @@
 import loginUser from "../controller.js/login";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { UserContext } from "../utils/user";
+import { useContext } from "react";
 
 const Login = () => {
+  const {setUser} = useContext(UserContext);
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [pswd, setPswd] = useState("");
@@ -16,13 +19,11 @@ const Login = () => {
       pswd,
     };
 
-    let success = await loginUser(data, setErrorMsg);
+    let success = await loginUser(data, setErrorMsg, setUser);
 
     if (success) {
       navigate('/home', {replace: true});
     }
-
-    console.log(success);
   };
 
   return (
