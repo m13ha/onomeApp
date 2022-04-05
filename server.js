@@ -5,7 +5,12 @@ const postRoutes = require('./routes/postRoutes');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const app = express();
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require('socket.io');
+const { instrument } = require("@socket.io/admin-ui");
 require("dotenv").config();
+
 
 let port = process.env.PORT || 8080;
 
@@ -14,12 +19,16 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then((result) => {
-    app.listen(port, () => {
-      console.log(`Server started on ${port}`);
+  .then(() => {
+    server.listen(port, () => {
+    let port = server.address().port
+      console.log('App listening on', port)
     });
+    require("./chatServer")(Server, server, instrument);
   })
   .catch((err) => console.log(err));
+
+
 
 app.use(express.json());
 app.use(cookieParser());
@@ -31,3 +40,5 @@ app.get('/*', (req, res) => {
   res.sendFile(url);
 });
 app.use(express.urlencoded({ extended: true }));
+
+

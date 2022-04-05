@@ -4,14 +4,36 @@ import ConfirmPage from "./signUp/confirmation";
 import { UserContext } from "./utils/user";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
+import getArticles from "./controller.js/getArticles";
 
 function App() {
   let storage = sessionStorage;
-  let [user, setUser] = useState({
-    user: false,
-    email: null,
-    isVerfied: false,
+  let [user, setUser] = useState(() => {
+    let currentUser = JSON.parse(storage.getItem("onomeUser"));
+    if (currentUser) {
+      storage.setItem("onomeUser", JSON.stringify(currentUser));
+      return currentUser;
+    } else {
+      storage.setItem("onomeUser", JSON.stringify(
+        {
+          user: false,
+          email: null,
+          isVerfied: false,
+          isMod: false,
+          isCompany: false,
+        }
+      ));
+      return {
+        user: false,
+        email: null,
+        isVerfied: false,
+        isMod: false,
+        isCompany: false,
+      };
+    }
   });
+
+
   const providerValue = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   useEffect(() => {
@@ -20,30 +42,23 @@ function App() {
     let postLogs = JSON.parse(storage.getItem("onoPostLogs"));
 
     // check for the presense of view and like Logs
-    if(viewLogs){
-      storage.setItem('onoViewLogs', JSON.stringify(viewLogs));
-    }else{
-      storage.setItem('onoViewLogs', JSON.stringify([]));
+    if (viewLogs) {
+      storage.setItem("onoViewLogs", JSON.stringify(viewLogs));
+    } else {
+      storage.setItem("onoViewLogs", JSON.stringify([]));
     }
 
-    if(likeLogs){
-      storage.setItem('onoLikeLogs', JSON.stringify(likeLogs));
-    }else{
-      storage.setItem('onoLikeLogs', JSON.stringify([]));
+    if (likeLogs) {
+      storage.setItem("onoLikeLogs", JSON.stringify(likeLogs));
+    } else {
+      storage.setItem("onoLikeLogs", JSON.stringify([]));
     }
 
-    if(postLogs){
-      storage.setItem('onoPostLogs', JSON.stringify(postLogs));
-    }else{
-      storage.setItem('onoPostLogs', JSON.stringify([]));
+    if (postLogs) {
+      storage.setItem("onoPostLogs", JSON.stringify(postLogs));
+    } else {
+      storage.setItem("onoPostLogs", JSON.stringify([]));
     }
-
-    
-    let currentUser = JSON.parse(storage.getItem("onomeUser"));
-    if (currentUser) {
-      setUser(currentUser);
-    }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -1,5 +1,5 @@
 import icons from "../../utils/icons";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { UserContext } from "../../utils/user";
 import { useContext, useEffect, useState } from "react";
 import postApprove from "../../controller.js/postApproval";
@@ -9,10 +9,12 @@ import viewPost from "../../controller.js/viewPost";
 import postComment from "../../controller.js/postComment";
 import moment from "moment";
 import getPost from "../../controller.js/getPost";
+import socket from "../../controller.js/socketServer";
 
 const Article = () => {
   let storage = sessionStorage;
   const navigate = useNavigate();
+  let location = useLocation();
   const [post, setPost] = useState(false);
   let accolades = Object.entries(icons.accolades);
   const [currAccolade, setCurrAccolade] = useState();
@@ -31,7 +33,6 @@ const Article = () => {
     (async () => {
       let data = await getPost(id);
       if (data) {
-        
         setPost(data);
 
         (async () => {
@@ -51,6 +52,8 @@ const Article = () => {
             }
           }
         })();
+      } else {
+        navigate(-1);
       }
     })();
 
@@ -60,6 +63,20 @@ const Article = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    socket.on("delete post", (data) => {
+      let postsLogs = JSON.parse(storage.getItem("onoPostLogs"));
+      postsLogs.forEach((object, index) => {
+        if (object._id === data) {
+          postsLogs.splice(index, 1);
+        }
+      });
+      if (location.pathname === `/home/post/${data}`) {
+        navigate(-1);
+      }
+    });
+  }, [socket]);
 
   const handleReplyForm = (e) => {
     e.preventDefault();
@@ -122,13 +139,13 @@ const Article = () => {
       postLogs.forEach((object, index) => {
         if (object._id === success._id) {
           postLogs[index] = success;
+          return;
         }
       });
 
+      socket.emit("approve post", post._id);
       storage.setItem("onoPostLogs", JSON.stringify(postLogs));
     }
-
-    navigate(-1);
   };
 
   const handleComment = async (e) => {
@@ -197,12 +214,13 @@ const Article = () => {
     if (success) {
       postLogs.forEach((object, index) => {
         if (object._id === post._id) {
-          postLogs.splice(index);
+          postLogs.splice(index, 1);
         }
       });
 
-      storage.setItem("onoPostLogs", JSON.stringify(postLogs));
+      socket.emit("delete post", post._id);
 
+      storage.setItem("onoPostLogs", JSON.stringify(postLogs));
       navigate(-1);
     }
   };

@@ -1,16 +1,16 @@
 import axios from "axios";
 
-const getArticles = (setPostsArr) => {
+const getArticles = async () => {
   const storage = sessionStorage;
-  let data = axios
+  let data = await axios
     .get("/api/articles")
     .then((results) => {
-      setPostsArr(results.data);
       storage.setItem("onoPostLogs", JSON.stringify(results.data))
+      return results.data;
     })
     .catch((err) => console.log(err));
 
-  return data;
+    return data;
 };
 
 export default getArticles;

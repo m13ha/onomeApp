@@ -1,9 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
+import { UserContext } from "../../utils/user";
+import socket from "../../controller.js/socketServer";
 
 const Chats = () => {
   const [chatList, setChatList] = useState(true);
   const [chatRooms, setChatRooms] = useState(false);
   const [chatMsg, setChatMsg] = useState(false);
+  const {user} = useContext(UserContext)
+
+  // useEffect(() => {
+  //   socket.on("new user", (data) => {
+  //     console.log(data);
+  //   });
+
+  //   socket.on("user online", (data) => {
+  //     console.log(data);
+  //   });
+  // }, [socket]);
 
   const handleChatPick = () => {
     setChatList(false);

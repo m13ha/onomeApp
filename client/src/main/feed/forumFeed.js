@@ -1,12 +1,16 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../utils/user";
+import { useNavigate } from "react-router-dom";
 import postArticle from "../../controller.js/postArticle";
 import getArticles from "../../controller.js/getArticles";
 import ForumMapper from "./forumMapper";
 import icons from "../../utils/icons";
+import socket from "../../controller.js/socketServer";
+import { get } from "mongoose";
 
 const ForumFeed = () => {
   const storage = sessionStorage;
+  const navigate = useNavigate()
   const [postArr, setPostsArr] = useState([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -18,18 +22,22 @@ const ForumFeed = () => {
   const [category, setCategory] = useState("All");
   const [formCategory, setFormCategory] = useState();
   const [forums, setForums] = useState([]);
+ 
 
   useEffect(() => {
-    let posts = JSON.parse(storage.getItem("onoPostLogs"));
+    let localPosts = JSON.parse(storage.getItem("onoPostLogs"));
+    (async() => {
+      let data = await getArticles()
+      setPostsArr(() => {
+        if(data.length > localPosts.length){
+          return data
+        }else{
+          return localPosts
+        }
+      }
+      )})()
     setCriteria("popular");
-
-    if (posts.length > 0) {
-      setPostsArr(posts);
-      setForums(postArr);
-    } else {
-      getArticles(setPostsArr);
-    }
-
+    setForums(postArr);
       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -63,7 +71,7 @@ const ForumFeed = () => {
     console.log(criteria);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [criteria])
+  }, [criteria, postArr])
 
   const handleForumSubmit = async (e) => {
     e.preventDefault();
@@ -76,11 +84,17 @@ const ForumFeed = () => {
 
     let success = await postArticle(data, setErrorMsg, "forum");
 
-    if (success) {
-      getArticles(setPostsArr);
+    if (success.status === 200) {
+      let posts = JSON.parse(storage.getItem("onoPostLogs"));
+      posts.push(success);
+      storage.setItem("onoPostLogs", JSON.stringify(posts))
       loadForumForm();
       setTitle("");
       setContent("");
+      socket.emit("new post", success);
+      navigate(0)
+    }else {
+      console.log(success)
     }
   };
 

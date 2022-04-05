@@ -33,7 +33,7 @@ const postArticle = async (data, setErrorMsg, type, img) => {
   let success = await axios
     .post("/api/article", post)
     .then((res) => {
-      return true;
+      return res;
     })
     .catch((err) => {
       if (err.response.status > 500) {
