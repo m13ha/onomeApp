@@ -95,7 +95,8 @@ routes.post("/api/login", async (req, res) => {
             dept: user.department,
             dob: user.dob,
             gender: user.gender,
-            faculty: user.faculty
+            faculty: user.faculty,
+            notifications: user.notifications
           });
         } else {
           res.status(406).send(`Incorrect password`);

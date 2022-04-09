@@ -1,5 +1,6 @@
 const express = require("express");
 const Article = require("../model/article");
+const notifyUser = require("../controller/notifyUser");
 const postRoutes = express();
 
 postRoutes.post("/api/article", async (req, res) => {
@@ -36,12 +37,56 @@ postRoutes.get("/api/post", async (req, res) => {
 
 postRoutes.patch("/api/article/approve", async (req, res) => {
   let id = req.body.params.id;
+  let data = {
+    post_author: req.body.params.author,
+    link: req.body.params.link,
+    title: req.body.params.title,
+  };
 
   Article.findByIdAndUpdate(id, { approval: true })
-    .then((result) => {
-      res.send(result);
+    .then(async (result) => {
+      let success = await notifyUser("approved post", data);
+      if (success) {
+        res.send({
+          post: result,
+          data: {
+            link: data.link,
+            title: data.title,
+            author: data.post_author,
+            type: "approved",
+          },
+        });
+      }
     })
     .catch((err) => res.send(err));
+});
+
+postRoutes.delete("/api/article", async (req, res) => {
+  let id = req.query.id;
+  let data = {
+    post_author: req.query.author,
+    title: req.query.title,
+  };
+
+  console.log(data)
+
+  Article.findByIdAndDelete(id)
+    .then(async (result) => {
+      let success = await notifyUser("denied post", data);
+      if (success) {
+        res.send({
+          post: result,
+          data: {
+            title: data.title,
+            author: data.post_author,
+            type: "denied",
+          },
+        });
+      }
+    })
+    .catch((err) => {
+      res.send(err);
+    });
 });
 
 postRoutes.patch("/api/article/like", async (req, res) => {
@@ -104,18 +149,6 @@ postRoutes.post("/api/article/reply", async (req, res) => {
       }
     });
   }
-});
-
-postRoutes.delete("/api/article", async (req, res) => {
-  let id = req.query.id;
-
-  Article.findByIdAndDelete(id)
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      res.send(err);
-    });
 });
 
 module.exports = postRoutes;
