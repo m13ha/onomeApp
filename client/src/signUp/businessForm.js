@@ -1,5 +1,5 @@
 // import { u } from "react-router-dom";
-import createUser from "../controller.js/userCreate";
+import createUser from "../controller/userCreate";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState} from "react";
 import { UserContext } from "../utils/user";

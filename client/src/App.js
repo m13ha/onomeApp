@@ -4,7 +4,6 @@ import ConfirmPage from "./signUp/confirmation";
 import { UserContext } from "./utils/user";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
-import getArticles from "./controller.js/getArticles";
 
 function App() {
   let storage = sessionStorage;
@@ -16,19 +15,21 @@ function App() {
     } else {
       storage.setItem("onomeUser", JSON.stringify(
         {
-          user: false,
+          user: null,
           email: null,
           isVerfied: false,
           isMod: false,
           isCompany: false,
+          notifications: false,
         }
       ));
       return {
-        user: false,
+        user: null,
         email: null,
         isVerfied: false,
         isMod: false,
         isCompany: false,
+        notifications: false,
       };
     }
   });
@@ -39,7 +40,7 @@ function App() {
   useEffect(() => {
     let viewLogs = JSON.parse(storage.getItem("onoViewLogs"));
     let likeLogs = JSON.parse(storage.getItem("onoLikeLogs"));
-    let postLogs = JSON.parse(storage.getItem("onoPostLogs"));
+    //let postLogs = JSON.parse(storage.getItem("onoPostLogs"));
 
     // check for the presense of view and like Logs
     if (viewLogs) {
@@ -54,11 +55,11 @@ function App() {
       storage.setItem("onoLikeLogs", JSON.stringify([]));
     }
 
-    if (postLogs) {
-      storage.setItem("onoPostLogs", JSON.stringify(postLogs));
-    } else {
-      storage.setItem("onoPostLogs", JSON.stringify([]));
-    }
+    // if (postLogs) {
+    //   storage.setItem("onoPostLogs", JSON.stringify(postLogs));
+    // } else {
+    //   storage.setItem("onoPostLogs", JSON.stringify([]));
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

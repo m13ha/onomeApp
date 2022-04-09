@@ -24,7 +24,7 @@ mongoose
     let port = server.address().port
       console.log('App listening on', port)
     });
-    require("./chatServer")(Server, server, instrument);
+    require("./socketServer")(Server, server, instrument);
   })
   .catch((err) => console.log(err));
 

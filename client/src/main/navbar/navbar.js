@@ -2,18 +2,49 @@ import { useContext, useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { UserContext } from "../../utils/user";
 import icons from "../../utils/icons";
-import logOutUser from "../../controller.js/logout";
+import logOutUser from "../../controller/logout";
 import numeral from "numeral";
+import socket from "../../controller/socketServer";
 
-const Navbar = () => {
+const Navbar = ({ notices }) => {
+  let storage = sessionStorage;
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const location = useLocation();
   const [close, setClose] = useState(true);
-
+  let [noticeCount, setNoticeCount] = useState();
+  let [smsCount, setSmsCount] = useState();
+  let [loveSms, setLoveSms] = useState();
 
   useEffect(() => {
-    let storage = sessionStorage;
+    let currentUser = JSON.parse(storage.getItem("onomeUser"));
+
+    socket.on("post approved notice", (content) => {
+      console.log("received");
+      if (noticeCount === undefined) {
+        let count = 1;
+        setNoticeCount(count);
+      } else {
+        setNoticeCount(noticeCount + 1);
+      }
+      currentUser.notifications.push(content);
+      storage.setItem("onomeUser", JSON.stringify(currentUser));
+    });
+
+    socket.on("post denied notice", (content) => {
+      console.log("received");
+      if (noticeCount === undefined) {
+        let count = 1;
+        setNoticeCount(count);
+      } else {
+        setNoticeCount(noticeCount + 1);
+      }
+      currentUser.notifications.push(content);
+      storage.setItem("onomeUser", JSON.stringify(currentUser));
+    });
+  }, [socket, noticeCount]);
+
+  useEffect(() => {
     let currentUser = JSON.parse(storage.getItem("onomeUser"));
 
     if (currentUser) {
@@ -37,7 +68,7 @@ const Navbar = () => {
 
     switch (location.pathname) {
       case "/home/feed/news":
-      case "/home/feed/memes":
+      case "/home/feed/entertainment":
       case "/home/feed/forum":
       case "/home/feedpost":
         links[0].className += " activeTab";
@@ -51,17 +82,29 @@ const Navbar = () => {
         links[2].className += " activeTab";
         break;
 
-      case "/home/market":
+      case "/home/lovezone":
         links[3].className += " activeTab";
         break;
 
-      case "/home/kiosk":
+      case "/home/market":
         links[4].className += " activeTab";
+        break;
+
+      case "/home/coins":
+        links[5].className += " activeTab";
+        break;
+
+      case "/home/kiosk":
+        links[6].className += " activeTab";
+        break;
+
+      case "/home/notifications":
+        links[7].className += " activeTab";
         break;
 
       case "/home/profile":
       case "/home/updateprf":
-        links[5].className += " activeTab";
+        links[8].className += " activeTab";
         break;
 
       default:
@@ -87,6 +130,7 @@ const Navbar = () => {
     let success = await logOutUser(setUser);
 
     if (success) {
+      storage.removeItem("onomeUser");
       navigate("/", { replace: true });
     }
   };
@@ -121,6 +165,9 @@ const Navbar = () => {
                   height="40px"
                 />
               )}
+              {(noticeCount > 0 || smsCount > 0 || loveSms > 0) && close && (
+                <div className="noticeHam"></div>
+              )}
             </li>
           </section>
         </ul>
@@ -135,6 +182,7 @@ const Navbar = () => {
           <Link to="/home/chats">
             <li className="sideLink" onClick={handleMenuClick}>
               <img src={icons.navIcons.emailIcon.url} alt="drop menu" />
+              {(smsCount > 0) && <div className="notice">{smsCount}</div>}
             </li>
           </Link>
           <Link to="/home/map">
@@ -142,25 +190,33 @@ const Navbar = () => {
               <img src={icons.navIcons.pinIcon.url} alt="drop menu" />
             </li>
           </Link>
-          <li onClick={handleMenuClick}>
-            <img src={icons.navIcons.datingIcon.url} alt="drop menu" />
-          </li>
+          <Link to="/home/lovezone">
+            <li className="sideLink" onClick={handleMenuClick}>
+              <img src={icons.navIcons.datingIcon.url} alt="drop menu" />
+              {(loveSms > 0) && <div className="notice">{loveSms}</div>}
+            </li>
+          </Link>
           <Link to="/home/market">
             <li className="sideLink" onClick={handleMenuClick}>
               <img src={icons.navIcons.cartIcon.url} alt="drop menu" />
             </li>
           </Link>
-          <li onClick={handleMenuClick}>
-            <img src={icons.navIcons.buyCoins.url} alt="drop menu" />
-          </li>
+          <Link to="/home/coins">
+            <li className="sideLink" onClick={handleMenuClick}>
+              <img src={icons.navIcons.buyCoins.url} alt="drop menu" />
+            </li>
+          </Link>
           <Link to="/home/kiosk">
             <li className="sideLink" onClick={handleMenuClick}>
               <img src={icons.navIcons.shopIcon.url} alt="drop menu" />
             </li>
           </Link>
-          <li className="sideLink" onClick={handleMenuClick}>
-            <img src={icons.navIcons.noticeIcon.url} alt="drop menu" />
-          </li>
+          <Link to="/home/notifications">
+            <li className="sideLink" onClick={handleMenuClick}>
+              <img src={icons.navIcons.noticeIcon.url} alt="drop menu" />
+              {(noticeCount > 0) && <div className="notice">{noticeCount}</div>}
+            </li>
+          </Link>
           <Link to="/home/profile">
             <li className="sideLink" onClick={handleMenuClick}>
               <img src={icons.navIcons.setProfile.url} alt="drop menu" />

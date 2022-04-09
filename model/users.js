@@ -16,18 +16,6 @@ const userMsg = new Schema(
   { timestamps: true }
 );
 
-const notice = new Schema(
-  {
-    type: {
-      type: String,
-    },
-
-    content: {
-      type: String,
-    },
-  },
-  { timestamps: true }
-);
 
 const userSchema = new Schema(
   {
@@ -129,7 +117,7 @@ const userSchema = new Schema(
 
     directMsg: [userMsg],
 
-    notification: [notice],
+    notifications: [],
 
     rooms: [],
   },

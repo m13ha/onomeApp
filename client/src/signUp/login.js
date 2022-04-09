@@ -1,4 +1,4 @@
-import loginUser from "../controller.js/login";
+import loginUser from "../controller/login";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { UserContext } from "../utils/user";

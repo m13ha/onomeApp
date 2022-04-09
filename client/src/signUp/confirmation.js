@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../utils/user";
 import { useNavigate } from "react-router-dom";
-import verifyUser from "../controller.js/userVerify";
+import verifyUser from "../controller/userVerify";
 
 const ConfirmPage = () => {
   const [errorMsg, setErrorMsg] = useState("");

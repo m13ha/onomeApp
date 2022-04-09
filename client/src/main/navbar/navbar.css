@@ -61,6 +61,7 @@
   align-content: center;
   background-color: var(--main-bg);
   border-left: 0px;
+  position: relative;
 }
 
 .sideList li:hover {
@@ -69,6 +70,43 @@
 
 .sideList li img {
   width: 25px;
+}
+
+
+.notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(255, 37, 37);
+  color: #fff;
+  height: 18px;
+  width: 18px;
+  border-radius: 100%;
+  font-size: 12px;
+  font-weight: bolder;
+  border: 0px;
+  position: absolute;
+  right: -5px;
+  top: 0px;
+}
+
+.noticeHam {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(255, 37, 37);
+  color: #fff;
+  height: 15px;
+  width: 15px;
+  border-radius: 100%;
+  font-size: 12px;
+  font-weight: bolder;
+  border: 0px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
 }
 
 .navList li {
@@ -104,6 +142,7 @@
 
 .hamBtn {
   padding: 0px 8px !important;
+  position: relative;
 }
 
 .hamBtn img {

@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../utils/user";
-import socket from "../../controller.js/socketServer";
+import socket from "../../controller/socketServer";
 
 const Chats = () => {
   const [chatList, setChatList] = useState(true);

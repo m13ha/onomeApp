@@ -2,14 +2,14 @@ import icons from "../../utils/icons";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { UserContext } from "../../utils/user";
 import { useContext, useEffect, useState } from "react";
-import postApprove from "../../controller.js/postApproval";
-import postDeny from "../../controller.js/postDeny";
-import likePost from "../../controller.js/likePost";
-import viewPost from "../../controller.js/viewPost";
-import postComment from "../../controller.js/postComment";
+import postApprove from "../../controller/postApproval";
+import postDeny from "../../controller/postDeny";
+import likePost from "../../controller/likePost";
+import viewPost from "../../controller/viewPost";
+import postComment from "../../controller/postComment";
 import moment from "moment";
-import getPost from "../../controller.js/getPost";
-import socket from "../../controller.js/socketServer";
+import getPost from "../../controller/getPost";
+import socket from "../../controller/socketServer";
 
 const Article = () => {
   let storage = sessionStorage;
@@ -28,7 +28,7 @@ const Article = () => {
   useEffect(() => {
     let viewLogs = JSON.parse(storage.getItem("onoViewLogs"));
     let likeLogs = JSON.parse(storage.getItem("onoLikeLogs"));
-    let postLogs = JSON.parse(storage.getItem("onoPostLogs"));
+   
 
     (async () => {
       let data = await getPost(id);
@@ -42,13 +42,6 @@ const Article = () => {
               setPost(success);
               viewLogs.push(id);
               storage.setItem("onoViewLogs", JSON.stringify(viewLogs));
-              postLogs.forEach((object, index) => {
-                if (object._id === success._id) {
-                  postLogs[index] = success;
-                }
-              });
-
-              storage.setItem("onoPostLogs", JSON.stringify(postLogs));
             }
           }
         })();
@@ -66,12 +59,6 @@ const Article = () => {
 
   useEffect(() => {
     socket.on("delete post", (data) => {
-      let postsLogs = JSON.parse(storage.getItem("onoPostLogs"));
-      postsLogs.forEach((object, index) => {
-        if (object._id === data) {
-          postsLogs.splice(index, 1);
-        }
-      });
       if (location.pathname === `/home/post/${data}`) {
         navigate(-1);
       }
@@ -96,7 +83,7 @@ const Article = () => {
 
   const handleLike = async (e) => {
     let likeLogs = JSON.parse(storage.getItem("onoLikeLogs"));
-    let postLogs = JSON.parse(storage.getItem("onoPostLogs"));
+  
 
     if (likeState === icons.action.like.url) {
       let success = await likePost(id);
@@ -105,14 +92,6 @@ const Article = () => {
         setLikeState(icons.action.liked.url);
         likeLogs.push(id);
         storage.setItem("onoLikeLogs", JSON.stringify(likeLogs));
-
-        postLogs.forEach((object, index) => {
-          if (object._id === success._id) {
-            postLogs[index] = success;
-          }
-        });
-
-        storage.setItem("onoPostLogs", JSON.stringify(postLogs));
         setPost(success);
       }
     } else {
@@ -132,30 +111,42 @@ const Article = () => {
   };
 
   const approvePost = async () => {
-    let postLogs = JSON.parse(storage.getItem("onoPostLogs"));
-    let success = await postApprove(post._id);
+    if (!post.approval) {
+     
+      let success = await postApprove(
+        post._id,
+        post.author,
+        location.pathname,
+        post.title
+      );
+
+      if (success) {
+        setPost(success.post);
+        socket.emit("post approved", post._id, success.data);
+      }
+    } // else do nothing
+  };
+
+  const deletePost = async () => {
+  
+    let success = await postDeny(post._id, post.author, post.title);
 
     if (success) {
-      postLogs.forEach((object, index) => {
-        if (object._id === success._id) {
-          postLogs[index] = success;
-          return;
-        }
-      });
-
-      socket.emit("approve post", post._id);
-      storage.setItem("onoPostLogs", JSON.stringify(postLogs));
+      console.log(success.data);
+      socket.emit("post denied", post._id, success.data);
+      navigate(-1);
     }
   };
 
   const handleComment = async (e) => {
     e.preventDefault();
-    let postLogs = JSON.parse(storage.getItem("onoPostLogs"));
+   
 
     let data = {
       to: post._id,
       author: user.userName,
       content: comment,
+      postAuthor: post.author,
     };
 
     let success = await postComment(data, "comment", setPost);
@@ -163,19 +154,19 @@ const Article = () => {
       setPost(success);
       setComment("");
 
-      postLogs.forEach((object, index) => {
-        if (object._id === success._id) {
-          postLogs[index] = success;
-        }
-      });
+      // postLogs.forEach((object, index) => {
+      //   if (object._id === success._id) {
+      //     postLogs[index] = success;
+      //   }
+      // });
 
-      storage.setItem("onoPostLogs", JSON.stringify(postLogs));
+     // storage.setItem("onoPostLogs", JSON.stringify(postLogs));
     }
   };
 
   const handleReply = async (author, id) => {
     let forms = document.getElementsByClassName("showForm");
-    let postLogs = JSON.parse(storage.getItem("onoPostLogs"));
+   
 
     let data = {
       to: author,
@@ -197,31 +188,13 @@ const Article = () => {
       setPost(success);
       //navigate("/todos", { state: { success } })
       setReply("");
-      postLogs.forEach((object, index) => {
-        if (object._id === success._id) {
-          postLogs[index] = success;
-        }
-      });
+      // postLogs.forEach((object, index) => {
+      //   if (object._id === success._id) {
+      //     postLogs[index] = success;
+      //   }
+      // });
 
-      storage.setItem("onoPostLogs", JSON.stringify(postLogs));
-    }
-  };
-
-  const deletePost = async () => {
-    let postLogs = JSON.parse(storage.getItem("onoPostLogs"));
-    let success = await postDeny(post._id);
-
-    if (success) {
-      postLogs.forEach((object, index) => {
-        if (object._id === post._id) {
-          postLogs.splice(index, 1);
-        }
-      });
-
-      socket.emit("delete post", post._id);
-
-      storage.setItem("onoPostLogs", JSON.stringify(postLogs));
-      navigate(-1);
+      //storage.setItem("onoPostLogs", JSON.stringify(postLogs));
     }
   };
 

@@ -1,16 +1,14 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../utils/user";
 import { useNavigate } from "react-router-dom";
-import postArticle from "../../controller.js/postArticle";
-import getArticles from "../../controller.js/getArticles";
+import postArticle from "../../controller/postArticle";
+import getArticles from "../../controller/getArticles";
 import ForumMapper from "./forumMapper";
 import icons from "../../utils/icons";
-import socket from "../../controller.js/socketServer";
-import { get } from "mongoose";
+import socket from "../../controller/socketServer";
 
 const ForumFeed = () => {
-  const storage = sessionStorage;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [postArr, setPostsArr] = useState([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -22,56 +20,80 @@ const ForumFeed = () => {
   const [category, setCategory] = useState("All");
   const [formCategory, setFormCategory] = useState();
   const [forums, setForums] = useState([]);
- 
 
   useEffect(() => {
-    let localPosts = JSON.parse(storage.getItem("onoPostLogs"));
-    (async() => {
-      let data = await getArticles()
-      setPostsArr(() => {
-        if(data.length > localPosts.length){
-          return data
-        }else{
-          return localPosts
-        }
+    (async () => {
+      let data = await getArticles();
+      if (data) {
+        setPostsArr(data);
+        setCriteria("popular");
+        setForums(postArr);
       }
-      )})()
-    setCriteria("popular");
-    setForums(postArr);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    socket.on("new post", (data) => {
+      let posts = postArr;
+      posts.push(data)
+      setPostsArr(posts)
+    });
+
+    socket.on("post denied", (data) => {
+      let posts = postArr;
+      posts.forEach((object, index) => {
+        if (object._id === data) {
+          posts.splice(index, 1);
+        }
+      });
+      setPostsArr(posts);
+    });
+
+    socket.on("post approved", (data) => {
+      let posts = postArr;
+      posts.forEach((object) => {
+        if (object._id === data) {
+          object.approval = true;
+        }
+      });
+      setPostsArr(posts)
+    });
+  }, [socket, postArr]);
 
   useEffect(() => {
     switch (criteria) {
       case "popular":
         postArr.sort((a, b) => {
-          return ((a.likes + a.views + a.count) > (b.likes + b.views + b.count)) ? -1 : 1;
+          return a.likes + a.views + a.count > b.likes + b.views + b.count
+            ? -1
+            : 1;
         });
         setForums([]);
         setForums(postArr);
         break;
       case "liked":
         postArr.sort((a, b) => {
-          return (a.likes > b.likes) ? -1 : 1;
+          return a.likes > b.likes ? -1 : 1;
         });
         setForums([]);
         setForums(postArr);
         break;
       case "viewed":
         postArr.sort((a, b) => {
-          return (a.views > b.views) ? -1 : 1;
+          return a.views > b.views ? -1 : 1;
         });
         setForums([]);
         setForums(postArr);
         break;
-  
+
       default:
         return setForums(postArr);
     }
     console.log(criteria);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [criteria, postArr])
+  }, [criteria, postArr]);
 
   const handleForumSubmit = async (e) => {
     e.preventDefault();
@@ -85,16 +107,13 @@ const ForumFeed = () => {
     let success = await postArticle(data, setErrorMsg, "forum");
 
     if (success.status === 200) {
-      let posts = JSON.parse(storage.getItem("onoPostLogs"));
-      posts.push(success);
-      storage.setItem("onoPostLogs", JSON.stringify(posts))
       loadForumForm();
       setTitle("");
       setContent("");
       socket.emit("new post", success);
-      navigate(0)
-    }else {
-      console.log(success)
+      navigate(0);
+    } else {
+      console.log(success);
     }
   };
 

@@ -1,10 +1,12 @@
 import axios from "axios";
 
-const postApprove = async (id) => {
+const postDeny = async (id, author, title) => {
   let success = await axios
-    .patch("/api/article/approve", {
+    .delete("/api/article", {
       params: {
-        id: id,
+        id,
+        author,
+        title,
       },
     })
     .then((res) => {
@@ -19,4 +21,4 @@ const postApprove = async (id) => {
   return success;
 };
 
-export default postApprove;
+export default postDeny;

@@ -4,7 +4,6 @@ import icons from "../../utils/icons";
 const NewsMapper = ({ postArr, status, approval }) => {
   let storage = sessionStorage;
   let likeLogs = JSON.parse(storage.getItem("onoLikeLogs"));
-  console.log(postArr);
 
   return postArr.map((object, index) => {
     if (object.approval === approval && object.isNews === true) {

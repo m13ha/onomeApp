@@ -1,14 +1,13 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../utils/user";
 import { useNavigate } from "react-router-dom";
-import postArticle from "../../controller.js/postArticle";
-import getArticles from "../../controller.js/getArticles";
+import postArticle from "../../controller/postArticle";
+import getArticles from "../../controller/getArticles";
 import NewsMapper from "./newsMapper";
 import icons from "../../utils/icons";
-import socket from "../../controller.js/socketServer";
+import socket from "../../controller/socketServer";
 
 const NewsFeed = () => {
-  const storage = sessionStorage;
   let navigate = useNavigate()
   const [postArr, setPostsArr] = useState([]);
   const [title, setTitle] = useState("");
@@ -20,17 +19,12 @@ const NewsFeed = () => {
   const [formStatus, setFormStatus] = useState(false);
 
   useEffect(() => {
-    let localPosts = JSON.parse(storage.getItem("onoPostLogs"));
     (async() => {
       let data = await getArticles()
-      setPostsArr(() => {
-        if(data.length > localPosts.length){
-          return data
-        }else{
-          return localPosts
-        }
+      if (data) {
+        setPostsArr(data);
       }
-      )})()
+      })()
       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -48,9 +42,6 @@ const NewsFeed = () => {
     let success = await postArticle(data, setErrorMsg, "news", postImg);
 
     if (success) {
-      let posts = JSON.parse(storage.getItem("onoPostLogs"));
-      posts.push(success);
-      storage.setItem("onoPostLogs", JSON.stringify(posts))
       loadNewsForm();
       setTitle("");
       setDesc("")
